@@ -2,34 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.css';
 import companyLogo from '../img/company-logo.png';
+import axios from 'axios';
 
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Fetch the admin authentication state from the backend
   useEffect(() => {
-    const checkAdminStatus = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/api/check-admin-status');
-        if (response.ok) {
-          const data = await response.json();
-          setIsAdmin(data.isAdmin);
-        } else {
-          // Handle error when fetching admin status
-          console.error('Failed to fetch admin status');
+        const response = await axios.get('http://localhost:5005/users/all');
+        const users = response.data;
+        const currentUser = users.find((user) => user.email === 'YOUR_CURRENT_USER_EMAIL'); // Replace with the current user's email
+
+        if (currentUser) {
+          setIsAdmin(currentUser.isAdmin);
+          setIsLoggedIn(true);
         }
       } catch (error) {
-        // Handle error when fetching admin status
-        console.error('Failed to fetch admin status', error);
+        console.error('Failed to fetch users', error);
       }
     };
-  
-    checkAdminStatus();
+
+    fetchData();
   }, []);
-  
 
   const handleLogout = () => {
-    // Handle logout logic here
+   
   };
 
   return (
@@ -47,15 +46,18 @@ const Navbar = () => {
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
-          {isAdmin && (
+          {isLoggedIn && <Link to="/profile">Profile</Link>}
+          {isAdmin && isLoggedIn && <Link to="/work">Work From</Link>}
+          {isLoggedIn ? (
+            <button className="logout-button" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
             <>
-              <Link to="/profile">Profile</Link>
-              <Link to="/work">Work From</Link>
+              <Link to="/login">Login</Link>
+              {isAdmin && <Link to="/admin">Admin Login</Link>}
             </>
           )}
-          <Link to="/login">Login</Link>
-          <Link to="/admin">Admin Login</Link>
-          {/* Add more navigation links as needed */}
         </div>
       </div>
     </nav>

@@ -13,7 +13,7 @@ import SignupPage from './components/SignupPage';
 import Profile from './pages/profile/CompanyProfilePage';
 import WorkOrder from './components/WorkOrder';
 import axios from 'axios';
-import AdminLogin from './components/AdminLoginPage';
+import AdminPanel from './components/AdminPanel';
 function App() {
   const [turbines, setTurbines] = useState([]);
   
@@ -35,7 +35,7 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/wind-turbines" element={<WindTurbines />} />
           <Route path="/work" element={<WorkOrder />} />
-          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
         <Footer/>
       </Router>
