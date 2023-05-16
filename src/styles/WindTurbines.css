@@ -1,0 +1,104 @@
+.landing-page {
+    position: relative;
+    height: 100vh;
+  }
+  
+  .landing-page-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .landing-page-overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .landing-page-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .landing-page-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .landing-page-content {
+    text-align: center;
+  }
+  
+  .landing-page-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .landing-page-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .landing-page-link:hover {
+    background-color: #555;
+  }
+  
+  .landing-page-footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .landing-page-footer-text {
+    font-size: 14px;
+    color: #ccc;
+  }
+  .video-container {
+      position: relative;
+      width: 100%;
+    }
+    
+    .video {
+      width: 100%;
+    }
+    
+   
+
+    .map-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+      
+      .card-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      
+      .map-container {
+        height: 1000px;
+        width: 800px;
+        margin-left: 0%;
+      }
+      
+    
