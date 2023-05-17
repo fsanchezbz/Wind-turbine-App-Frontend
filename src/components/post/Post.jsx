@@ -1,48 +1,55 @@
-import React, { useState } from 'react'
-import "./post.css"
-import {MoreVert} from "@mui/icons-material"
-import {Users} from "../../dummyData"
+import React, { useState, useEffect } from 'react';
+import { Box, Text } from '@chakra-ui/react';
+import axios from 'axios';
+import './post.css';
 
 export default function Post({ post }) {
-  const [like, setLike] = useState(post.like)
-  const [isliked, setIsLiked] = useState(false)
+  const [workOrders, setWorkOrders] = useState([]);
+  const separatedWorkOrderId = "6464c202a5b48338cd94f1a8"; // ID of the work order to separate
 
-  const likeHandler =()=> {
-    setLike(isliked ? like-1 : like+1)
-    setIsLiked(!isliked)
-  }
+  useEffect(() => {
+    const fetchWorkOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:5005/work/all');
+        setWorkOrders(response.data);
+      } catch (error) {
+        console.error('Error fetching work orders:', error);
+      }
+    };
+
+    fetchWorkOrders();
+  }, []);
+
   return (
     <div className='post'>
       <div className="postWrapper">
-        <div className="postTop">
-            <div className="postTopLeft">
-                <img className='postProfileImg'
-                 src={Users.filter((u) => u.id === post.userId)[0].profilePicture} 
-                alt="" />
-                <span className="postUsername">
-                  {Users.filter((u) => u.id === post.userId)[0].username}
-                  </span>
-                <span className="postDate">{post.date}</span>
-            </div>
-            <div className="postTopRight">
-                <MoreVert />
-            </div>
-        </div>
-        <div className="postCenter">
-          <span className="postText">{post.desc}</span>
-          <img className='postImg' src={post.photo} alt="" />
+       
+          <div>
+            {workOrders.length > 0 ? (
+              workOrders.map((workOrder) => (
+                <div key={workOrder._id} className={workOrder._id === separatedWorkOrderId ? "separatedWorkOrderCard" : "workOrderCard"}>
+                  <Box>
+                    <Text className='model' marginBottom="0.5rem">
+                      Turbine Model: {workOrder.turbineModel}
+                    </Text>
+                    <Text className='des' marginBottom="0.5rem">
+                      Description: {workOrder.description}
+                    </Text>
+                    <Text className='tech' marginBottom="0.5rem">
+                      Technician: {workOrder.technician}
+                    </Text>
+                    <Text className='data'>Date: {workOrder.date}</Text>
+                  </Box>
+                </div>
+              ))
+            ) : (
+              <p>No work orders found.</p>
+            )}
+          </div>
         </div>
         <div className="postBottom">
-          <div className="postBottomLeft">
-            <img className='likeIcon' src="/assets/like.png" onClick={likeHandler} alt="" />
-            <img className='likeIcon' src="/assets/heart.png" onClick={likeHandler} alt="" />
-            <span className="postLikeCounter">{like} people like it</span>
-          </div>
-          <div className="postBottomRight">
-            <span className="postCommenttext">{post.comment} comments</span>
-          </div>
         </div>
-      </div>
+      
     </div>
-  )
+  );
 }
