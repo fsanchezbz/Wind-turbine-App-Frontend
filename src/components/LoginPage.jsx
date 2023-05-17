@@ -22,7 +22,7 @@ const LoginPage = () => {
           password,
           email
         },
-        { withCredentials: true } // Include this option to send cookies with the request
+        { withCredentials: true } // Include this option to send cookies with the request this is an option from cors
       );
 
       const { isAdmin } = response.data;
