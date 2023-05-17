@@ -10,7 +10,7 @@ export default function Post({ post }) {
   useEffect(() => {
     const fetchWorkOrders = async () => {
       try {
-        const response = await axios.get('http://localhost:5005/work/all');
+        const response = await axios.get('https://wind-turbine-app-backend.onrender.com/work/all');
         setWorkOrders(response.data);
       } catch (error) {
         console.error('Error fetching work orders:', error);
