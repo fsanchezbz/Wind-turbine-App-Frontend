@@ -4,10 +4,11 @@ import axios from 'axios';
 import '../styles/LogoutPage.css'; 
 import videoBg from '../assets/rain.mp4'
 import { FaRegSmile} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true); // Set initial value to true for testing
-  
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await axios
