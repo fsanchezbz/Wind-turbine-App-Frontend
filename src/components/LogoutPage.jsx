@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import '../styles/LogoutPage.css'; 
 import videoBg from '../assets/rain.mp4'
-import { FaRegSmileThank } from 'react-icons/fa';
+import { FaRegSmile} from 'react-icons/fa';
 
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true); // Set initial value to true for testing
@@ -31,7 +31,7 @@ function LogoutPage() {
       <video src={videoBg} autoPlay loop muted /> 
       </div>
       <div className="logout-content text-overlay">
-        <h1>you for coming, now get to work  <FaRegSmileThank/></h1>
+        <h1>you for coming, now get to work  <FaRegSmile/></h1>
         {authenticated && (
           <button className="logout-button" onClick={handleLogout}>
             Logout
