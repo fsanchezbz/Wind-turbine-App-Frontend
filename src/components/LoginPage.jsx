@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import videoBg from '../assets/rain.mp4';
 import axios from 'axios';
@@ -11,6 +11,7 @@ const LoginPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -20,14 +21,26 @@ const LoginPage = () => {
           userName,
           password,
           email
-        }
+        },
+        { withCredentials: true } // Include this option to send cookies with the request
       );
 
-      const { isAdmin } = response.data; // Extract the isAdmin field from the response data
+      const { isAdmin } = response.data;
 
-      // Set the isLoggedIn and isAdmin states based on the response
-      setIsLoggedIn(true);
-      setIsAdmin(isAdmin);
+      // Check if the user is an admin or regular user
+      if (isAdmin) {
+        // User is an admin
+        // Set the appropriate state values
+        setIsLoggedIn(true);
+        setIsAdmin(true);
+        navigate('/profile'); // Redirect to the profile page for admin
+      } else {
+        // User is a regular user
+        // Set the appropriate state values
+        setIsLoggedIn(true);
+        setIsAdmin(false);
+        navigate('/profile'); // Redirect to the profile page for regular user
+      }
     } catch (error) {
       console.log(error);
       setError("Invalid username or password");
@@ -37,7 +50,7 @@ const LoginPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleLogin(userName, password, email);
+    handleLogin();
   };
 
   return (

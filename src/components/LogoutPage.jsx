@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true); // Set initial value to true for testing
@@ -8,6 +9,8 @@ function LogoutPage() {
   const handleLogout = () => {
     // Remove user authentication
     setAuthenticated(false);
+    // Remove the cookie
+    Cookies.remove('loggedIn');
     // Redirect to login page
     navigate('/');
   };
