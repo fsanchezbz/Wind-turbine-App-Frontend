@@ -18,7 +18,7 @@ function LogoutPage() {
   // };
 
   const handleLogout = async () => {
-    await axios.post("http://localhost:5005/users/logout", null, {
+    await axios.post("https://wind-turbine-app-backend.onrender.com/users/logout", null, {
       withCredentials: true,
     }).then((res)=> {
         console.log('logged out')

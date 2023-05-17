@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     const checkUserAuthentication = async () => {
       try {
-        const response = await axios.get("http://localhost:5005/users/me", { withCredentials: true });
+        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
 
         setIsLoggedIn(response.data.isLoggedIn);
         setIsAdmin(response.data.isAdmin);

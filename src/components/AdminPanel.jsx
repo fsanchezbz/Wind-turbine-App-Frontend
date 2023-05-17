@@ -10,7 +10,7 @@ const AdminPanel = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5005/users/all');
+      const response = await axios.get('https://wind-turbine-app-backend.onrender.com/users/all');
       setUsers(response.data);
     } catch (error) {
       console.error('Failed to fetch users', error);
@@ -19,7 +19,7 @@ const AdminPanel = () => {
 
   const handleRoleChange = async (userId, newRole) => {
     try {
-      await axios.put(`http://localhost:5005/users/${userId}`, { role: newRole });
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { role: newRole });
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
       console.error('Failed to update user role', error);
@@ -28,7 +28,7 @@ const AdminPanel = () => {
 
   const handleAdminChange = async (userId, newIsAdmin) => {
     try {
-      await axios.put(`http://localhost:5005/users/${userId}`, { isAdmin: newIsAdmin });
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { isAdmin: newIsAdmin });
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
       console.error('Failed to update user admin status', error);

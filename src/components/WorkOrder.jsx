@@ -13,7 +13,7 @@ const WorkOrder = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5005/work/work-orders', {
+      const response = await axios.post('https://wind-turbine-app-backend.onrender.com/work/work-orders', {
         turbineModel: turbineModel,
         description: description,
         location: location,

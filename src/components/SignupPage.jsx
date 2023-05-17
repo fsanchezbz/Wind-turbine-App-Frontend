@@ -14,7 +14,7 @@ const SignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5005/users/signup', {
+      const response = await axios.post('https://wind-turbine-app-backend.onrender.com/users/signup', {
         userName: userName,
         firstName: firstName,
         lastName: lastName,
