@@ -14,6 +14,7 @@ const SignUpPage = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    console.log(file[0])
     setProfilePicture(file);
   };
 
