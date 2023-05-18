@@ -44,37 +44,6 @@ export default function Rightbar({ profile }) {
       <>
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarFollowings">
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/5.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Emily Carter</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/6.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">John Carter</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/7.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Sasha banks</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/8.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Nicole Lucy</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/9.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Laurel Porter</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/5.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Charles Dickson</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="assets/persons/6.jpg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingname">Johnathan Carter</span>
-                    </div>
-                </div>
-        <h4 className="rightbarTitle">User friends</h4>
-        <div className="rightbarFollowings">
           {users.map((user) => (
             <div className="rightbarFollowing" key={user.id}>
               <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
