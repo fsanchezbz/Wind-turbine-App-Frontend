@@ -47,14 +47,12 @@ export default function Rightbar({ profile }) {
         <div className="rightbarFollowings">
           {users.map((user) => (
             <div className="rightbarFollowing" key={user.id}>
-              {user.profileImage && (
-                <Image
-                  cloudName="windturbineprofile"
-                  publicId={user.profileImage}
-                  className="rightbarFollowingImg"
-                  alt=""
-                />
-              )}
+              <Image
+                cloudName="windturbineprofile"
+                publicId={user.profileImage}
+                className="rightbarFollowingImg"
+                alt=""
+              />
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
             </div>
           ))}
