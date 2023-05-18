@@ -3,8 +3,22 @@ import Online from '../online/Online';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function Rightbar({ profile, profileImage }) {
+ const Rightbar = ({ profile, profileImage }) => {
   const [users, setUsers] = useState([]);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get('https://wind-turbine-app-backend-bgse.onrender.com/api/images');
+        setImages(response.data);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+  
+    fetchImages();
+  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -51,9 +65,11 @@ export default function Rightbar({ profile, profileImage }) {
             </div>
           ))}
         </div>
-        <div className="profileImageContainer">
-          <img src={profileImage} alt="Profile" className="profileImage" />
-        </div>
+        <div>
+    {images.map((image) => (
+      <img key={image.public_id} src={image.secure_url} alt={image.original_filename} />
+    ))}
+  </div>
       </>
     );
   };
@@ -66,3 +82,6 @@ export default function Rightbar({ profile, profileImage }) {
     </div>
   );
 }
+
+
+export default Rightbar;
