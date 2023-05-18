@@ -18,7 +18,8 @@ const SignUpPage = () => {
     try {
       // Create a new FormData object
       const formData = new FormData();
-      formData.append('profileImage', profileImage); // Append the profile image file to the form data
+      formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
+      formData.append('file', profileImage); // Append the profile image file to the form data
 
       // Make a request to upload the profile image to Cloudinary
       const uploadResponse = await axios.post(
