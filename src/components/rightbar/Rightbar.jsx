@@ -53,7 +53,7 @@ export default function Rightbar({ profile }) {
                 className="rightbarFollowingImg"
                 alt=""
               />
-              
+              <Image cloudName="windturbineprofile" publicId="https://res.cloudinary.com/windturbineprofile/image/upload/v1684393794/m43msjf6p5b3onbpaas2.png"/>
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
             </div>
           ))}
