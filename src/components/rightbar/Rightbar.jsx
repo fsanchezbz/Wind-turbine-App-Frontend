@@ -48,11 +48,10 @@ export default function Rightbar({ profile }) {
           {users.map((user) => (
             <div className="rightbarFollowing" key={user.id}>
               {user.profileImage && (
-                <Image
-                  cloudName="windturbineprofile"
-                  publicId={user.profileImage}
-                  className="rightbarFollowingImg"
+                <img
+                  src={`https://res.cloudinary.com/windturbineprofile/image/upload/${user.profileImage}`}
                   alt=""
+                  className="rightbarFollowingImg"
                 />
               )}
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
