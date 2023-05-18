@@ -3,7 +3,7 @@ import Online from '../online/Online';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function Rightbar({ profile }) {
+export default function Rightbar({ profile, profileImage }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Rightbar({ profile }) {
         <img className='rignhtbarAd' src="assets/ad.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarfriendList">
-          {Users.map(u => (
+          {users.map(u => (
             <Online key={u.id} user={u} />
           ))}
         </ul>
@@ -50,6 +50,9 @@ export default function Rightbar({ profile }) {
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
             </div>
           ))}
+        </div>
+        <div className="profileImageContainer">
+          <img src={profileImage} alt="Profile" className="profileImage" />
         </div>
       </>
     );
