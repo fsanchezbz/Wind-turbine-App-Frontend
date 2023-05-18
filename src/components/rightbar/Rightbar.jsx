@@ -2,7 +2,6 @@ import './rightbar.css';
 import Online from '../online/Online';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Image } from 'cloudinary-react';
 
 export default function Rightbar({ profile }) {
   const [users, setUsers] = useState([]);
@@ -47,13 +46,7 @@ export default function Rightbar({ profile }) {
         <div className="rightbarFollowings">
           {users.map((user) => (
             <div className="rightbarFollowing" key={user.id}>
-              <Image
-                cloudName="windturbineprofile"
-                publicId={user.profileImage}
-                className="rightbarFollowingImg"
-                alt=""
-              />
-              <Image cloudName="windturbineprofile" publicId="https://res.cloudinary.com/windturbineprofile/image/upload/v1684393794/m43msjf6p5b3onbpaas2.png"/>
+              <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
             </div>
           ))}
