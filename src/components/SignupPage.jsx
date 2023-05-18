@@ -55,7 +55,6 @@ const SignUpPage = () => {
       <div className="signup-container text-overlay">
         <h2 className="signup-title">Sign Up</h2>
         <form className="signup-form" onSubmit={handleSubmit}>
-          {/* Rest of the form fields */}
           <div className="form-group">
             <label htmlFor="profilePicture" className="form-label">
               Profile Picture
@@ -65,6 +64,64 @@ const SignUpPage = () => {
               id="profilePicture"
               className="form-input"
               onChange={handleFileChange}
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Username</label>
+            <input
+              type="text"
+              id="username"
+              className="form-input"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="firstName" className="form-label">
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              className="form-input"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastName" className="form-label">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              className="form-input"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              className="form-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              className="form-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button type="submit" className="signup-button">
