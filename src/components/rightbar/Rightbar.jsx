@@ -31,7 +31,7 @@ export default function Rightbar({ profile }) {
         <img className='rignhtbarAd' src="assets/ad.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarfriendList">
-          {Users.map(u => (
+          {users.map(u => (
             <Online key={u.id} user={u} />
           ))}
         </ul>
