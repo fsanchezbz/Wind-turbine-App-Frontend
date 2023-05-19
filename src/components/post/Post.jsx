@@ -143,6 +143,19 @@ import './post.css';
                   </Button>
                 </ModalFooter>
               </form>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      )}
+      {selectedWorkOrderId && (
+        <Modal isOpen={isOpen} onClose={closeModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Comments</ModalHeader>
+            <ModalBody>
+                  <Button colorScheme="blue" mr={3} onClick={closeModal}>
+                    Close
+                  </Button>
               <ModalBody>
                 <Text className='tech' marginBottom="0.5rem">
                   Comments: {selectedComments}
