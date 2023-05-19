@@ -19,14 +19,7 @@ const AdminPanel = () => {
     }
   };
 
-  const handleFieldChange = async (userId, field, value) => {
-    try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { [field]: value });
-      fetchUsers(); // Refresh the user list after the update
-    } catch (error) {
-      console.error(`Failed to update user ${field}`, error);
-    }
-  };
+ 
 
   const toggleAdminStatus = async (userId, currentStatus) => {
     try {
@@ -48,10 +41,7 @@ const AdminPanel = () => {
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Role</th>
             <th>Admin</th>
-            <th>First Name</th>
-            <th>Last Name</th>
           </tr>
         </thead>
         <tbody>
@@ -67,20 +57,7 @@ const AdminPanel = () => {
                   {user.isAdmin ? 'Make User' : 'Make Admin'}
                 </button>
               </td>
-              <td>
-                <input
-                  type="text"
-                  value={user.firstName}
-                  onChange={(e) => handleFieldChange(user._id, 'firstName', e.target.value)}
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={user.lastName}
-                  onChange={(e) => handleFieldChange(user._id, 'lastName', e.target.value)}
-                />
-              </td>
+              
             </tr>
           ))}
         </tbody>
