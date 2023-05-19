@@ -36,7 +36,7 @@ export default function Post({ post }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.patch(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
         addInfo: information,
       });
       console.log('Work order updated:', response.data);
