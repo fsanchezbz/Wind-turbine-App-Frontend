@@ -66,9 +66,6 @@ import axios from 'axios';
           ))}
         </div>
         <div>
-    {images.map((image) => (
-      <img key={image.public_id} src={image.secure_url} alt={image.original_filename} />
-    ))}
   </div>
       </>
     );
