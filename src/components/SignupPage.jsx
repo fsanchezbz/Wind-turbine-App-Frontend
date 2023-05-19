@@ -16,42 +16,22 @@ const SignUpPage = () => {
     e.preventDefault();
 
     try {
-      // Create a new FormData object
       const formData = new FormData();
-      formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
-      formData.append('file', profileImage); // Append the profile image file to the form data
+      formData.append('file', profileImage);
 
-      // Make a request to upload the profile image to Cloudinary
-      const uploadResponse = await axios.post(
-        'https://api.cloudinary.com/v1_1/windturbineprofile/image/upload',
-        formData
-      );
-
-      // Get the URL of the uploaded image from the response
-      const profileImageUrl = uploadResponse.data.secure_url;
-
-      // Make a request to sign up the user with the form data
-      const signupResponse = await axios.post(
-        'https://wind-turbine-app-backend.onrender.com/users/signup',
-        {
-          userName: userName,
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          profileImage: profileImageUrl // Pass the profile image URL in the request
-        }
-      );
+      const signupResponse = await axios.post('https://wind-turbine-app-backend.onrender.com/users/signup', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
       console.log('User signed up:', signupResponse.data);
-      // Reset the form fields
       setUserName('');
       setFirstName('');
       setLastName('');
       setEmail('');
       setPassword('');
       setProfileImage(null);
-      // Redirect to the wind turbines page or perform any other desired action
       window.location.href = '/';
     } catch (error) {
       console.error('Error signing up:', error);
