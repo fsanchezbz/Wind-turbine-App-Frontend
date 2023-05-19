@@ -10,7 +10,7 @@ import axios from 'axios';
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get('https://wind-turbine-app-backend-bgse.onrender.com/api/images');
+        const response = await axios.get('https:///wind-turbine-app-backend.onrender.com/api/images');
         setImages(response.data);
       } catch (error) {
         console.error('Error fetching images:', error);
