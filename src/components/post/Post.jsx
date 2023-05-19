@@ -10,21 +10,6 @@ import './post.css';
   const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
   const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-        setIsLoggedIn(true);
-        setIsAdmin(response.data.isAdmin);
-      } catch (error) {
-        console.log(error);
-        setIsLoggedIn(false);
-        setIsAdmin(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -32,10 +17,12 @@ import './post.css';
         const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
         setIsLoggedIn(true);
         setIsAdmin(response.data.isAdmin);
+        console.log(response.data.isAdmin);
       } catch (error) {
         console.log(error);
         setIsLoggedIn(false);
         setIsAdmin(false);
+        
       }
     };
 
