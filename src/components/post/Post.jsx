@@ -7,7 +7,7 @@ export default function Post({ post }) {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
-  const [information, setInformation] = useState(''); // State for tracking the entered information
+  const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -30,14 +30,17 @@ export default function Post({ post }) {
   const closeModal = () => {
     setSelectedWorkOrderId(null);
     setIsOpen(false);
-    setInformation('');
+    setAddInfo('');
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    // const info = event.target.value 
+    // setInformation(info)
+    
     try {
       const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
-        addInfo: information,
+        addInfo: addInfo, 
       });
       console.log('Work order updated:', response.data);
       // You can add additional logic here if needed
@@ -86,7 +89,7 @@ export default function Post({ post }) {
               <form onSubmit={handleFormSubmit}>
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
-                  <Input type="text" placeholder="Enter information" />
+                  <Input type="text" placeholder="Enter information" value={addInfo}  onChange={(e) => setAddInfo(e.target.value)} />
                 </FormControl>
                 {/* Add more form fields as needed */}
                 <ModalFooter>
