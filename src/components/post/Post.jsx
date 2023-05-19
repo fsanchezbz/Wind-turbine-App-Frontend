@@ -3,12 +3,13 @@ import { Box, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, Moda
 import axios from 'axios';
 import './post.css';
 
-const Post = () => {
+ const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +54,7 @@ const Post = () => {
     try {
       const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
         addInfo: addInfo,
+        status: status
       });
       console.log("Work order updated:", response.data);
       closeModal();
@@ -63,7 +65,8 @@ const Post = () => {
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
-      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, { withCredentials: true });
+      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, 
+      { withCredentials: true });
       setWorkOrders((prevWorkOrders) => prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId));
     } catch (error) {
       console.error("Failed to delete work order:", error);
@@ -118,6 +121,7 @@ const Post = () => {
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
                   <Input type="text" placeholder="Enter information" value={addInfo} onChange={(e) => setAddInfo(e.target.value)} />
+                  <Button type="btn" placeholder="Done" value={status} onChange={(e) => setStatus(e.target.value)} />
                 </FormControl>
                 <ModalFooter>
                   <Button colorScheme="blue" mr={3} onClick={closeModal}>
