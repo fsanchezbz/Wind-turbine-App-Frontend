@@ -8,6 +8,7 @@ import './post.css';
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
   const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
+  const [selectedWorkOrderComments, setSelectedWorkOrderComments] = useState('');
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -22,10 +23,12 @@ import './post.css';
     fetchWorkOrders();
   }, []);
 
-  const openModal = (workOrderId) => {
+  const openModal = (workOrderId, comments) => {
     setSelectedWorkOrderId(workOrderId);
+    setSelectedWorkOrderComments(comments);
     setIsOpen(true);
   };
+  
 
   const closeModal = () => {
     setSelectedWorkOrderId(null);
@@ -76,9 +79,10 @@ import './post.css';
                     Date: {workOrder.date.substring(0, 10)} 
                   </Text>
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
-                  <Text className='tech' marginBottom="0.5rem">
+                  <Button onClick={() => openModal(workOrder._id, workOrder.addInfo)}>Comments</Button>
+                  {/* <Text className='tech' marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
-                  </Text>
+                  </Text> */}
                 
 
                 </Box>
@@ -95,6 +99,7 @@ import './post.css';
           <ModalContent>
             <ModalHeader>Add Info</ModalHeader>
             <ModalBody>
+            <Text className="comments">{selectedWorkOrderComments}</Text>
               <form onSubmit={handleFormSubmit}>
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
