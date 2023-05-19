@@ -17,24 +17,15 @@ const AdminPanel = () => {
     }
   };
 
-  const handleRoleChange = async (userId, newRole) => {
+  const handleFieldChange = async (userId, field, value) => {
     try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { role: newRole });
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { [field]: value });
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
-      console.error('Failed to update user role', error);
+      console.error(`Failed to update user ${field}`, error);
     }
   };
-
-  const handleAdminChange = async (userId, newIsAdmin) => {
-    try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { isAdmin: newIsAdmin });
-      fetchUsers(); // Refresh the user list after the update
-    } catch (error) {
-      console.error('Failed to update user admin status', error);
-    }
-  };
-
+  
   return (
     <div>
       <h2>Admin Panel</h2>
@@ -46,6 +37,8 @@ const AdminPanel = () => {
             <th>Email</th>
             <th>Role</th>
             <th>Admin</th>
+            <th>First Name</th>
+            <th>Last Name</th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +50,7 @@ const AdminPanel = () => {
               <td>
                 <select
                   value={user.role}
-                  onChange={(e) => handleRoleChange(user._id, e.target.value)}
+                  onChange={(e) => handleFieldChange(user._id, 'role', e.target.value)}
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
@@ -67,9 +60,21 @@ const AdminPanel = () => {
                 <input
                   type="checkbox"
                   checked={user.isAdmin}
-                  onChange={(e) =>
-                    handleAdminChange(user._id, e.target.checked)
-                  }
+                  onChange={(e) => handleFieldChange(user._id, 'isAdmin', e.target.checked)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={user.firstName}
+                  onChange={(e) => handleFieldChange(user._id, 'firstName', e.target.value)}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  value={user.lastName}
+                  onChange={(e) => handleFieldChange(user._id, 'lastName', e.target.value)}
                 />
               </td>
             </tr>
@@ -79,6 +84,7 @@ const AdminPanel = () => {
       {/* Add other admin panel functionality here */}
     </div>
   );
+  
 };
 
 export default AdminPanel;
