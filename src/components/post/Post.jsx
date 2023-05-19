@@ -72,7 +72,8 @@ export default function Post({ post }) {
                     Technician: {workOrder.technician}
                   </Text>
                   <Text className='data'>
-                    Date: {workOrder.date} 
+                    {/* Date: {workOrder.date}   */}
+                    Date: {workOrder.date.substring(0, 8)} 
                   </Text>
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
                   <Text className='tech' marginBottom="0.5rem">
