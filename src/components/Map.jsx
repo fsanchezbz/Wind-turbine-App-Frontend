@@ -11,7 +11,7 @@ const Map = () => {
   
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB3STjyJXDqOjf3tqG0oI9xO3i2tSUYgzo&libraries=places&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_GOOGLE_API_MAP}&libraries=places&callback=initMap`;
     script.defer = true;
     document.body.appendChild(script);
 
