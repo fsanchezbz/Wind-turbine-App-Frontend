@@ -19,16 +19,12 @@ const AdminPanel = () => {
     }
   };
 
- 
-
-  const toggleAdminStatus = async (userId, currentStatus) => {
+  const handleFieldChange = async (userId, field, value) => {
     try {
-      const newStatus = !currentStatus; // Toggle the value
-
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { isAdmin: newStatus });
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { [field]: value });
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
-      console.error('Failed to update user admin status', error);
+      console.error(`Failed to update user ${field}`, error);
     }
   };
   
@@ -51,13 +47,12 @@ const AdminPanel = () => {
               <td>{user.userName}</td>
               <td>{user.email}</td>
               <td>
-                <button
-                  onClick={() => toggleAdminStatus(user._id, user.isAdmin)}
-                >
-                  {user.isAdmin ? 'Make User' : 'Make Admin'}
-                </button>
+                <input
+                  type="text"
+                  value={user.isAdmin}
+                  onChange={(e) => handleFieldChange(user._id, 'admin', e.target.value)}
+                />
               </td>
-              
             </tr>
           ))}
         </tbody>
