@@ -26,7 +26,8 @@ import './post.css';
   useEffect(() => {
     const fetchWorkOrders = async () => {
       try {
-        const response = await axios.get('https://wind-turbine-app-backend.onrender.com/work/all', { withCredentials: true });
+        const response = await axios.get('https://wind-turbine-app-backend.onrender.com/work/all', 
+        { withCredentials: true });
         setWorkOrders(response.data);
       } catch (error) {
         console.error('Error fetching work orders:', error);
