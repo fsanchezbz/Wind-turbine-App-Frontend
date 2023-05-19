@@ -10,7 +10,8 @@ const AdminPanel = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://wind-turbine-app-backend.onrender.com/users/all');
+      const response = await axios.get('https://wind-turbine-app-backend.onrender.com/users/all', { withCredentials: true });
+      
       setUsers(response.data);
     } catch (error) {
       console.error('Failed to fetch users', error);
