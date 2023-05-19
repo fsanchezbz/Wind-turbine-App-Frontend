@@ -7,9 +7,9 @@ import './post.css';
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
-  const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
-  const [selectedWorkOrderComments, setSelectedWorkOrderComments] = useState('');
-  
+  const [selectedWorkOrderComments, setSelectedWorkOrderComments] = useState(''); // State for tracking the selected work order's comments
+
+
   useEffect(() => {
     const fetchWorkOrders = async () => {
       try {
@@ -23,15 +23,11 @@ import './post.css';
     fetchWorkOrders();
   }, []);
 
-  const openModal = async (workOrderId) => {
-    try {
-      const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
-      setSelectedWorkOrderId(workOrderId);
-      setSelectedWorkOrderComments(response.data.addInfo);
-      setIsOpen(true);
-    } catch (error) {
-      console.error('Error fetching work order comments:', error);
-    }
+  const openModal = (workOrderId) => {
+    const selectedWorkOrder = workOrders.find((workOrder) => workOrder._id === workOrderId);
+    setSelectedWorkOrderId(workOrderId);
+    setSelectedWorkOrderComments(selectedWorkOrder.addInfo);
+    setIsOpen(true);
   };
   
 
@@ -118,25 +114,26 @@ import './post.css';
               </form>
             </ModalBody>
           </ModalContent>
-          {selectedWorkOrderId && (
-            <Modal isOpen={isOpen} onClose={closeModal}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Work Order Comments</ModalHeader>
-                <ModalBody>
-                  <Text>{selectedWorkOrderComments}</Text>
-                </ModalBody>
-                <ModalFooter>
-                  <Button colorScheme="blue" mr={3} onClick={closeModal}>
-                    Close
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          )}
         </Modal>
         
       )}
+      {selectedWorkOrderId && (
+        <Modal isOpen={isOpen} onClose={closeModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Work Order Comments</ModalHeader>
+            <ModalBody>
+              <Text>{selectedWorkOrderComments}</Text>
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={closeModal}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
+
     </div>
   );
 }
