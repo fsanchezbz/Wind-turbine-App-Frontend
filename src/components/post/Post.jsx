@@ -3,7 +3,7 @@ import { Box, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, Moda
 import axios from 'axios';
 import './post.css';
 
-export default function Post({ post }) {
+ const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
@@ -66,7 +66,7 @@ export default function Post({ post }) {
                     Description: {workOrder.description}
                   </Text>
                   <Text className='des' marginBottom="0.5rem">
-                    Location: {workOrder.location}
+                    Coordinates: {workOrder.location}
                   </Text>
                   <Text className='tech' marginBottom="0.5rem">
                     Technician: {workOrder.technician}
@@ -115,3 +115,5 @@ export default function Post({ post }) {
     </div>
   );
 }
+
+export default Post;
