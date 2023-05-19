@@ -10,6 +10,7 @@ import './post.css';
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
+  const [selectedComments, setSelectedComments] = useState(''); // State for tracking the selected work order comments
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +39,16 @@ import './post.css';
     fetchWorkOrders();
   }, []);
 
-  const openModal = (workOrderId) => {
-    setSelectedWorkOrderId(workOrderId);
-    setIsOpen(true);
+  const openModal = async (workOrderId) => {
+    try {
+      const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
+      const { addInfo } = response.data;
+      setSelectedWorkOrderId(workOrderId);
+      setSelectedComments(addInfo);
+      setIsOpen(true);
+    } catch (error) {
+      console.error('Failed to fetch work order comments:', error);
+    }
   };
 
   const closeModal = () => {
@@ -95,6 +103,7 @@ import './post.css';
                   </Text>
                   <Text className="data">Date: {workOrder.date.substring(0, 10)}</Text>
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
                   <Text className="tech" marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
                   </Text>
@@ -134,6 +143,12 @@ import './post.css';
                   </Button>
                 </ModalFooter>
               </form>
+              <ModalBody>
+                <Text className='tech' marginBottom="0.5rem">
+                  Comments: {selectedComments}
+                </Text>
+              </ModalBody>
+
             </ModalBody>
           </ModalContent>
         </Modal>
