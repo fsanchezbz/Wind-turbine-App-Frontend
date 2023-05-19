@@ -36,7 +36,7 @@ const AdminPanel = () => {
     try {
       const newStatus = !currentStatus; // Toggle the value
       console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
-      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update`, {
         isAdmin: newStatus
       });
       console.log(`Updated user ${userId}:`, response.data);
