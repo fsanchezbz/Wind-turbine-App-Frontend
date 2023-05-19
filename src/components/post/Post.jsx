@@ -8,6 +8,20 @@ import './post.css';
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
   const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is an admin and set the isAdmin state accordingly
+    const checkAdminStatus = () => {
+      // Implement your logic to determine the admin status
+      const userIsAdmin = true; // Replace with your actual admin check
+
+      setIsAdmin(userIsAdmin);
+    };
+
+    checkAdminStatus();
+  }, []);
+
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -50,6 +64,17 @@ import './post.css';
     }
   };
 
+  const deleteWorkOrder = async (workOrderId) => {
+    try {
+      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`);
+      setWorkOrders((prevWorkOrders) =>
+        prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId)
+      );
+    } catch (error) {
+      console.error('Failed to delete work order:', error);
+    }
+  };
+  
   return (
     
     <div className='post'>
@@ -79,7 +104,11 @@ import './post.css';
                   <Text className='tech' marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
                   </Text>
-                
+                  {isAdmin && (
+                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                      Delete
+                    </Button>
+                  )}
 
                 </Box>
               </div>
