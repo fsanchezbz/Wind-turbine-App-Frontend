@@ -21,7 +21,11 @@ const AdminPanel = () => {
 
   const handleFieldChange = async (userId, field, value) => {
     try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { [field]: value });
+      console.log(`Updating user ${userId} field ${field} to ${value}`);
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        [field]: value
+      });
+      console.log(`Updated user ${userId}:`, response.data);
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
       console.error(`Failed to update user ${field}`, error);
@@ -31,13 +35,17 @@ const AdminPanel = () => {
   const toggleAdminStatus = async (userId, currentStatus) => {
     try {
       const newStatus = !currentStatus; // Toggle the value
-  
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { isAdmin: newStatus });
+      console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        isAdmin: newStatus
+      });
+      console.log(`Updated user ${userId}:`, response.data);
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
       console.error('Failed to update user admin status', error);
     }
   };
+  
   
   return (
     <div>
