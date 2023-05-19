@@ -80,6 +80,7 @@ import './post.css';
                     Date: {workOrder.date.substring(0, 10)} 
                   </Text>
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
                   <Text className='tech' marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
                   </Text>
