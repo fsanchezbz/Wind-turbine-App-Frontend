@@ -7,6 +7,7 @@ export default function Post({ post }) {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
+  const [information, setInformation] = useState(''); // State for tracking the entered information
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -29,12 +30,21 @@ export default function Post({ post }) {
   const closeModal = () => {
     setSelectedWorkOrderId(null);
     setIsOpen(false);
+    setInformation('');
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // Perform your form submission logic here
-    closeModal();
+    try {
+      const response = await axios.patch(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
+        addInfo: information,
+      });
+      console.log('Work order updated:', response.data);
+      // You can add additional logic here if needed
+      closeModal();
+    } catch (error) {
+      console.error('Failed to update work order:', error);
+    }
   };
 
   return (
