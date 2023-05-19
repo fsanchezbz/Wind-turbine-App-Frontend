@@ -10,18 +10,6 @@ import './post.css';
   const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
   const [isAdmin, setIsAdmin] = useState(false);
 
-  // useEffect(() => {
-  //   // Check if the user is an admin and set the isAdmin state accordingly
-  //   const checkAdminStatus = () => {
-  //     // Implement your logic to determine the admin status
-  //     const userIsAdmin = true; // Replace with your actual admin check
-
-  //     setIsAdmin(userIsAdmin);
-  //   };
-
-  //   checkAdminStatus();
-  // }, []);
-
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -33,7 +21,7 @@ import './post.css';
         
         if (isAdmin) setIsAdmin(true);  // User is an admin
        
-        
+        setWorkOrders(response.data)
 
       } catch (error) {
         console.error('Error fetching work orders:', error);
