@@ -121,9 +121,11 @@ import './post.css';
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
                   <Input type="text" placeholder="Enter information" value={addInfo} onChange={(e) => setAddInfo(e.target.value)} />
-                  <Button type="btn" placeholder="Done" value={status} onChange={(e) => setStatus(e.target.value)} />
-                </FormControl>
+                  </FormControl>
                 <ModalFooter>
+                  <Button colorScheme="blue" mr={3} value={status} onClick={() => setStatus(true)} >
+                    Done
+                  </Button>
                   <Button colorScheme="blue" mr={3} onClick={closeModal}>
                     Close
                   </Button>
