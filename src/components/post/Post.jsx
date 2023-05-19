@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import './post.css';
 
 export default function Post({ post }) {
   const [workOrders, setWorkOrders] = useState([]);
-  const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
   const separatedWorkOrderId = "6464c202a5b48338cd94f1a8"; // ID of the work order to separate
 
   useEffect(() => {
@@ -20,14 +19,6 @@ export default function Post({ post }) {
 
     fetchWorkOrders();
   }, []);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div className='post'>
@@ -60,23 +51,8 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className="postBottom">
-          <Button onClick={openModal}>Add Work Order</Button>
-          <Modal isOpen={isOpen} onClose={closeModal}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Add Work Order</ModalHeader>
-              <ModalBody>
-                {/* Add your form fields for adding work order information */}
-              </ModalBody>
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={closeModal}>
-                  Close
-                </Button>
-                <Button variant="ghost">Save</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
         </div>
+      
     </div>
   );
 }
