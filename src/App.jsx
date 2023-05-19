@@ -18,22 +18,22 @@ import LogoutPage from './components/LogoutPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // useEffect(() => {
-  //   const checkUserAuthentication = async () => {
-  //     try {
-  //       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+  useEffect(() => {
+    const checkUserAuthentication = async () => {
+      try {
+        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
 
-  //       setIsLoggedIn(response.data.isLoggedIn);
-  //       setIsAdmin(response.data.isAdmin);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+        setIsLoggedIn(response.data.isLoggedIn);
+        setIsAdmin(response.data.isAdmin);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   checkUserAuthentication();
-  // }, []);
+    checkUserAuthentication();
+  }, []);
 
   return (
     <Router>
