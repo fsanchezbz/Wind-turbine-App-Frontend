@@ -26,7 +26,7 @@ import './post.css';
   useEffect(() => {
     const fetchWorkOrders = async () => {
       try {
-        const response = await axios.get('https://wind-turbine-app-backend.onrender.com/work/all');
+        const response = await axios.get('https://wind-turbine-app-backend.onrender.com/work/all', { withCredentials: true });
         setWorkOrders(response.data);
       } catch (error) {
         console.error('Error fetching work orders:', error);
@@ -54,7 +54,7 @@ import './post.css';
     
     try {
       const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
-        addInfo: addInfo, 
+         addInfo: addInfo, 
       });
       console.log('Work order updated:', response.data);
       // You can add additional logic here if needed
