@@ -35,6 +35,9 @@ export default function Post({ post }) {
                     <Text className='des' marginBottom="0.5rem">
                       Description: {workOrder.description}
                     </Text>
+                    <Text className='des' marginBottom="0.5rem">
+                      Location: {workOrder.location}
+                    </Text>
                     <Text className='tech' marginBottom="0.5rem">
                       Technician: {workOrder.technician}
                     </Text>
