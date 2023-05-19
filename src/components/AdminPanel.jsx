@@ -20,7 +20,7 @@ const AdminPanel = () => {
 
   const handleFieldChange = async (userId, field, value) => {
     try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/${userId}`, { [field]: value });
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, { [field]: value });
       fetchUsers(); // Refresh the user list after the update
     } catch (error) {
       console.error(`Failed to update user ${field}`, error);
