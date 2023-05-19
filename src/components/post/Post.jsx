@@ -51,6 +51,7 @@ export default function Post({ post }) {
   };
 
   return (
+    
     <div className='post'>
       <div className="postWrapper">
         <div>
@@ -70,11 +71,15 @@ export default function Post({ post }) {
                   <Text className='tech' marginBottom="0.5rem">
                     Technician: {workOrder.technician}
                   </Text>
+                  <Text className='data'>
+                    Date: {workOrder.date} 
+                  </Text>
+                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
                   <Text className='tech' marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
                   </Text>
-                  <Text className='data'>Date: {workOrder.date}</Text>
-                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                
+
                 </Box>
               </div>
             ))
