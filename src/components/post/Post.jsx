@@ -7,8 +7,7 @@ import './post.css';
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null); // State for tracking the selected work order
   const [isOpen, setIsOpen] = useState(false); // State for controlling the modal window
-  const [selectedWorkOrderComments, setSelectedWorkOrderComments] = useState(''); // State for tracking the selected work order's comments
-
+  const [addInfo, setAddInfo] = useState(''); // State for tracking the entered information
 
   useEffect(() => {
     const fetchWorkOrders = async () => {
@@ -24,12 +23,9 @@ import './post.css';
   }, []);
 
   const openModal = (workOrderId) => {
-    const selectedWorkOrder = workOrders.find((workOrder) => workOrder._id === workOrderId);
     setSelectedWorkOrderId(workOrderId);
-    setSelectedWorkOrderComments(selectedWorkOrder.addInfo);
     setIsOpen(true);
   };
-  
 
   const closeModal = () => {
     setSelectedWorkOrderId(null);
@@ -80,7 +76,6 @@ import './post.css';
                     Date: {workOrder.date.substring(0, 10)} 
                   </Text>
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
-                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
                   <Text className='tech' marginBottom="0.5rem">
                     Comments: {workOrder.addInfo}
                   </Text>
@@ -116,25 +111,7 @@ import './post.css';
             </ModalBody>
           </ModalContent>
         </Modal>
-        
       )}
-      {selectedWorkOrderId && (
-        <Modal isOpen={isOpen} onClose={closeModal}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Work Order Comments</ModalHeader>
-            <ModalBody>
-              <Text>{selectedWorkOrderComments}</Text>
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={closeModal}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      )}
-
     </div>
   );
 }
