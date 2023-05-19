@@ -62,7 +62,11 @@ import axios from 'axios';
             <div className="rightbarFollowing" key={user.id}>
               <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
               <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
-              <span>{`Admin: ${user.isAdmin}`}</span>
+              
+              if (user.isAdmin) {
+                <span>{`Admin: ${user.isAdmin}`}</span>
+              }
+              
             </div>
           ))}
         </div>
