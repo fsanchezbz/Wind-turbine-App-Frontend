@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -11,7 +12,7 @@ const Map = () => {
   
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_GOOGLE_API_MAP}&libraries=places&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiUrl}&libraries=places&callback=initMap`;
     script.defer = true;
     document.body.appendChild(script);
 
