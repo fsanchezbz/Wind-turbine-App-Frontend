@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_GOOGLE_API_MAP;
 
 const Map = () => {
   const mapRef = useRef(null);
