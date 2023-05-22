@@ -19,7 +19,7 @@ const CompanyProfilePage = () => {
           </div>
           <div className="profilerightBottom">
             <div className="postContainer">
-              <Post />
+              <Post className="layout"/>
             </div>
             <Rightbar profile />
           </div>
