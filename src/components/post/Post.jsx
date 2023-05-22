@@ -10,7 +10,7 @@ const Post = () => {
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
-  const [selectedComments, setSelectedComments] = useState('');
+  const [selectedComments, setSelectedComments] = useState(''); // State for tracking the selected work order comments
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,7 +73,8 @@ const Post = () => {
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
-      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, { withCredentials: true });
+      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`,
+        { withCredentials: true });
       setWorkOrders((prevWorkOrders) => prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId));
     } catch (error) {
       console.error("Failed to delete work order:", error);
@@ -83,33 +84,33 @@ const Post = () => {
   return (
     <div className="post">
       <div className="postWrapper">
-        {workOrders.length > 0 ? (
-          <div className="card-grid">
-            {workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="card" style={{ width: '18rem' }}>
+        <div className="card-grid">
+          {workOrders.length > 0 ? (
+            workOrders.map((workOrder) => (
+              <div key={workOrder._id} className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{workOrder.turbineModel}</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">{workOrder.technician}</h6>
-                  <p className="card-text">{workOrder.description}</p>
-                  <a href="#" className="card-link" onClick={() => openModal(workOrder._id)}>
-                    Add Info
-                  </a>
-                  <a href="#" className="card-link" onClick={() => openModal(workOrder._id)}>
-                    View Comments
-                  </a>
-                  <p className="card-text">Comments: {workOrder.addInfo}</p>
+                  <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
+                  <div className="card-text">Description: {workOrder.description}</div>
+                  <div className="card-text">Coordinates: {workOrder.location}</div>
+                  <div className="card-text">Technician: {workOrder.technician}</div>
+                  <div className="card-text">Date: {workOrder.date.substring(0, 10)}</div>
+                  <div className="card-text">Comments: {workOrder.addInfo}</div>
                   {isAdmin && (
                     <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
                       Delete
                     </Button>
                   )}
                 </div>
+                <div className="card-footer">
+                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
+                </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <p>No work orders found.</p>
-        )}
+            ))
+          ) : (
+            <p>No work orders found.</p>
+          )}
+        </div>
       </div>
       {selectedWorkOrderId && (
         <Modal isOpen={isOpen} onClose={closeModal}>
@@ -120,12 +121,7 @@ const Post = () => {
               <form onSubmit={handleFormSubmit}>
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
-                  <Input
-                    type="text"
-                    placeholder="Enter information"
-                    value={addInfo}
-                    onChange={(e) => setAddInfo(e.target.value)}
-                  />
+                  <Input type="text" placeholder="Enter information" value={addInfo} onChange={(e) => setAddInfo(e.target.value)} />
                 </FormControl>
                 <ModalFooter>
                   <Button colorScheme="blue" mr={3} value={status} onClick={() => setStatus(true)}>
@@ -166,4 +162,3 @@ const Post = () => {
 };
 
 export default Post;
-
