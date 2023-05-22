@@ -244,7 +244,7 @@ const Map = () => {
         </Box>
       </Flex>
       <Box>
-        <RightBar />
+        <Rightbar />
       </Box>
     </Box>
   );
