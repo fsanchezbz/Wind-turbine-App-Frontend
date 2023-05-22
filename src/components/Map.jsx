@@ -4,6 +4,8 @@ import '../styles/Map.css';
 import { useLoadScript } from '@react-google-maps/api';
 
 const libraries = ['places'];
+const center = { lat: 52.5123936, lng: 13.4131204 };
+
 const Map = () => {
   const mapRef = useRef(null);
   const [response, setResponse] = useState('');
@@ -15,7 +17,7 @@ const Map = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: libraries,
   });
-  
+
   useEffect(() => {
     if (isLoaded && !loadError) {
       const map = new window.google.maps.Map(mapRef.current, {
@@ -193,7 +195,7 @@ const Map = () => {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  }, [isLoaded, loadError]);
 
   return (
     <Box marginTop="4rem" >  {/* Adjust the margin top value as per your navbar height */}
