@@ -1,6 +1,6 @@
 import React from 'react'
 import "./feed.css"
-import Rightbar from './rightbar/Rightbar';
+import Rightbar from '../rightbar/Rightbar';
 
 export default function Feed() {
   
