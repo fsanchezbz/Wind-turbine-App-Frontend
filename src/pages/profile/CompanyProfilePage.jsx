@@ -9,7 +9,7 @@ const CompanyProfilePage = () => {
   return (
     <>
       <div className="profile">
-        <Map />
+        <center><Map /></center>
         <div className="profileRight">
           <div className="profilerightTop">
             <div className="profileInfo">
