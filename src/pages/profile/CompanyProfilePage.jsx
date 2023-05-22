@@ -1,23 +1,15 @@
-// CompanyProfilePage.js
-
 import React from 'react';
 import "./profile.css";
-
-import Feed from "../../components/feed/Feed.jsx";
 import Rightbar from "../../components/rightbar/Rightbar.jsx";
 import Map from '../../components/Map';
 import Post from "../../components/post/Post";
 
 
- const CompanyProfilePage = () => {
-  
-
+const CompanyProfilePage = () => {
   return (
     <>
       <div className="profile">
-       
         <Map />
-
         <div className="profileRight">
           <div className="profilerightTop">
             <div className="profileInfo">
@@ -26,13 +18,12 @@ import Post from "../../components/post/Post";
             </div>
           </div>
           <div className="profilerightBottom">
-            <Post/>
-            <Feed />
+            <div className="postContainer">
+              <Post />
+            </div>
             <Rightbar profile />
           </div>
         </div>
-
-        
       </div>
     </>
   );
