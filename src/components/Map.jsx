@@ -197,9 +197,7 @@ const Map = () => {
 
   return (
     <Box marginTop="4rem" display="flex" alignItems="flex-start">
-      <Box flex="1" marginRight="2rem">
-        <Rightbar profile/>
-      </Box>
+      
       <Box flex="1" position="relative">
         <Box
           ref={mapRef}
@@ -207,6 +205,9 @@ const Map = () => {
           width="100%"
           marginBottom="2rem"
         />
+        <Box flex="1" marginRight="2rem">
+          <Rightbar profile/>
+        </Box>
         <Box
           position="absolute"
           top="0"
