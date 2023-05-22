@@ -3,14 +3,14 @@ import { Box, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, Moda
 import axios from 'axios';
 import './post.css';
 
- const Post = () => {
+const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
-  const [selectedComments, setSelectedComments] = useState(''); // State for tracking the selected work order comments
+  const [selectedComments, setSelectedComments] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,36 +83,28 @@ import './post.css';
 
   return (
     <div className="post">
-      <div className="postWrapper">
-        <div>
+      <div className="container">
+        <div className="row row-cols-1 row-cols-md-2 g-4">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="workOrderCard">
-                <Box>
-                  <Text className="model" marginBottom="0.5rem">
-                    Turbine Model: {workOrder.turbineModel}
-                  </Text>
-                  <Text className="des" marginBottom="0.5rem">
-                    Description: {workOrder.description}
-                  </Text>
-                  <Text className="des" marginBottom="0.5rem">
-                    Coordinates: {workOrder.location}
-                  </Text>
-                  <Text className="tech" marginBottom="0.5rem">
-                    Technician: {workOrder.technician}
-                  </Text>
-                  <Text className="data">Date: {workOrder.date.substring(0, 10)}</Text>
-                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
-                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
-                  <Text className="tech" marginBottom="0.5rem">
-                    Comments: {workOrder.addInfo}
-                  </Text>
-                  {isAdmin && (
-                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
-                      Delete
-                    </Button>
-                  )}
-                </Box>
+              <div key={workOrder._id} className="col">
+                <div className="card">
+                  <div className="card-body">
+                  <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
+                    <p className="card-text">Description: {workOrder.description}</p>
+                    <p className="card-text">Coordinates: {workOrder.location}</p>
+                    <p className="card-text">Technician: {workOrder.technician}</p>
+                    <p className="card-text">Date: {workOrder.date.substring(0, 10)}</p>
+                    <button className="btn btn-primary" onClick={() => openModal(workOrder._id)}>Add Info</button>
+                    <button className="btn btn-primary" onClick={() => openModal(workOrder._id)}>View Comments</button>
+                    <p className="card-text">Comments: {workOrder.addInfo}</p>
+                    {isAdmin && (
+                      <button className="btn btn-danger" onClick={() => deleteWorkOrder(workOrder._id)}>
+                        Delete
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             ))
           ) : (
@@ -154,15 +146,14 @@ import './post.css';
           <ModalContent>
             <ModalHeader>Comments</ModalHeader>
             <ModalBody>
-                  <Button colorScheme="blue" mr={3} onClick={closeModal}>
-                    Close
-                  </Button>
+              <Button colorScheme="blue" mr={3} onClick={closeModal}>
+                Close
+              </Button>
               <ModalBody>
                 <Text className='tech' marginBottom="0.5rem">
                   Comments: {selectedComments}
                 </Text>
               </ModalBody>
-
             </ModalBody>
           </ModalContent>
         </Modal>
@@ -173,3 +164,4 @@ import './post.css';
 };
 
 export default Post;
+
