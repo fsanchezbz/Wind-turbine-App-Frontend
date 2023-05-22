@@ -197,17 +197,13 @@ const Map = () => {
 
   return (
     <Box marginTop="4rem" display="flex" alignItems="flex-start">
-      
-      <Box flex="1" position="relative">
+      <Box flex="1">
         <Box
           ref={mapRef}
           height="500px"
           width="100%"
           marginBottom="2rem"
         />
-        <Box flex="1" marginRight="2rem">
-          <Rightbar profile/>
-        </Box>
         <Box
           position="absolute"
           top="0"
@@ -251,8 +247,10 @@ const Map = () => {
           </Text>
         </Box>
       </Box>
+      <Box flex="1" marginLeft="2rem">
+        <Rightbar profile/>
+      </Box>
     </Box>
-
   );
 };
 
