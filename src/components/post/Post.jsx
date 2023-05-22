@@ -85,17 +85,28 @@ const Post = () => {
   return (
     <div className="post">
       <div className="postWrapper">
-        <div className="row row-cols-1 row-cols-md-3">
+        <div className="card-deck">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="col mb-4">
-                <div className="card">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  </div>
+              <div key={workOrder._id} className="card" style={{width: "18rem"}}>
+                <div className="card-body">
+                  <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
+                  <div className="card-text">Description: {workOrder.description}</div>
+                  <div className="card-text">Coordinates: {workOrder.location}</div>
+                  <div className="card-text">Technician: {workOrder.technician}</div>
+                  <div className="card-text">Date: {workOrder.date.substring(0, 10)}</div>
+                  <div className="card-text">Comments: {workOrder.addInfo}</div>
+                  {isAdmin && (
+                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                      Delete
+                    </Button>
+                  )}
+                  <div className="card-footer">
+                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
                 </div>
+                </div>
+               
               </div>
             ))
           ) : (
