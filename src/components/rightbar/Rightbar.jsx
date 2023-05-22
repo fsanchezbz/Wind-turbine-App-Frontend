@@ -44,7 +44,7 @@ const Rightbar = () => {
                 <div className="card-body">
                   <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
                   {user.isAdmin && <span>Admin</span>}
-                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                  
                 </div>
               </div>
             ))}
