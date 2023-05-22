@@ -83,25 +83,21 @@ const Post = () => {
 
   return (
     <div className="post">
-      <div className="container">
-        <div className="row row-cols-1 row-cols-md-2 g-4">
+      <div className="postWrapper">
+        <div className="card-grid">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="col">
-                <div className="card">
-                  <div className="card-body">
+              <div key={workOrder._id} className="card">
+                <div className="card-body">
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
-                    <p className="card-text">Description: {workOrder.description}</p>
-                    <p className="card-text">Coordinates: {workOrder.location}</p>
-                    <p className="card-text">Technician: {workOrder.technician}</p>
-                    <p className="card-text">Date: {workOrder.date.substring(0, 10)}</p>
-                    <button className="btn btn-primary" onClick={() => openModal(workOrder._id)}>Add Info</button>
-                    <button className="btn btn-primary" onClick={() => openModal(workOrder._id)}>View Comments</button>
-                    <p className="card-text">Comments: {workOrder.addInfo}</p>
+                  <p className="card-text">Coordinates: {workOrder.location}</p>
+                  <p className="card-text">Technician: {workOrder.technician}</p>
+                  <p className="card-text">Date: {workOrder.date.substring(0, 10)}</p>
+                  <div className="card-buttons">
+                    <Button colorScheme="blue" onClick={() => openModal(workOrder._id)}>Add Info</Button>
+                    <Button colorScheme="blue" onClick={() => openModal(workOrder._id)}>View Comments</Button>
                     {isAdmin && (
-                      <button className="btn btn-danger" onClick={() => deleteWorkOrder(workOrder._id)}>
-                        Delete
-                      </button>
+                      <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>Delete</Button>
                     )}
                   </div>
                 </div>
