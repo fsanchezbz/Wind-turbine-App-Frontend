@@ -1,6 +1,7 @@
 import './rightbar.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
@@ -37,13 +38,13 @@ const Rightbar = () => {
       <>
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarWrapper">
-          <div className="rightbarFollowings">
+          <div className="rightbarFollowings card-deck row row-cols-1 row-cols-md-3">
             {users.map((user) => (
               <div className="card" style={{ width: '18rem' }} key={user.id}>
                 <img src={user.profileImage} className="card-img-top" alt="" />
                 <div className="card-body">
                   <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
-                  {user.isAdmin && <span>Admin</span>}
+                  {user.isAdmin && <span>Admin: Manager</span>}
                   
                 </div>
               </div>
