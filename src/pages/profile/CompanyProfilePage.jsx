@@ -1,6 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react';
 import Map from '../../components/Map';
 import Post from '../../components/post/Post';
+import "./profile.css";
 
 const CompanyProfilePage = () => {
   return (
