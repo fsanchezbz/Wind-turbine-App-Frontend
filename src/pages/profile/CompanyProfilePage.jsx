@@ -1,6 +1,5 @@
 import React from 'react';
 import "./profile.css";
-import Rightbar from "../../components/rightbar/Rightbar.jsx";
 import Map from '../../components/Map';
 import Post from "../../components/post/Post";
 
@@ -22,7 +21,7 @@ const CompanyProfilePage = () => {
             <div className="postContainer">
               <Post className="layout"/>
             </div>
-            <Rightbar profile />
+            
           </div>
         </div>
       </div>
