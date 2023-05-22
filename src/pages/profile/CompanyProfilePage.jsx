@@ -8,8 +8,8 @@ const CompanyProfilePage = () => {
       <Box marginTop="4rem">
         <Map />
       </Box>
-      <Box marginTop="4rem">
-        <RightBar />
+      <Box >
+        <RightBar profile/>
       </Box>
       <Box marginTop="2rem" padding="0 1rem">
         <Post />
