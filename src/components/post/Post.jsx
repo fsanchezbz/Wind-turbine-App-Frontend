@@ -84,7 +84,7 @@ const Post = () => {
   return (
     <div className="post">
       <div className="postWrapper">
-        <div className="card-grid">
+        <div className="card-deck">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
               <div key={workOrder._id} className="card" style={{width: "18rem"}}>
