@@ -3,6 +3,7 @@ import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
 import { useLoadScript } from '@react-google-maps/api';
 
+const libraries = ['places'];
 const Map = () => {
   const mapRef = useRef(null);
   const [response, setResponse] = useState('');
