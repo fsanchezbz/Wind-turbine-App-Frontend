@@ -3,7 +3,7 @@ import Online from '../online/Online';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
- const Rightbar = ({ profile, profileImage }) => {
+const Rightbar = ({ profile, profileImage }) => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -16,7 +16,7 @@ import axios from 'axios';
         console.error('Error fetching images:', error);
       }
     };
-  
+
     fetchImages();
   }, []);
 
@@ -57,31 +57,28 @@ import axios from 'axios';
     return (
       <>
         <h4 className="rightbarTitle">User information</h4>
-        <div className="rightbarFollowings">
-          {users.map((user) => (
-            <div className="rightbarFollowing" key={user.id}>
-              <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
-              <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
-              {user.isAdmin && <span>Admin</span>}
-            
-              
-            </div>
-          ))}
+        <div className="rightbarWrapper">
+          <div className="rightbarFollowings">
+            {users.map((user) => (
+              <div className="rightbarFollowing" key={user.id}>
+                <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
+                <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
+                {user.isAdmin && <span>Admin</span>}
+              </div>
+            ))}
+          </div>
+          <div>
+          </div>
         </div>
-        <div>
-  </div>
       </>
     );
   };
 
   return (
     <div className='rightbar'>
-      <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
-      </div>
+      {profile ? <ProfileRightbar /> : <HomeRightbar />}
     </div>
   );
 }
-
 
 export default Rightbar;
