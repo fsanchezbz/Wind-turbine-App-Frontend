@@ -6,7 +6,7 @@ import "./profile.css";
 import Feed from "../../components/feed/Feed.jsx";
 import Rightbar from "../../components/rightbar/Rightbar.jsx";
 import Map from '../../components/Map';
-
+import Post from "../../components/post/Post";
 
 
  const CompanyProfilePage = () => {
@@ -26,6 +26,7 @@ import Map from '../../components/Map';
             </div>
           </div>
           <div className="profilerightBottom">
+            <Post/>
             <Feed />
             <Rightbar profile />
           </div>
