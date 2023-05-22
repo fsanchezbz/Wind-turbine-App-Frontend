@@ -204,6 +204,9 @@ const Map = () => {
           width="100%"
           marginBottom="2rem"
         />
+        <Box flex="1" marginLeft="2rem">
+          <Rightbar profile/>
+        </Box>
         <Box
           position="absolute"
           top="0"
@@ -247,9 +250,7 @@ const Map = () => {
           </Text>
         </Box>
       </Box>
-      <Box flex="1" marginLeft="2rem">
-        <Rightbar profile/>
-      </Box>
+      
     </Box>
   );
 };
