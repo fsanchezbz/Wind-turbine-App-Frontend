@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-const apiUrl = process.env.REACT_GOOGLE_API_MAP;
+import { useLoadScript } from '@react-google-maps/api';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -9,17 +9,17 @@ const Map = () => {
   const [directionsDuration, setDirectionsDuration] = useState('');
   const [directionsDistance, setDirectionsDistance] = useState('');
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
+
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries: libraries,
+  });
   
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiUrl}&libraries=places&callback=initMap`;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    window.initMap = () => {
+    if (isLoaded && !loadError) {
       const map = new window.google.maps.Map(mapRef.current, {
         zoom: 8,
-        center: { lat: 52.5123936, lng: 13.4131204 },
+        center: center,
         mapTypeControl: true,
         scrollwheel: true,
         zoomControl: true,
