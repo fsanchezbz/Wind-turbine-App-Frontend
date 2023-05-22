@@ -147,6 +147,7 @@ import './post.css';
           </ModalContent>
         </Modal>
       )}
+      <div>
       {selectedWorkOrderId && (
         <Modal isOpen={isOpen} onClose={closeModal}>
           <ModalOverlay />
@@ -166,6 +167,7 @@ import './post.css';
           </ModalContent>
         </Modal>
       )}
+      </div>
     </div>
   );
 };
