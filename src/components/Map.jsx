@@ -196,44 +196,48 @@ const Map = () => {
   }, []);
 
   return (
-    <Box marginTop="4rem" >  {/* Adjust the margin top value as per your navbar height */}
-       <Box>
+    <Box marginTop="4rem" display="flex" alignItems="flex-start">
+      <Box flex="1" marginRight="2rem">
         <Rightbar profile/>
       </Box>
-      <Box
-        ref={mapRef}
-        height="500px"
-        width={'850px'}
-        marginBottom="2rem"
-      />
-      <Flex justifyContent="center">
+      <Box flex="1" position="relative">
         <Box
-          backgroundColor="white"
-          padding="5rem"
+          ref={mapRef}
+          height="500px"
+          width="100%"
+          marginBottom="2rem"
+        />
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          backgroundColor="rgba(255, 255, 255, 0.8)"
           borderRadius="md"
           boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color={'black'}
-          marginRight="2rem"
         >
-          <Text fontWeight="bold" marginBottom="1rem">
-            Response:
-          </Text>
-          <Text fontSize={'15px'} as="pre" whiteSpace="pre-wrap">
-            {response}
-          </Text>
+          <Flex flexDirection="column" alignItems="center">
+            <Text fontWeight="bold" marginBottom="1rem">
+              Response:
+            </Text>
+            <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
+              {response}
+            </Text>
+          </Flex>
         </Box>
         <Box
+          position="absolute"
+          bottom="2rem"
+          right="2rem"
           backgroundColor="white"
-          padding="5rem"
+          padding="1rem"
           borderRadius="md"
           boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color={'black'}
+          color="black"
         >
           <Text fontWeight="bold" marginBottom="1rem">
             Directions:
@@ -245,9 +249,9 @@ const Map = () => {
             Distance: {directionsDistance}
           </Text>
         </Box>
-      </Flex>
-     
+      </Box>
     </Box>
+
   );
 };
 
