@@ -12,7 +12,7 @@ const CompanyProfilePage = () => {
             <h4 className='profileInfoName'>Company Profile Page</h4>
             <span className='profileInfoDesc'>Hello my Employees</span>
         </div>
-        <center><Map /><Rightbar profile/></center>
+        <Map /><Rightbar profile/>
         <div className="profileRight">
           <div className="profilerightTop">
           
