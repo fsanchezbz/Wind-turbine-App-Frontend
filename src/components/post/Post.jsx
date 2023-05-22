@@ -100,11 +100,12 @@ const Post = () => {
                       Delete
                     </Button>
                   )}
-                </div>
-                <div className="card-footer">
+                  <div className="card-footer">
                   <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
                   <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
                 </div>
+                </div>
+               
               </div>
             ))
           ) : (
