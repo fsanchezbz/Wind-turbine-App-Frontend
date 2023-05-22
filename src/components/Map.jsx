@@ -197,13 +197,13 @@ const Map = () => {
 
   return (
     <Box marginTop="4rem" >  {/* Adjust the margin top value as per your navbar height */}
-       <Rightbar profile/>
       <Box
         ref={mapRef}
         height="500px"
         width={'850px'}
         marginBottom="2rem"
       />
+      <Rightbar profile/>
       <Flex justifyContent="center">
         <Box
           backgroundColor="white"
