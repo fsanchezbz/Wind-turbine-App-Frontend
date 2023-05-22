@@ -3,7 +3,7 @@ import "./profile.css";
 import Map from '../../components/Map';
 import Post from "../../components/post/Post";
 import Feed from '../../components/feed/Feed';
-
+import Rightbar from '../../components/rightbar/Rightbar'
 
 const CompanyProfilePage = () => {
   return (
@@ -17,7 +17,7 @@ const CompanyProfilePage = () => {
         <Feed/>
         <div className="profileRight">
           <div className="profilerightTop">
-           
+          <Rightbar profile/>
           </div>
           <div className="profilerightBottom">
             <div className="postContainer">
