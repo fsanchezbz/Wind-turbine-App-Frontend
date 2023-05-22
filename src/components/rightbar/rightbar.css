@@ -1,7 +1,5 @@
 .rightbar {
-    display: flex;
-    flex-direction: column;
-    flex: 3.5;
+  
 }
 
 .rightbarWrapper {
