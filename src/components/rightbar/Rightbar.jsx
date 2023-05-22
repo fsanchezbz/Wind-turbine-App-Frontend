@@ -39,19 +39,21 @@ const Rightbar = () => {
         <div className="rightbarWrapper">
           <div className="rightbarFollowings">
             {users.map((user) => (
-              <div className="rightbarFollowing" key={user.id}>
-                <img src={user.profileImage} alt="" className="rightbarFollowingImg" />
-                <span className="rightbarFollowingname">{`${user.firstName} ${user.lastName}`}</span>
-                {user.isAdmin && <span>Admin</span>}
+              <div className="card" style={{ width: '18rem' }} key={user.id}>
+                <img src={user.profileImage} className="card-img-top" alt="" />
+                <div className="card-body">
+                  <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
+                  {user.isAdmin && <span>Admin</span>}
+                  <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             ))}
-          </div>
-          <div>
           </div>
         </div>
       </>
     );
   };
+  
 
   return (
     <div className='rightbar'>
