@@ -73,8 +73,7 @@ const Post = () => {
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
-      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, 
-      { withCredentials: true });
+      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, { withCredentials: true });
       setWorkOrders((prevWorkOrders) => prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId));
     } catch (error) {
       console.error("Failed to delete work order:", error);
@@ -84,30 +83,33 @@ const Post = () => {
   return (
     <div className="post">
       <div className="postWrapper">
-        <div className="card-grid">
-          {workOrders.length > 0 ? (
-            workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="card">
+        {workOrders.length > 0 ? (
+          <div className="card-grid">
+            {workOrders.map((workOrder) => (
+              <div key={workOrder._id} className="card" style={{ width: '18rem' }}>
                 <div className="card-body">
-                  <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
-                  <p className="card-text">Coordinates: {workOrder.location}</p>
-                  <p className="card-text">Description: {workOrder.description}</p>
-                  <p className="card-text">Technician: {workOrder.technician}</p>
-                  <p className="card-text">Date: {workOrder.date.substring(0, 10)}</p>
-                  <div className="card-buttons">
-                    <Button colorScheme="blue" onClick={() => openModal(workOrder._id)}>Add Info</Button>
-                    <Button colorScheme="blue" onClick={() => openModal(workOrder._id)}>View Comments</Button>
-                    {isAdmin && (
-                      <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>Delete</Button>
-                    )}
-                  </div>
+                  <h5 className="card-title">{workOrder.turbineModel}</h5>
+                  <h6 className="card-subtitle mb-2 text-muted">{workOrder.technician}</h6>
+                  <p className="card-text">{workOrder.description}</p>
+                  <a href="#" className="card-link" onClick={() => openModal(workOrder._id)}>
+                    Add Info
+                  </a>
+                  <a href="#" className="card-link" onClick={() => openModal(workOrder._id)}>
+                    View Comments
+                  </a>
+                  <p className="card-text">Comments: {workOrder.addInfo}</p>
+                  {isAdmin && (
+                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                      Delete
+                    </Button>
+                  )}
                 </div>
               </div>
-            ))
-          ) : (
-            <p>No work orders found.</p>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <p>No work orders found.</p>
+        )}
       </div>
       {selectedWorkOrderId && (
         <Modal isOpen={isOpen} onClose={closeModal}>
@@ -118,10 +120,15 @@ const Post = () => {
               <form onSubmit={handleFormSubmit}>
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
-                  <Input type="text" placeholder="Enter information" value={addInfo} onChange={(e) => setAddInfo(e.target.value)} />
-                  </FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Enter information"
+                    value={addInfo}
+                    onChange={(e) => setAddInfo(e.target.value)}
+                  />
+                </FormControl>
                 <ModalFooter>
-                  <Button colorScheme="blue" mr={3} value={status} onClick={() => setStatus(true)} >
+                  <Button colorScheme="blue" mr={3} value={status} onClick={() => setStatus(true)}>
                     Done
                   </Button>
                   <Button colorScheme="blue" mr={3} onClick={closeModal}>
@@ -136,7 +143,6 @@ const Post = () => {
           </ModalContent>
         </Modal>
       )}
-      <div>
       {selectedWorkOrderId && (
         <Modal isOpen={isOpen} onClose={closeModal}>
           <ModalOverlay />
@@ -147,7 +153,7 @@ const Post = () => {
                 Close
               </Button>
               <ModalBody>
-                <Text className='tech' marginBottom="0.5rem">
+                <Text className="tech" marginBottom="0.5rem">
                   Comments: {selectedComments}
                 </Text>
               </ModalBody>
@@ -155,7 +161,6 @@ const Post = () => {
           </ModalContent>
         </Modal>
       )}
-      </div>
     </div>
   );
 };
