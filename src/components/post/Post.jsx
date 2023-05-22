@@ -91,6 +91,7 @@ const Post = () => {
                 <div className="card-body">
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
                   <p className="card-text">Coordinates: {workOrder.location}</p>
+                  <p className="card-text">Description: {workOrder.description}</p>
                   <p className="card-text">Technician: {workOrder.technician}</p>
                   <p className="card-text">Date: {workOrder.date.substring(0, 10)}</p>
                   <div className="card-buttons">

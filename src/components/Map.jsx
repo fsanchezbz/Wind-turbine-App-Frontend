@@ -197,6 +197,9 @@ const Map = () => {
 
   return (
     <Box marginTop="4rem" >  {/* Adjust the margin top value as per your navbar height */}
+       <Box>
+        <Rightbar profile/>
+      </Box>
       <Box
         ref={mapRef}
         height="500px"
@@ -243,9 +246,7 @@ const Map = () => {
           </Text>
         </Box>
       </Flex>
-      <Box>
-        <Rightbar />
-      </Box>
+     
     </Box>
   );
 };
