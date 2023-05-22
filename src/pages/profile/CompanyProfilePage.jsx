@@ -9,7 +9,7 @@ const CompanyProfilePage = () => {
       <Box marginTop="4rem">
         <Map />
       </Box>
-      <Box marginTop="2rem" padding="0 1rem">
+      <Box marginTop="2rem" >
         <Post />
       </Box>
       <Box>
