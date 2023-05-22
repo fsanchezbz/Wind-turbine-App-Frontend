@@ -1,29 +1,31 @@
-import { Box, Flex } from '@chakra-ui/react';
+import React from 'react';
+import "./profile.css";
+import Rightbar from "../../components/rightbar/Rightbar.jsx";
 import Map from '../../components/Map';
-import Post from '../../components/post/Post';
-import RightBar from '../../components/rightbar/Rightbar';
+import Post from "../../components/post/Post";
+
+
 const CompanyProfilePage = () => {
   return (
-    <div className="profile">
-      <Box marginTop="4rem">
+    <>
+      <div className="profile">
         <Map />
-      </Box>
-      <Box marginTop="2rem" padding="0 1rem">
-        <Post />
-        <RightBar profile/>
-      </Box>
-      <section class="layout">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-      </section>
-    </div>
+        <div className="profileRight">
+          <div className="profilerightTop">
+            <div className="profileInfo">
+              <h4 className='profileInfoName'>Company Profile Page</h4>
+              <span className='profileInfoDesc'>Hello my Employees</span>
+            </div>
+          </div>
+          <div className="profilerightBottom">
+            <div className="postContainer">
+              <Post />
+            </div>
+            <Rightbar profile />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
