@@ -9,11 +9,11 @@ const Map = () => {
   const [directionsDuration, setDirectionsDuration] = useState('');
   const [directionsDistance, setDirectionsDistance] = useState('');
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
-  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   
+
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBEvd7_wH6EBGHYts6-vi0OQDeGBfgBsq4&libraries=places&callback=initMap`;
     script.defer = true;
     document.body.appendChild(script);
 
