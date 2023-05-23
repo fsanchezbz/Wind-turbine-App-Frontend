@@ -36,12 +36,12 @@ const Rightbar = () => {
   const ProfileRightbar = () => {
     return (
       <>
-        <center><h4 className="rightbarTitle">User information</h4></center>
+        <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarWrapper">
-          <div className="row row-cols-1 row-cols-xs-3">
+          <div className="row row-cols-1 row-cols-md-3">
             {users.map((user) => (
-              <div key={user.id} className="col ">
-                <div className="card" style={{ width: '10rem' }}>
+              <div key={user.id} className="col mb-4">
+                <div className="card" style={{ width: '18rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
                     <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
