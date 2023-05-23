@@ -39,10 +39,10 @@ const Rightbar = () => {
       <br />
         <center><h4 className="rightbarTitle">User information</h4></center>
         <div className="rightbarWrapper">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+          <div className="row row-cols-xl-5">
             {users.map((user) => (
               <div key={user.id} className="col mb-4">
-                <div className="card" style={{ width: '8rem' }}>
+                <div className="card" style={{ width: '10rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
                     <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
