@@ -38,10 +38,10 @@ const Rightbar = () => {
       <>
         <center><h4 className="rightbarTitle">User information</h4></center>
         <div className="rightbarWrapper">
-          <div className="row row-cols-1 row-cols-md-3 g-2"> {/* Updated class with g-2 */}
+          <div className="row row-cols-1 row-cols-xs-3">
             {users.map((user) => (
-              <div key={user.id} className="col mb-3"> {/* Added mb-3 class for spacing */}
-                <div className="card h-100" style={{ width: '12rem' }}> {/* Added h-100 class to ensure equal height */}
+              <div key={user.id} className="col ">
+                <div className="card" style={{ width: '10rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
                     <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
@@ -55,6 +55,7 @@ const Rightbar = () => {
       </>
     );
   };
+  
 
   return (
     <div className='rightbar'>
