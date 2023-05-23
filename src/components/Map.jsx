@@ -145,8 +145,7 @@ const Map = () => {
         } else {
           alert('Geolocation is not supported by your browser.');
         }
-      }
-      
+      }        
 
       function getDirections() {
         if (navigator.geolocation) {
