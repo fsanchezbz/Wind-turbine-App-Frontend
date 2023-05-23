@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import videoBg from '../assets/rain.mp4';
@@ -13,21 +13,6 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-        const { _id, status } = response.data;
-        updateUserStatus(_id, status);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
   const handleLogin = async () => {
     try {
       const response = await axios.post(
@@ -40,17 +25,17 @@ const LoginPage = () => {
         { withCredentials: true }
       );
 
-      const { isAdmin, status, _id } = response.data;
+      const { isAdmin, status } = response.data;
 
       if (isAdmin) {
         setIsLoggedIn(true);
         setIsAdmin(true);
-        // await updateUserStatus(_id, status);
+        updateStatus(status); // Update user status on login
         navigate('/profile');
       } else {
         setIsLoggedIn(true);
         setIsAdmin(false);
-        // await updateUserStatus(_id, status);
+        updateStatus(status); // Update user status on login
         navigate('/profile');
       }
     } catch (error) {
@@ -59,21 +44,15 @@ const LoginPage = () => {
     }
   };
 
-
-
-  const updateUserStatus = async (userId, status) => {
+  const updateStatus = async (status) => {
     try {
-      const newStatus = !status
-      if (userId) {
-        await axios.put(
-          `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-          { status: newStatus },
-          { withCredentials: true }
-        );
-        console.log(`Updated user ${userId} status to ${newStatus}`);
-      }
+      await axios.put(
+        "https://wind-turbine-app-backend.onrender.com/users/update",
+        { status },
+        { withCredentials: true }
+      );
     } catch (error) {
-      console.error(`Failed to update user status`, error);
+      console.log(error);
     }
   };
 
@@ -81,7 +60,6 @@ const LoginPage = () => {
     event.preventDefault();
     handleLogin();
   };
-
 
   return (
     <div className="login-page">
