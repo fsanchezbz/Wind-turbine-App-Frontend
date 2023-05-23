@@ -56,8 +56,8 @@ const Rightbar = () => {
           <div className="card-deck row row-cols-1 row-cols-md-3">
             {users.map((user) => (
               <div key={user.id} className="col mb-3" style={{ width: '12rem' }}>
-                <div className={`card h-100 ${user._id === userOnline ? 'active-user' : ''}`}>
-                  {user._id === userOnline && <div className="active-indicator">Online</div>}
+                <div className={`card h-100 ${user._id === userOnline ? 'active-user' : 'inactive-user'}`}>
+                  {user._id === userOnline && <div className="active-indicator"><span>Online</span></div>}
                   <div>
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />

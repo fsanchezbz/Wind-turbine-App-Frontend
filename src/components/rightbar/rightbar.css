@@ -85,4 +85,7 @@
     background-color: green;
     border-radius: 50%;
   }
-  
+  .inactive-user {
+    background-color: #f0f0f0;
+    opacity: 0.5;
+  }
