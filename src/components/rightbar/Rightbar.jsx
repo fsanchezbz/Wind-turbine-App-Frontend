@@ -36,26 +36,27 @@ const Rightbar = () => {
   const ProfileRightbar = () => {
     return (
       <>
-        <h4 className="rightbarTitle">User information</h4>
+        <center><h4 className="rightbarTitle">User information</h4></center>
         <div className="rightbarWrapper">
-          <div className="row row-cols-1 row-cols-md-3">
-            {users.map((user) => (
-              <div key={user.id} className="col mb-4">
-                <div className="card" style={{ width: '18rem' }}>
-                  <img src={user.profileImage} className="card-img-top" alt="" />
-                  <div className="card-body">
-                    <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
-                    {user.isAdmin && <span>Admin: Manager</span>}
+          <div className="card-deck">
+            <div className="row row-cols-1 row-cols-md-3">
+              {users.map((user) => (
+                <div key={user.id} className="col mb-3"> 
+                  <div className="card h-100" style={{ width: '12rem' }}> 
+                    <img src={user.profileImage} className="card-img-top" alt="" />
+                    <div className="card-body">
+                      <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
+                      {user.isAdmin && <span>Admin: Manager</span>}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </>
     );
   };
-  
 
   return (
     <div className='rightbar'>
