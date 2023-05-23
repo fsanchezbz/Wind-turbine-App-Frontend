@@ -12,15 +12,14 @@ const CompanyProfilePage = () => {
             <h4 className='profileInfoName'>Company Profile Page</h4>
             <span className='profileInfoDesc'>Hello my Employees</span>
         </div>
-        <center><Map /></center>
+        <Map />
         <div className="profileRight">
           <div className="profilerightTop">
-          
+          <Rightbar profile/>
           </div>
           <div className="profilerightBottom">
             <div className="postContainer">
               <Post className="layout"/>
-              <Rightbar profile/>
             </div>
             
           </div>
