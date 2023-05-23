@@ -166,19 +166,15 @@ const Map = () => {
                 origin: start,
                 destination: end,
                 travelMode: window.google.maps.TravelMode.DRIVING,
-                transitOptions: {},
                 drivingOptions: {
                   departureTime: new Date(), // Specify the departure time as a valid Date object
-                  arrivalTime: new Date(), // Specify the arrival time as a valid Date object
-                  departureTime: new Date(), // Specify the departure time as a valid Date object
-                  modes: [], // Specify the transit modes (e.g., ['BUS', 'SUBWAY'])
-                  routingPreference: 'LESS_WALKING', // Specify the transit route preference
+                  trafficModel: 'best_guess', // Specify the traffic model
                 },
                 unitSystem: window.google.maps.UnitSystem.METRIC,
                 waypoints: [],
-                optimizeWaypoints: true,
-                provideRouteAlternatives: true,
-                avoidFerries: true,
+                optimizeWaypoints: false,
+                provideRouteAlternatives: false,
+                avoidFerries: false,
                 avoidHighways: false,
                 avoidTolls: false,
                 region: '',
@@ -204,6 +200,7 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
+      
       
     };
 
