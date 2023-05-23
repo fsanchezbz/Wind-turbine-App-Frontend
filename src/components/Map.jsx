@@ -47,13 +47,10 @@ const Map = () => {
       clearButton.value = 'Clear';
       clearButton.className = 'button-secondary';
 
-      const locationButton = document.createElement('button');
+      const locationButton = document.createElement('input');
       locationButton.type = 'button';
+      locationButton.value = 'My Location';
       locationButton.className = 'button-primary';
-      locationButton.style.position = 'absolute';
-      locationButton.style.zIndex = '1';
-      locationButton.style.top = '45px';
-      locationButton.style.left = '10px';
 
       const directionsButton = document.createElement('input');
       directionsButton.type = 'button';
