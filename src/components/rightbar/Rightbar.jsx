@@ -6,6 +6,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
+  const [UserOnline, setUserOnline] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+  //       setUserOnline(response.data._id);
+  //     } catch (error) {
+  //       console.log(error);
+  //       
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -41,7 +57,7 @@ const Rightbar = () => {
         <div className="rightbarWrapper">
           <div className="card-deck row row-cols-1 row-cols-md-3">
               {users.map((user) => (
-                <div key={user.id} className="col mb-3 card h-100"style={{ width: '12rem' }}> 
+                <div key={user.id} className={`col mb-3 card h-100 ${user.active ? 'active-user' : ''}`} style={{ width: '12rem' }}> 
                   <div>
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />
