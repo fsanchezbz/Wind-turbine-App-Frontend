@@ -47,7 +47,7 @@ const LoginPage = () => {
   const updateStatus = async (status) => {
     try {
       const response = await axios.put(
-        "https://wind-turbine-app-backend.onrender.com/users/update",
+        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, 
         { status },
         { withCredentials: true }
       );
@@ -56,6 +56,7 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
