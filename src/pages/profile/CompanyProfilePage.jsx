@@ -5,6 +5,13 @@ import Post from "../../components/post/Post";
 import Rightbar from '../../components/rightbar/Rightbar'
 
 const CompanyProfilePage = () => {
+
+  // const [filter, setFilter] = useState();
+ 
+  // const handleChange = (event) => {
+  //  const optionFilter = event.target.value
+  //  setFilter(optionFilter)
+
   return (
     <>
       <div className="profile">
@@ -12,6 +19,17 @@ const CompanyProfilePage = () => {
             <h4 className='profileInfoName'>Company Profile Page</h4>
             <span className='profileInfoDesc'>Hello my Employees</span>
         </div>
+
+        {/* <div className="selectOption">
+        <label> Show orders:</label>
+        <select name="selectFilter" onChange={handleChange}>
+          <option value="all">All Orders</option>
+          <option value="open">Open Orders</option>
+          <option value="close">Close Orders</option>
+        </select>
+         <p>{filter}</p>
+        </div> */}
+
         <Map />
         <div className="profileRight">
           <div className="profilerightTop">
