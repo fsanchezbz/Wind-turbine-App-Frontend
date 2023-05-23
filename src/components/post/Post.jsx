@@ -48,7 +48,7 @@ const Post = () => {
       setSelectedWorkOrderId(workOrderId);
       setAddInfo(addInfo);
       setIsOpenAddInfo(true);
-    } catch (error) {
+       } catch (error) {
       console.error('Failed to fetch work order comments:', error);
     }
   };
@@ -119,7 +119,9 @@ const Post = () => {
                       Delete
                     </Button>
                   )}
-                   <Button onClick={() => openAddInfoModal(workOrder._id)}>Done</Button>
+                   <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
+                      Done
+                    </Button>
                   <div className="card-footer">
                     <Button onClick={() => openCommentsModal(workOrder._id)}>View Comments</Button>
                   </div>
