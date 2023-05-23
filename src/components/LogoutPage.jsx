@@ -12,20 +12,39 @@ function LogoutPage() {
 
   const handleLogout = async () => {
     await axios
-      .post("https://wind-turbine-app-backend.onrender.com/users/logout", null, {
+      .post("https://wind-turbine-app-backend.onrender.com/users/logout", null, 
+     
+      {
         withCredentials: true,
       })
       .then((res) => {
+     
         console.log('logged out');
       })
       .catch((error) => {
         console.log(error);
       });
 
+    const { _id } = res.data;
+    updateUserStatus(_id, false);
     setAuthenticated(false);
     Cookies.remove('token');
     navigate('/');
 
+  };
+
+
+  const updateUserStatus = async (userId, currentStatus) => {
+    try {
+      // const newStatus = !currentStatus; // Toggle the value
+      console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        status: currentStatus
+      });
+      console.log(`Updated user ${userId}:`, response.data);
+    } catch (error) {
+      console.error(`Failed to update user status`, error);
+    }
   };
 
 

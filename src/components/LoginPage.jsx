@@ -25,7 +25,8 @@ const LoginPage = () => {
         { withCredentials: true } // Include this option to send cookies with the request this is an option from cors
       );
 
-      const { isAdmin } = response.data;
+      const { isAdmin , status} = response.data;
+      const { _id } = response.data;
       
       // Check if the user is an admin or regular user
       if (isAdmin ) {
@@ -33,14 +34,14 @@ const LoginPage = () => {
         // Set the appropriate state values
         setIsLoggedIn(true);
         setIsAdmin(true);
-        await updateUserStatus(response.data._id, true);
+        updateUserStatus(_id, true);
         navigate('/profile'); // Redirect to the profile page for admin
       } else {
         // User is a regular user
         // Set the appropriate state values
         setIsLoggedIn(true);
         setIsAdmin(false);
-        await updateUserStatus(response.data._id, true);
+        updateUserStatus(_id, true);
         navigate('/profile'); // Redirect to the profile page for regular user
       }
     } catch (error) {
@@ -49,16 +50,19 @@ const LoginPage = () => {
     }
   };
 
-  const updateUserStatus = async (userId, status) => {
+  const updateUserStatus = async (userId, currentStatus) => {
     try {
-      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
-        status
+      // const newStatus = !currentStatus; // Toggle the value
+      console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
+      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        status: currentStatus
       });
-      console.log(`Updated user ${userId} status to ${status}`);
+      console.log(`Updated user ${userId}:`, response.data);
     } catch (error) {
       console.error(`Failed to update user status`, error);
     }
   };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
