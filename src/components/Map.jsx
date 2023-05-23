@@ -12,7 +12,7 @@ const Map = () => {
  
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+    script.src = `${process.env.REACT_APP_GOOGLE_MAPS_API_URL}`;
     script.defer = true;
     document.body.appendChild(script);
 
