@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-
+import { DirectionsRenderer } from '@react-google-maps/api';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -9,7 +9,7 @@ const Map = () => {
   const [directionsDuration, setDirectionsDuration] = useState('');
   const [directionsDistance, setDirectionsDistance] = useState('');
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
-  
+  const [directions, setDirections] = useState(null);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -186,7 +186,7 @@ const Map = () => {
       
               directionsService.route(request, (result, status) => {
                 if (status === window.google.maps.DirectionsStatus.OK) {
-                  directionsRenderer.setDirections(result);
+                  setDirections(result);
                   const route = result.routes[0];
                   const leg = route.legs[0];
                   setDirectionsDuration(leg.duration.text);
@@ -260,7 +260,7 @@ const Map = () => {
           </Text>
         </Box>
       </Flex>
-      
+      {directions && <DirectionsRenderer directions={directions} />}
     </Box>
   );
 };
