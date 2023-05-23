@@ -119,12 +119,12 @@ const Map = () => {
                 lat: latitude,
                 lng: longitude,
               };
-  
+      
               // Update the map to center on the user's current location
               map.setCenter(latlng);
               marker.setPosition(latlng);
               marker.setMap(map);
-  
+      
               // Perform reverse geocoding to get the address of the user's location
               geocoder
                 .geocode({ location: latlng })
@@ -132,7 +132,6 @@ const Map = () => {
                   const { results } = result;
                   if (results && results.length > 0) {
                     setResponse(JSON.stringify(result, null, 2));
-                    
                   }
                 })
                 .catch((e) => {
@@ -147,6 +146,7 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
+      
 
       function getDirections() {
         if (navigator.geolocation) {
