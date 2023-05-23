@@ -167,6 +167,7 @@ const Map = () => {
                 travelMode: window.google.maps.TravelMode.DRIVING,
                 drivingOptions: {
                   departureTime: new Date(), // Specify the departure time as a valid Date object
+                  trafficModel: window.google.maps.TrafficModel.BEST_GUESS,
                 },
                 unitSystem: window.google.maps.UnitSystem.METRIC,
                 waypoints: [],
@@ -198,8 +199,7 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
-      
-      
+         
     };
 
     return () => {
