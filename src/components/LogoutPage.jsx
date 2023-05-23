@@ -18,18 +18,19 @@ function LogoutPage() {
         withCredentials: true,
       })
       .then((res) => {
-     
+        
+        const { _id } = res.data;
+        updateUserStatus(_id, false);
+        setAuthenticated(false);
+        Cookies.remove('token');
+        navigate('/');
         console.log('logged out');
+
       })
       .catch((error) => {
         console.log(error);
       });
-
-    const { _id } = res.data;
-    updateUserStatus(_id, false);
-    setAuthenticated(false);
-    Cookies.remove('token');
-    navigate('/');
+ 
 
   };
 
