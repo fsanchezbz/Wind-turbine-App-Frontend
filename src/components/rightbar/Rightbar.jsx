@@ -6,15 +6,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
-  const [userOnline, setUserOnline] = useState('');
+  // const [userOnline, setUserOnline] = useState('');
+  const [userStatus, setUserStatus] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-        setUserOnline(response.data._id);
+        // setUserOnline(response.data._id);
+        setUserStatus(response.data.status);
+  
       } catch (error) {
         console.log(error);
+
       }
     };
 
@@ -56,10 +60,10 @@ const Rightbar = () => {
           <div className="card-deck row row-cols-1 row-cols-md-3">
             {users.map((user) => (
               <div key={user.id} className="col mb-3" style={{ width: '12rem' }}>
-                <div className={`card h-100 ${user._id === userOnline ? 'active-user' : 'inactive-user'}`}>
-                  <div className={`indicator ${user._id === userOnline ? 'active-indicator' : 'inactive-indicator'}`}></div>
+                <div className={`card h-100 ${user.status === userStatus ?  'active-user' : 'inactive-user'}`}>
+                  <div className={`indicator ${user.status === userStatus ? 'active-indicator' : 'inactive-indicator'}`}></div>
                   <div>
-                    {user._id === userOnline && <span className="online-text">USER ONLINE</span>}
+                    {user.status === userStatus && <span className="online-text"> USER ONLINE</span>}
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />
                     <div className="card-body">

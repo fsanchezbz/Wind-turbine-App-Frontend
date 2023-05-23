@@ -21,10 +21,29 @@ function LogoutPage() {
       .catch((error) => {
         console.log(error);
       });
+
     setAuthenticated(false);
     Cookies.remove('token');
     navigate('/');
+
   };
+
+
+  
+  // const handleFieldChange = async (userId, field, value) => {
+  //   try {
+  //     console.log(`Updating user ${userId} field ${field} to ${value}`);
+  //     const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+  //       [field]: value
+  //     });
+  //     console.log(`Updated user ${userId}:`, response.data);
+  //     fetchUsers(); // Refresh the user list after the update
+  //   } catch (error) {
+  //     console.error(`Failed to update user ${field}`, error);
+  //   }
+  // };
+
+
 
   return (
     <div className="logout-page">

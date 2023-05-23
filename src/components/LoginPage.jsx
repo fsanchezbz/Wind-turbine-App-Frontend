@@ -11,6 +11,7 @@ const LoginPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -26,19 +27,22 @@ const LoginPage = () => {
       );
 
       const { isAdmin } = response.data;
-
+      const {status} = response.data;
+      
       // Check if the user is an admin or regular user
-      if (isAdmin) {
+      if (isAdmin && status) {
         // User is an admin
         // Set the appropriate state values
+        setStatus(true);
         setIsLoggedIn(true);
         setIsAdmin(true);
         navigate('/profile'); // Redirect to the profile page for admin
       } else {
         // User is a regular user
         // Set the appropriate state values
+        setStatus(true);
         setIsLoggedIn(true);
-        setIsAdmin(false);
+        setIsAdmin(true);
         navigate('/profile'); // Redirect to the profile page for regular user
       }
     } catch (error) {
