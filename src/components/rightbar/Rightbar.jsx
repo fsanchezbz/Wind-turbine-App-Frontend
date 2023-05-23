@@ -38,9 +38,9 @@ const Rightbar = () => {
       <>
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarWrapper">
-          <div className="card-deck row-cols-1 row-cols-md-3">
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
             {users.map((user) => (
-              <div key={user.id} >
+              <div key={user.id} className="col mb-4">
                 <div className="card" style={{ width: '18rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
