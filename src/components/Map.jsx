@@ -260,7 +260,7 @@ const Map = () => {
 
   return (
     <Box marginTop="4rem">
-      <Box ref={mapRef} height="500px" width="850px" marginBottom="2rem" />
+      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
       <Flex justifyContent="center">
         <Box
           backgroundColor="white"
