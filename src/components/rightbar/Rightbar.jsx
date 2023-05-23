@@ -38,7 +38,7 @@ const Rightbar = (profile) => {
     return (
         <>
             
-            <img className='rignhtbarAd' src="assets/ad.png" alt="" />
+            <img className='rignhtbarAd' src="" alt="" />
             <h4 className="rightbarTitle">Online Friends</h4>
             <ul className="rightbarfriendList">
                 {Users.map(u => (
