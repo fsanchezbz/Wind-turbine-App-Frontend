@@ -155,29 +155,31 @@ const Map = () => {
               const { latitude, longitude } = position.coords;
               const directionsService = new window.google.maps.DirectionsService();
               const directionsRenderer = new window.google.maps.DirectionsRenderer();
-
+      
               directionsRenderer.setMap(map);
               setDirectionsRenderer(directionsRenderer);
-
+      
               const start = new window.google.maps.LatLng(latitude, longitude);
               const end = marker.getPosition();
-
+      
               const request = {
                 origin: start,
                 destination: end,
                 travelMode: window.google.maps.TravelMode.DRIVING,
-                transitOptions: {}, // Specify your transit options here
-                drivingOptions: {}, // Specify your driving options here
+                transitOptions: {},
+                drivingOptions: {
+                  departureTime: new Date(), // Specify the departure time as a valid Date object
+                },
                 unitSystem: window.google.maps.UnitSystem.METRIC,
-                waypoints: [], // Specify your waypoints here
+                waypoints: [],
                 optimizeWaypoints: false,
                 provideRouteAlternatives: false,
                 avoidFerries: false,
                 avoidHighways: false,
                 avoidTolls: false,
-                region: '' // Specify your region here
+                region: '',
               };
-
+      
               directionsService.route(request, (result, status) => {
                 if (status === window.google.maps.DirectionsStatus.OK) {
                   directionsRenderer.setDirections(result);
@@ -198,6 +200,7 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
+      
     };
 
     return () => {
