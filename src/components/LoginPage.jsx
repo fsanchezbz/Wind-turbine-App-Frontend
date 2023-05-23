@@ -24,18 +24,19 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
-
+  
       const { isAdmin, status } = response.data;
-
+      const { _id: userId } = response.data; // Retrieve the userId from the response
+  
       if (isAdmin) {
         setIsLoggedIn(true);
         setIsAdmin(true);
-        updateStatus(status); // Update user status on login
+        updateStatus(userId, status); // Pass the userId to the updateStatus function
         navigate('/profile');
       } else {
         setIsLoggedIn(true);
         setIsAdmin(false);
-        updateStatus(status); // Update user status on login
+        updateStatus(userId, status); // Pass the userId to the updateStatus function
         navigate('/profile');
       }
     } catch (error) {
@@ -43,19 +44,21 @@ const LoginPage = () => {
       setError("Invalid username or password");
     }
   };
+  
 
-  const updateStatus = async (status) => {
+  const updateStatus = async (userId, status) => {
     try {
       const response = await axios.put(
-        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, 
+        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
         { status },
         { withCredentials: true }
       );
-      console.log(response.data); // Optional: Log the response from the server
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
+  
   
 
   const handleSubmit = (event) => {
