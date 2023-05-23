@@ -30,7 +30,7 @@ const CompanyProfilePage = () => {
          <p>{filter}</p>
         </div> */}
 
-        <Map />
+        <center><Map /></center>
         <div className="profileRight">
           <div className="profilerightTop">
           <Rightbar profile/>
