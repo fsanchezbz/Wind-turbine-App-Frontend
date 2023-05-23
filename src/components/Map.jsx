@@ -164,25 +164,34 @@ const Map = () => {
               const request = {
                 origin: start,
                 destination: end,
-                travelMode: window.google.maps.TravelMode.DRIVING, // Update the travel mode as per your requirement
-                drivingOptions: {
-                  departureTime: new Date(), // Specify the departure time as a valid Date object
-                  trafficModel: window.google.maps.TrafficModel.BEST_GUESS,
-                },
-                transitOptions: {
-                  departureTime: new Date(), // Specify the departure time as a valid Date object
-                  modes: [window.google.maps.TransitMode.BUS], // Update the transit mode as per your requirement
-                  routingPreference: window.google.maps.TransitRoutePreference.FEWER_TRANSFERS, // Update the routing preference as per your requirement
-                },
+                travelMode: window.google.maps.TravelMode.DRIVING, // Default travel mode
                 unitSystem: window.google.maps.UnitSystem.METRIC,
-                waypoints: [],
-                optimizeWaypoints: false,
-                provideRouteAlternatives: false,
-                avoidFerries: false,
-                avoidHighways: false,
-                avoidTolls: false,
-                region: '',
               };
+      
+              // Show travel mode options to the user
+              const selectedMode = window.prompt(
+                'Select travel mode:\n1. Driving\n2. Walking\n3. Bicycling\n4. Transit',
+                '1'
+              );
+      
+              // Update the request with the selected travel mode
+              switch (selectedMode) {
+                case '1':
+                  request.travelMode = window.google.maps.TravelMode.DRIVING;
+                  break;
+                case '2':
+                  request.travelMode = window.google.maps.TravelMode.WALKING;
+                  break;
+                case '3':
+                  request.travelMode = window.google.maps.TravelMode.BICYCLING;
+                  break;
+                case '4':
+                  request.travelMode = window.google.maps.TravelMode.TRANSIT;
+                  break;
+                default:
+                  alert('Invalid travel mode selected');
+                  return;
+              }
       
               directionsService.route(request, (result, status) => {
                 if (status === window.google.maps.DirectionsStatus.OK) {
@@ -204,6 +213,7 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
+      
          
     };
 
