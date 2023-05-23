@@ -22,27 +22,21 @@ const LoginPage = () => {
           password,
           email
         },
-        { withCredentials: true } // Include this option to send cookies with the request this is an option from cors
+        { withCredentials: true }
       );
 
-      const { isAdmin , status} = response.data;
-      const { _id } = response.data;
-      
-      // Check if the user is an admin or regular user
-      if (isAdmin ) {
-        // User is an admin
-        // Set the appropriate state values
+      const { isAdmin, status } = response.data;
+
+      if (isAdmin) {
         setIsLoggedIn(true);
         setIsAdmin(true);
-        updateUserStatus(_id, true);
-        navigate('/profile'); // Redirect to the profile page for admin
+        await updateUserStatus(response.data._id, status);
+        navigate('/profile');
       } else {
-        // User is a regular user
-        // Set the appropriate state values
         setIsLoggedIn(true);
         setIsAdmin(false);
-        updateUserStatus(_id, true);
-        navigate('/profile'); // Redirect to the profile page for regular user
+        await updateUserStatus(response.data._id, status);
+        navigate('/profile');
       }
     } catch (error) {
       console.log(error);
@@ -50,14 +44,14 @@ const LoginPage = () => {
     }
   };
 
-  const updateUserStatus = async (userId, currentStatus) => {
+  const updateUserStatus = async (userId, status) => {
     try {
-      // const newStatus = !currentStatus; // Toggle the value
-      console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
-      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
-        status: currentStatus
-      });
-      console.log(`Updated user ${userId}:`, response.data);
+      await axios.put(
+        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
+        { status },
+        { withCredentials: true }
+      );
+      console.log(`Updated user ${userId} status to ${status}`);
     } catch (error) {
       console.error(`Failed to update user status`, error);
     }
