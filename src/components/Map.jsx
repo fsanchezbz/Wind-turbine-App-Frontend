@@ -199,7 +199,26 @@ const Map = () => {
                   const route = result.routes[0];
                   const leg = route.legs[0];
                   setDirectionsDuration(leg.duration.text);
-                  setDirectionsDistance(leg.distance.text);
+      
+                  // Calculate and set the distance
+                  const distance = leg.distance.text;
+                  setDirectionsDistance(distance);
+      
+                  // Create a distance marker and display it on the map
+                  const distanceMarker = new window.google.maps.Marker({
+                    position: end,
+                    map: map,
+                    label: distance,
+                  });
+      
+                  // Add click event listener to the distance marker
+                  distanceMarker.addListener('click', () => {
+                    // Show an info window with the distance information
+                    const infoWindow = new window.google.maps.InfoWindow({
+                      content: `<div><strong>Distance:</strong> ${distance}</div>`,
+                    });
+                    infoWindow.open(map, distanceMarker);
+                  });
                 } else {
                   alert('Unable to retrieve directions. Error: ' + status);
                 }
