@@ -66,4 +66,14 @@
     border-radius: 5px;
     object-fit: cover;
   }
+
+  .layout {
+    width: 1366px;
+    height: 768px;
+  
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
   
