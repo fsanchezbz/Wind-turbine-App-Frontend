@@ -165,6 +165,16 @@ const Map = () => {
                 origin: start,
                 destination: end,
                 travelMode: window.google.maps.TravelMode.DRIVING,
+                transitOptions: {}, // Specify your transit options here
+                drivingOptions: {}, // Specify your driving options here
+                unitSystem: window.google.maps.UnitSystem.METRIC,
+                waypoints: [], // Specify your waypoints here
+                optimizeWaypoints: false,
+                provideRouteAlternatives: false,
+                avoidFerries: false,
+                avoidHighways: false,
+                avoidTolls: false,
+                region: '' // Specify your region here
               };
 
               directionsService.route(request, (result, status) => {
