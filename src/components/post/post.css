@@ -100,4 +100,7 @@
   .card-done {
     background-color: green;
   }
+  .card-status-done {
+    background-color: green;
+  }
   
