@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAddInfo, setIsOpenAddInfo] = useState(false);
+  const [isOpenComments, setIsOpenComments] = useState(false);
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
@@ -40,25 +41,43 @@ const Post = () => {
     fetchWorkOrders();
   }, []);
 
-  const openModal = async (workOrderId) => {
+  const openAddInfoModal = async (workOrderId) => {
     try {
       const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
       const { addInfo } = response.data;
       setSelectedWorkOrderId(workOrderId);
-      setSelectedComments(addInfo);
-      setIsOpen(true);
+      setAddInfo(addInfo);
+      setIsOpenAddInfo(true);
     } catch (error) {
       console.error('Failed to fetch work order comments:', error);
     }
   };
 
-  const closeModal = () => {
+  const openCommentsModal = async (workOrderId) => {
+    try {
+      const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
+      const { addInfo } = response.data;
+      setSelectedWorkOrderId(workOrderId);
+      setSelectedComments(addInfo);
+      setIsOpenComments(true);
+    } catch (error) {
+      console.error('Failed to fetch work order comments:', error);
+    }
+  };
+
+  const closeAddInfoModal = () => {
     setSelectedWorkOrderId(null);
-    setIsOpen(false);
+    setIsOpenAddInfo(false);
     setAddInfo('');
   };
 
-  const handleFormSubmit = async (event) => {
+  const closeCommentsModal = () => {
+    setSelectedWorkOrderId(null);
+    setIsOpenComments(false);
+    setSelectedComments('');
+  };
+
+  const handleAddInfoFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
@@ -66,7 +85,7 @@ const Post = () => {
         status: status
       });
       console.log("Work order updated:", response.data);
-      closeModal();
+      closeAddInfoModal();
     } catch (error) {
       console.error("Failed to update work order:", error);
     }
@@ -74,8 +93,7 @@ const Post = () => {
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
-      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`,
-        { withCredentials: true });
+      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, { withCredentials: true });
       setWorkOrders((prevWorkOrders) => prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId));
     } catch (error) {
       console.error("Failed to delete work order:", error);
@@ -88,7 +106,7 @@ const Post = () => {
         <div className="card-deck row row-cols-1 row-cols-md-3">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="card" style={{width: "18rem"}}>
+              <div key={workOrder._id} className="card" style={{ width: "18rem" }}>
                 <div className="card-body">
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
                   <div className="card-text">Description: {workOrder.description}</div>
@@ -102,11 +120,10 @@ const Post = () => {
                     </Button>
                   )}
                   <div className="card-footer">
-                  <Button onClick={() => openModal(workOrder._id)}>Add Info</Button>
-                  <Button onClick={() => openModal(workOrder._id)}>View Comments</Button>
+                    <Button onClick={() => openAddInfoModal(workOrder._id)}>Add Info</Button>
+                    <Button onClick={() => openCommentsModal(workOrder._id)}>View Comments</Button>
+                  </div>
                 </div>
-                </div>
-               
               </div>
             ))
           ) : (
@@ -115,21 +132,26 @@ const Post = () => {
         </div>
       </div>
       {selectedWorkOrderId && (
-        <Modal isOpen={isOpen} onClose={closeModal}>
+        <Modal isOpen={isOpenAddInfo} onClose={closeAddInfoModal}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Add Info</ModalHeader>
             <ModalBody>
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleAddInfoFormSubmit}>
                 <FormControl>
                   <FormLabel>Information:</FormLabel>
-                  <Input type="text" placeholder="Enter information" value={addInfo} onChange={(e) => setAddInfo(e.target.value)} />
+                  <Input
+                    type="text"
+                    placeholder="Enter information"
+                    value={addInfo}
+                    onChange={(e) => setAddInfo(e.target.value)}
+                  />
                 </FormControl>
                 <ModalFooter>
                   <Button colorScheme="blue" mr={3} value={status} onClick={() => setStatus(true)}>
                     Done
                   </Button>
-                  <Button colorScheme="blue" mr={3} onClick={closeModal}>
+                  <Button colorScheme="blue" mr={3} onClick={closeAddInfoModal}>
                     Close
                   </Button>
                   <Button type="submit" variant="ghost">
@@ -142,12 +164,12 @@ const Post = () => {
         </Modal>
       )}
       {selectedWorkOrderId && (
-        <Modal isOpen={isOpen} onClose={closeModal}>
+        <Modal isOpen={isOpenComments} onClose={closeCommentsModal}>
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>Comments</ModalHeader>
             <ModalBody>
-              <Button colorScheme="blue" mr={3} onClick={closeModal}>
+              <Button colorScheme="blue" mr={3} onClick={closeCommentsModal}>
                 Close
               </Button>
               <ModalBody>
@@ -164,3 +186,4 @@ const Post = () => {
 };
 
 export default Post;
+
