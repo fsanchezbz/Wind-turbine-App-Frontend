@@ -6,20 +6,10 @@
     padding: 20px 20px 0 0;
   }
   
-  .rignhtbarAd {
+  .rightbarAd {
     width: 100%;
     border-radius: 10px;
     margin: 30px 0;
-  }
-  
-  .rightbarTitle {
-    margin-bottom: 20px;
-  }
-  
-  .rightbarfriendList {
-    padding: 0;
-    margin: 0;
-    list-style: none;
   }
   
   .rightbarTitle {
@@ -66,16 +56,16 @@
     border-radius: 5px;
     object-fit: cover;
   }
-
+  
   .layout {
     width: 1366px;
     height: 768px;
-  
     display: grid;
     grid-template-rows: repeat(auto-fit, 1fr);
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
   }
+  
   .active-indicator {
     position: absolute;
     top: 10px;
@@ -85,6 +75,7 @@
     background-color: green;
     border-radius: 50%;
   }
+  
   .inactive-indicator {
     width: 10px;
     height: 10px;
@@ -92,5 +83,4 @@
     border-radius: 50%;
     margin-left: 5px;
   }
-
- 
+  
