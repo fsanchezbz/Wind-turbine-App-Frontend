@@ -132,9 +132,13 @@ const Post = () => {
                       Delete
                     </Button>
                   )}
+
+                  {!workOrder.status && (
                    <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
                       Done
                     </Button>
+                  )}
+
                   <div className="card-footer">
                     <Button onClick={() => openCommentsModal(workOrder._id)}>View Comments</Button>
                   </div>
