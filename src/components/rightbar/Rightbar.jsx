@@ -6,37 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
-  // const [userOnline, setUserOnline] = useState('');
   const [userStatus, setUserStatus] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-        // setUserOnline(response.data._id);
-        setUserStatus(response.data.status);
-  
-      } catch (error) {
-        console.log(error);
-
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get('https:///wind-turbine-app-backend.onrender.com/api/images');
-        setImages(response.data);
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-    };
-
-    fetchImages();
-  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -49,6 +19,48 @@ const Rightbar = () => {
     };
 
     fetchUserData();
+  }, []);
+
+  const getUserStatus = async () => {
+    try {
+      const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+      setUserStatus(response.data.status);
+      updateUserStatus(response.data._id); // Update user status on the backend
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUserStatus = async (userId) => {
+    try {
+      const response = await axios.put(
+        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
+        { status: true },
+        { withCredentials: true }
+      );
+      console.log(response.data); // Optional: Log the response from the server
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (users.length > 0) {
+      getUserStatus();
+    }
+  }, [users]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get('https:///wind-turbine-app-backend.onrender.com/api/images');
+        setImages(response.data);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
   }, []);
 
   const ProfileRightbar = () => {
