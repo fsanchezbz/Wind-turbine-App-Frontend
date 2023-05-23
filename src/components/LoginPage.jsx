@@ -25,17 +25,17 @@ const LoginPage = () => {
         { withCredentials: true }
       );
 
-      const { isAdmin, status } = response.data;
+      const { isAdmin, status, _id } = response.data;
 
       if (isAdmin) {
         setIsLoggedIn(true);
         setIsAdmin(true);
-        await updateUserStatus(response.data._id, status);
+        await updateUserStatus(_id, status);
         navigate('/profile');
       } else {
         setIsLoggedIn(true);
         setIsAdmin(false);
-        await updateUserStatus(response.data._id, status);
+        await updateUserStatus(_id, status);
         navigate('/profile');
       }
     } catch (error) {
