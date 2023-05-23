@@ -60,7 +60,7 @@ const Rightbar = () => {
                   {user._id === userOnline && <div className={`indicator ${user._id === userOnline ? 'active-indicator' : 'inactive-indicator'}`}></div>}
                   <div>
                     <br />
-                    {user._id === userOnline ? <span>USER ONLINE</span> : ''}
+                    {user._id === userOnline ? <span style={{marginBottom: "5px"}} >USER ONLINE</span> : ''}
                     <img src={user.profileImage} className="card-img-top" alt="" />
                     <div className="card-body">
                       <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
