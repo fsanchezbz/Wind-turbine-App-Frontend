@@ -48,6 +48,7 @@ const Post = () => {
       setSelectedWorkOrderId(workOrderId);
       setAddInfo(addInfo);
       setIsOpenAddInfo(true);
+      //setStatus(true)
        } catch (error) {
       console.error('Failed to fetch work order comments:', error);
     }
@@ -82,14 +83,24 @@ const Post = () => {
     try {
       const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
         addInfo: addInfo,
-        status: status
+        status: true, // Set the status to true when the "Done" button is clicked
       });
       console.log("Work order updated:", response.data);
       closeAddInfoModal();
+      setWorkOrders((prevWorkOrders) =>
+        prevWorkOrders.map((workOrder) => {
+          if (workOrder._id === selectedWorkOrderId) {
+            return { ...workOrder, status: true };
+          } else {
+            return workOrder;
+          }
+        })
+      );
     } catch (error) {
       console.error("Failed to update work order:", error);
     }
   };
+  
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
@@ -106,14 +117,16 @@ const Post = () => {
         <div className="card-deck row row-cols-1 row-cols-md-3">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="card" style={{ width: "18rem", gap: '10px'}}>
+              <div key={workOrder._id} className={`card ${workOrder.status ? 'card-done' : ''}`} style={{ width: "18rem", gap: '10px'}}>
                 <div className="card-body">
+                 <div className="card-title">Accomplished: {workOrder.status}</div>
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
                   <div className="card-text">Description: {workOrder.description}</div>
                   <div className="card-text">Coordinates: {workOrder.location}</div>
                   <div className="card-text">Technician: {workOrder.technician}</div>
                   <div className="card-text">Date: {workOrder.date.substring(0, 10)}</div>
                   <div className="card-text">Comments: {workOrder.addInfo}</div>
+                 
                   {isAdmin && (
                     <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
                       Delete
