@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
-  const [userOnline, setUserOnline] = useState([]);
+  const [userOnline, setUserOnline] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,13 +15,11 @@ const Rightbar = () => {
         setUserOnline(response.data._id);
       } catch (error) {
         console.log(error);
-        console.log(response.data._id)
       }
     };
 
     fetchData();
   }, []);
-
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -52,25 +50,25 @@ const Rightbar = () => {
   const ProfileRightbar = () => {
     return (
       <>
-      <br />
+        <br />
         <center><h4 className="rightbarTitle">User information</h4></center>
         <div className="rightbarWrapper">
           <div className="card-deck row row-cols-1 row-cols-md-3">
-              {users.map((user) => (
-                <div key={user.id} className="col mb-3 card h-100"style={{ width: '12rem' }}> 
-                  <div className={`card h-100 ${user._id === userOnline ? 'active-user' : ''}`}>
-                    {user._id === userOnline && <div className="active-indicator"></div>}
-                                            
+            {users.map((user) => (
+              <div key={user.id} className="col mb-3" style={{ width: '12rem' }}>
+                <div className={`card h-100 ${user._id === userOnline ? 'active-user' : ''}`}>
+                  {user._id === userOnline && <div className="active-indicator"></div>}
+                  <div>
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />
                     <div className="card-body">
                       <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
                       {user.isAdmin && <span>Admin: Manager</span>}
-                      {/* {user._id && userOnline <span>Online:</span>} */}
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </>
@@ -82,6 +80,6 @@ const Rightbar = () => {
       <ProfileRightbar />
     </div>
   );
-}
+};
 
 export default Rightbar;
