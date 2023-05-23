@@ -13,6 +13,21 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+        const { _id, status } = response.data;
+        updateUserStatus(_id, status);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
   const handleLogin = async () => {
     try {
       const response = await axios.post(
@@ -30,12 +45,12 @@ const LoginPage = () => {
       if (isAdmin) {
         setIsLoggedIn(true);
         setIsAdmin(true);
-        await updateUserStatus(_id, status);
+        // await updateUserStatus(_id, status);
         navigate('/profile');
       } else {
         setIsLoggedIn(true);
         setIsAdmin(false);
-        await updateUserStatus(_id, status);
+        // await updateUserStatus(_id, status);
         navigate('/profile');
       }
     } catch (error) {
@@ -44,24 +59,29 @@ const LoginPage = () => {
     }
   };
 
+
+
   const updateUserStatus = async (userId, status) => {
     try {
-      await axios.put(
-        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-        { status },
-        { withCredentials: true }
-      );
-      console.log(`Updated user ${userId} status to ${status}`);
+      const newStatus = !status
+      if (userId) {
+        await axios.put(
+          `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
+          { status: newStatus },
+          { withCredentials: true }
+        );
+        console.log(`Updated user ${userId} status to ${newStatus}`);
+      }
     } catch (error) {
       console.error(`Failed to update user status`, error);
     }
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
   };
+
 
   return (
     <div className="login-page">
