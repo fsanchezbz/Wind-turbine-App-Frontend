@@ -15,11 +15,12 @@ const CompanyProfilePage = () => {
         <center><Map /></center>
         <div className="profileRight">
           <div className="profilerightTop">
-          <Rightbar profile/>
+          
           </div>
           <div className="profilerightBottom">
             <div className="postContainer">
               <Post className="layout"/>
+              <Rightbar profile/>
             </div>
             
           </div>
