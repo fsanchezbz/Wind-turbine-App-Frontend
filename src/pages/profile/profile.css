@@ -5,10 +5,7 @@
 }
 
 .profileRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 20px;
+    flex: 9;
     color: black;
 }
 
