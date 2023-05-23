@@ -117,7 +117,7 @@ const Post = () => {
         <div className="card-deck row row-cols-1 row-cols-md-3">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className={`card ${workOrder.status ? 'card-done' : ''} ${status ? 'card-status-done' : ''}`} style={{ width: "18rem", gap: '10px'}}>
+              <div key={workOrder._id} className={`card ${workOrder.status ? 'card-done' : ''}`} style={{ width: "18rem", gap: '10px', backgroundColor: workOrder.status ? 'green' : '' }}>
                 <div className="card-body">
                  <div className="card-title">Order Status: {workOrder.status? 'OPEN' :'CLOSE'}</div>
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
