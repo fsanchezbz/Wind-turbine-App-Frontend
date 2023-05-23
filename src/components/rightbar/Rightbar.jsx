@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Rightbar = (profile) => {
+const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -33,23 +33,6 @@ const Rightbar = (profile) => {
     fetchUserData();
   }, []);
 
-
-  const HomeRightbar = () => {
-    return (
-        <>
-            
-            <img className='rignhtbarAd' src="" alt="" />
-            <h4 className="rightbarTitle">Online Friends</h4>
-            <ul className="rightbarfriendList">
-                {Users.map(u => (
-                    <Online key={u.id} user={u} />
-                ))}
-
-            </ul>
-        </>
-    )
-}
-
   const ProfileRightbar = () => {
     return (
       <>
@@ -77,7 +60,7 @@ const Rightbar = (profile) => {
 
   return (
     <div className='rightbar'>
-      {profile ? <ProfileRightbar /> : <HomeRightbar/> }
+      <ProfileRightbar />
     </div>
   );
 }
