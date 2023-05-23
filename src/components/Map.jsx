@@ -164,10 +164,15 @@ const Map = () => {
               const request = {
                 origin: start,
                 destination: end,
-                travelMode: window.google.maps.TravelMode.DRIVING,
+                travelMode: window.google.maps.TravelMode.DRIVING, // Update the travel mode as per your requirement
                 drivingOptions: {
                   departureTime: new Date(), // Specify the departure time as a valid Date object
                   trafficModel: window.google.maps.TrafficModel.BEST_GUESS,
+                },
+                transitOptions: {
+                  departureTime: new Date(), // Specify the departure time as a valid Date object
+                  modes: [window.google.maps.TransitMode.BUS], // Update the transit mode as per your requirement
+                  routingPreference: window.google.maps.TransitRoutePreference.FEWER_TRANSFERS, // Update the routing preference as per your requirement
                 },
                 unitSystem: window.google.maps.UnitSystem.METRIC,
                 waypoints: [],
