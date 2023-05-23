@@ -11,7 +11,7 @@ const Map = () => {
   
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+    script.src = `${import.meta.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
     script.defer = true;
     document.body.appendChild(script);
 
