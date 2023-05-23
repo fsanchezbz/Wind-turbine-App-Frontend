@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-require('dotenv').config();
+
 
 const Map = () => {
   const mapRef = useRef(null);
