@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -9,7 +9,8 @@ const Map = () => {
   const [directionsDuration, setDirectionsDuration] = useState('');
   const [directionsDistance, setDirectionsDistance] = useState('');
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
- 
+  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+  
   useEffect(() => {
     const script = document.createElement('script');
     script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&libraries=places&callback=initMap`;
