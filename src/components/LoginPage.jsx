@@ -46,11 +46,12 @@ const LoginPage = () => {
 
   const updateStatus = async (status) => {
     try {
-      await axios.put(
+      const response = await axios.put(
         "https://wind-turbine-app-backend.onrender.com/users/update",
         { status },
         { withCredentials: true }
       );
+      console.log(response.data); // Optional: Log the response from the server
     } catch (error) {
       console.log(error);
     }
