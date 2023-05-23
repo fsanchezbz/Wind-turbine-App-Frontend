@@ -242,15 +242,7 @@ const Map = () => {
           </Text>
         </Box>
       </Flex>
-      <iframe
-        width="600"
-        height="450"
-        loading="lazy"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBEvd7_wH6EBGHYts6-vi0OQDeGBfgBsq4
-          &q=Space+Needle,Seattle+WA">
-      </iframe>
+      
     </Box>
   );
 };
