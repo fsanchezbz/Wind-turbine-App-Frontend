@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
 
-console.log(process.env);
+
 const Map = () => {
   const mapRef = useRef(null);
   const [response, setResponse] = useState('');
