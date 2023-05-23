@@ -40,7 +40,7 @@ const Rightbar = () => {
         <div className="rightbarWrapper">
           <div className="row row-cols-1 row-cols-md-3">
             {users.map((user) => (
-              <div key={user.id} className="col ">
+              <div key={user.id} className="col mb-3">
                 <div className="card" style={{ width: '12rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
