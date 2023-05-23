@@ -106,7 +106,7 @@ const Post = () => {
         <div className="card-deck row row-cols-1 row-cols-md-3">
           {workOrders.length > 0 ? (
             workOrders.map((workOrder) => (
-              <div key={workOrder._id} className="card" style={{ width: "18rem" }}>
+              <div key={workOrder._id} className="card" style={{ width: "18rem", gap: '10px'}}>
                 <div className="card-body">
                   <h5 className="card-title">Turbine Model: {workOrder.turbineModel}</h5>
                   <div className="card-text">Description: {workOrder.description}</div>
