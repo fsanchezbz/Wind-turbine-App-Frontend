@@ -11,7 +11,6 @@ const LoginPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -27,22 +26,21 @@ const LoginPage = () => {
       );
 
       const { isAdmin } = response.data;
-      const {status} = response.data;
       
       // Check if the user is an admin or regular user
-      if (isAdmin && status) {
+      if (isAdmin ) {
         // User is an admin
         // Set the appropriate state values
-        setStatus(true);
         setIsLoggedIn(true);
         setIsAdmin(true);
+        await updateUserStatus(response.data._id, true);
         navigate('/profile'); // Redirect to the profile page for admin
       } else {
         // User is a regular user
         // Set the appropriate state values
-        setStatus(true);
         setIsLoggedIn(true);
-        setIsAdmin(true);
+        setIsAdmin(false);
+        await updateUserStatus(response.data._id, true);
         navigate('/profile'); // Redirect to the profile page for regular user
       }
     } catch (error) {
@@ -51,6 +49,16 @@ const LoginPage = () => {
     }
   };
 
+  const updateUserStatus = async (userId, status) => {
+    try {
+      await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        status
+      });
+      console.log(`Updated user ${userId} status to ${status}`);
+    } catch (error) {
+      console.error(`Failed to update user status`, error);
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
