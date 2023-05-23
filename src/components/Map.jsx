@@ -169,6 +169,10 @@ const Map = () => {
                 transitOptions: {},
                 drivingOptions: {
                   departureTime: new Date(), // Specify the departure time as a valid Date object
+                  arrivalTime: new Date(), // Specify the arrival time as a valid Date object
+                  departureTime: new Date(), // Specify the departure time as a valid Date object
+                  modes: [], // Specify the transit modes (e.g., ['BUS', 'SUBWAY'])
+                  routingPreference: 'LESS_WALKING', // Specify the transit route preference
                 },
                 unitSystem: window.google.maps.UnitSystem.METRIC,
                 waypoints: [],
