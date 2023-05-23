@@ -38,10 +38,10 @@ const Rightbar = () => {
       <>
         <center><h4 className="rightbarTitle">User information</h4></center>
         <div className="rightbarWrapper">
-          <div className="row row-cols-1 row-cols-md-3">
+          <div className="row row-cols-1 row-cols-md-3 g-2">
             {users.map((user) => (
               <div key={user.id} className="col ">
-                <div className="card" style={{ width: '18rem' }}>
+                <div className="card" style={{ width: '10rem' }}>
                   <img src={user.profileImage} className="card-img-top" alt="" />
                   <div className="card-body">
                     <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
