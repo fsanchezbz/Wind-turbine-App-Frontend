@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import LoginPage from './components/LoginPage';
 import About from './components/About';
 import ContactForm from './components/Contact';
@@ -12,32 +12,15 @@ import Footer from './components/Footer';
 import SignupPage from './components/SignupPage';
 import Profile from './pages/profile/CompanyProfilePage';
 import WorkOrder from './components/WorkOrder';
-// import axios from 'axios';
 import AdminPanel from './components/AdminPanel';
 import LogoutPage from './components/LogoutPage';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const checkUserAuthentication = async () => {
-      try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-
-        setIsLoggedIn(response.data.isLoggedIn);
-        setIsAdmin(response.data.isAdmin);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    checkUserAuthentication();
-  }, []);
+  
 
   return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
