@@ -77,12 +77,13 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password" className="form-label">Password</label>
+              <label  htmlFor="password" className="form-label">Password</label>
               <input
                 type="password"
                 id="password"
                 className="form-input"
                 value={password}
+                color='black'
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>

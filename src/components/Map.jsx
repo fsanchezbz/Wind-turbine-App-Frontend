@@ -70,7 +70,7 @@ const Map = () => {
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputText);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(submitButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-      map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(locationButton);
+      map.controls[window.google.maps.ControlPosition.MIDDLE_RIGHT].push(locationButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(directionsButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(trafficButton);
 

@@ -137,6 +137,7 @@ const SignUpPage = () => {
               id="password"
               className="form-input"
               value={password}
+              color='black'
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
