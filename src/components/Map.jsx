@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-import RightBar from '../components/rightbar/Rightbar';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -260,40 +259,45 @@ const Map = () => {
   }, []);
 
   return (
-    <Flex marginTop="4rem">
-    <Flex direction="column" alignItems="flex-start" marginRight="2rem">
+    <Box marginTop="4rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      
-      <Box
-        backgroundColor="white"
-        padding="5rem"
-        borderRadius="md"
-        boxShadow="md"
-        height="300px"
-        maxWidth="400px"
-        overflowY="auto"
-        color="black"
-        alignItems={'center'}
-      >
-        
-        <Text fontWeight="bold" marginBottom="1rem">
-          Directions:
-        </Text>
-        <Text>Duration: {directionsDuration}</Text>
-        <Text>Distance: {directionsDistance}</Text>
-        <Text fontWeight="bold" marginBottom="1rem">
-          Response:
-        </Text>
-        <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
-          {response}
-        </Text>
-      </Box>
-    </Flex>
-    <Flex direction="column">
-    <RightBar />
-      
-    </Flex>
-  </Flex>
+      <Flex justifyContent="center">
+        <Box
+          backgroundColor="white"
+          padding="5rem"
+          borderRadius="md"
+          boxShadow="md"
+          height="300px"
+          maxWidth="400px"
+          overflowY="auto"
+          color="black"
+          marginRight="2rem"
+        >
+          <Text fontWeight="bold" marginBottom="1rem">
+            Response:
+          </Text>
+          <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
+            {response}
+          </Text>
+        </Box>
+        <Box
+          backgroundColor="white"
+          padding="5rem"
+          borderRadius="md"
+          boxShadow="md"
+          height="300px"
+          maxWidth="400px"
+          overflowY="auto"
+          color="black"
+        >
+          <Text fontWeight="bold" marginBottom="1rem">
+            Directions:
+          </Text>
+          <Text>Duration: {directionsDuration}</Text>
+          <Text>Distance: {directionsDistance}</Text>
+        </Box>
+      </Flex>
+    </Box>
   );
 };
 
