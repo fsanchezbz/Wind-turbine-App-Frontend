@@ -29,7 +29,7 @@ function LogoutPage() {
       
       const response = await axios.put(
         `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
-        { status: 'false' },
+        { status: 'false' }, // we dont know, but it is working for a string
         { withCredentials: true }
       );
       console.log('Inside the UpdataUserStatus',response.data.status)
@@ -46,6 +46,8 @@ function LogoutPage() {
       const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/users/logout`, null, {
         withCredentials: true,
       });
+
+      
       console.log('Inside the handleLogout',response.data.status)
       setAuthenticated(false);
       Cookies.remove('token');
