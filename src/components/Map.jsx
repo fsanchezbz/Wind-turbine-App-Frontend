@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box as Box, Text, Flex } from '@chakra-ui/react';
+import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-import Rightbar from '../components/rightbar/Rightbar';
+import RightBar from '../components/rightbar/Rightbar';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -71,7 +71,7 @@ const Map = () => {
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputText);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(submitButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-      map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(locationButton);
+      map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(locationButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(directionsButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(trafficButton);
 
@@ -260,10 +260,11 @@ const Map = () => {
   }, []);
 
   return (
-    <Flex marginTop="4rem">
-      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <Rightbar/>
+    
+      
       <Flex justifyContent="center">
+        <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
+        <RightBar />
         <Box
           backgroundColor="white"
           padding="5rem"
@@ -299,7 +300,7 @@ const Map = () => {
           <Text>Distance: {directionsDistance}</Text>
         </Box>
       </Flex>
-    </Flex>
+   
   );
 };
 
