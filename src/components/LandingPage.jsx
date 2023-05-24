@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/LandingPage.css';
-import videoBg from '../assets/rain.mp4'
+import videoBg from '../assets/wind.mp4'
 
 const LandingPage = () => {
   
