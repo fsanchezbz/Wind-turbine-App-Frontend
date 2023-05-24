@@ -264,7 +264,7 @@ const Map = () => {
       <Flex direction="column" alignItems="flex-start">
         <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
       </Flex>  
-        <Flex direction="row">
+        <Flex direction="row" alignItems="flex-start">
         <Box
           backgroundColor="white"
           padding="5rem"
