@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box as Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
+import Rightbar from '../components/rightbar/Rightbar';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -261,6 +262,7 @@ const Map = () => {
   return (
     <Flex marginTop="4rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
+      <Rightbar/>
       <Box justifyContent="center">
         <Box
           backgroundColor="white"
