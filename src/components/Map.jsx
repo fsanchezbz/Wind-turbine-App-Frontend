@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
+import RightBar from '../components/rightbar/Rightbar';
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -259,31 +260,31 @@ const Map = () => {
   }, []);
 
   return (
-    <Flex marginTop="4rem">
-      <Box ref={mapRef} height="500px" width="calc(100% - 400px)" marginBottom="2rem" />
+    <Flex flexDirection="column" marginTop="4rem">
+    <Box ref={mapRef} height="500px" marginBottom="2rem" />
+    <Flex justifyContent="center" marginBottom="2rem">
       <Box
         backgroundColor="white"
-        padding="2rem"
+        padding="5rem"
         borderRadius="md"
         boxShadow="md"
-        height="500px"
-        width="400px"
+        height="300px"
+        maxWidth="800px"
         overflowY="auto"
         color="black"
       >
         <Text fontWeight="bold" marginBottom="1rem">
           Directions:
         </Text>
-        <Text>Duration: {directionsDuration}</Text>
-        <Text>Distance: {directionsDistance}</Text>
-        <Text marginTop="1rem" fontWeight="bold">
-          Response:
-        </Text>
-        <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
-          {response}
-        </Text>
+        {/* Add your directions content here */}
       </Box>
     </Flex>
+    <Flex justifyContent="center">
+      <Box width="400px">
+        <RightBar />
+      </Box>
+    </Flex>
+  </Flex>
   );
 };
 
