@@ -260,7 +260,7 @@ const Map = () => {
   }, []);
 
   return (
-    <Box marginTop="4rem">
+    <Flex marginTop="4rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
       <RightBar />
       <Flex justifyContent="center">
@@ -299,7 +299,7 @@ const Map = () => {
           <Text>Distance: {directionsDistance}</Text>
         </Box>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 
