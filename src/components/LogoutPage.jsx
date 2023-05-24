@@ -57,11 +57,12 @@ function LogoutPage() {
 
   const handleLogout = async () => {
     try {
+      await updateUserStatus(); // Call updateUserStatus without the userId parameter
       const response = await axios.post("https://wind-turbine-app-backend.onrender.com/users/logout", null, {
         withCredentials: true,
       });
 
-      await updateUserStatus(); // Call updateUserStatus without the userId parameter
+     
       setAuthenticated(false);
       Cookies.remove('token');
       navigate('/');
