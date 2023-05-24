@@ -13,6 +13,7 @@ function LogoutPage() {
   // const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState(true);
 
+
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,6 +32,7 @@ function LogoutPage() {
     try {
       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
       setUserStatus(response.data.status);
+      //setUserId
       updateUserStatus(response.data._id); // Update user status on the backend
     } catch (error) {
       console.log(error);
@@ -42,7 +44,7 @@ function LogoutPage() {
     try {
       const response = await axios.put(
         `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-        { status: userStatus  },
+        { status: false  },
         { withCredentials: true }
       );
       console.log(response.data); // Optional: Log the response from the server
