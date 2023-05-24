@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box as Flex, Text, Flex } from '@chakra-ui/react';
+import { Box as Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
 
 const Map = () => {
@@ -260,9 +260,9 @@ const Map = () => {
 
   return (
     <Flex marginTop="4rem">
-      <Flex ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <Flex justifyContent="center">
-        <Flex
+      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
+      <Box justifyContent="center">
+        <Box
           backgroundColor="white"
           padding="5rem"
           borderRadius="md"
@@ -279,8 +279,8 @@ const Map = () => {
           <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
             {response}
           </Text>
-        </Flex>
-        <Flex
+        </Box>
+        <Box
           backgroundColor="white"
           padding="5rem"
           borderRadius="md"
@@ -295,8 +295,8 @@ const Map = () => {
           </Text>
           <Text>Duration: {directionsDuration}</Text>
           <Text>Distance: {directionsDistance}</Text>
-        </Flex>
-      </Flex>
+        </Box>
+      </Box>
     </Flex>
   );
 };
