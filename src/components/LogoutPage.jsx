@@ -9,16 +9,28 @@ import { useNavigate } from 'react-router-dom';
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true); // Set initial value to true for testing
   const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  // const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState('');
 
   useEffect(() => {
-    getUserStatus();
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/all", { withCredentials: true });
+        setUsers(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserData();
   }, []);
 
   const getUserStatus = async () => {
     try {
       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
       setUserStatus(response.data.status);
+      updateUserStatus(response.data._id); // Update user status on the backend
     } catch (error) {
       console.log(error);
     }
@@ -36,6 +48,12 @@ function LogoutPage() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (users.length > 0) {
+      getUserStatus();
+    }
+  }, [users]);
 
   const handleLogout = async () => {
     try {
