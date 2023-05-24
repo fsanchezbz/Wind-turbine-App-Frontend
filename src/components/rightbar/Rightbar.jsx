@@ -1,35 +1,12 @@
 import './rightbar.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
   const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState('');
-
-  useEffect(() => {
-    const socket = io('https://wind-turbine-app-backend.onrender.com');
-
-    socket.on('userStatusChange', (data) => {
-      setUserStatus((prevStatus) => {
-        if (prevStatus === '' && data.status) {
-          // Set the user status if it was not set previously and the received status is true
-          return true;
-        } else if (!data.status) {
-          // Set the user status to false if received status is false
-          return false;
-        } else {
-          return prevStatus;
-        }
-      });
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -43,6 +20,35 @@ const Rightbar = () => {
 
     fetchUserData();
   }, []);
+
+  const getUserStatus = async () => {
+    try {
+      const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+      setUserStatus(response.data.status);
+      updateUserStatus(response.data._id); // Update user status on the backend
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUserStatus = async (userId) => {
+    try {
+      const response = await axios.put(
+        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
+        { status: true },
+        { withCredentials: true }
+      );
+      console.log(response.data); // Optional: Log the response from the server
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (users.length > 0) {
+      getUserStatus();
+    }
+  }, [users]);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -66,10 +72,10 @@ const Rightbar = () => {
           <div className="card-deck row row-cols-1 row-cols-md-3">
             {users.map((user) => (
               <div key={user.id} className="col mb-3" style={{ width: '12rem' }}>
-                <div className={`card h-100 ${user.status === userStatus ? 'active-user' : 'inactive-user'}`}>
-                  <div className={`indicator ${user.status ? 'active-indicator-green' : (user.status === userStatus ? 'active-indicator' : 'inactive-indicator')}`}></div>
+                <div className={`card h-100 ${user.status === userStatus ?  'active-user' : 'inactive-user'}`}>
+                  <div className={`indicator ${user.status === userStatus ? 'active-indicator' : 'inactive-indicator'}`}></div>
                   <div>
-                    {user.status && <span className="online-text"> USER ONLINE</span>}
+                    {user.status === userStatus && <span className="online-text"> USER ONLINE</span>}
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />
                     <div className="card-body">
@@ -93,4 +99,4 @@ const Rightbar = () => {
   );
 };
 
-export default Rightbar
+export default Rightbar;
