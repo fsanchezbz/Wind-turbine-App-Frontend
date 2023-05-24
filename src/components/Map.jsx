@@ -261,7 +261,7 @@ const Map = () => {
 
   return (
     <Flex marginTop="4rem">
-      <Flex direction="column">
+      <Flex direction="row">
         <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
         <RightBar />
       </Flex>
