@@ -261,9 +261,11 @@ const Map = () => {
 
   return (
     <Flex marginTop="4rem">
-      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <RightBar />
-      <Flex justifyContent="center">
+      <Flex direction="column">
+        <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
+        <RightBar />
+      </Flex>
+      <Flex direction="column" justifyContent="center">
         <Box
           backgroundColor="white"
           padding="5rem"
@@ -273,7 +275,7 @@ const Map = () => {
           maxWidth="400px"
           overflowY="auto"
           color="black"
-          marginRight="2rem"
+          marginBottom="2rem"
         >
           <Text fontWeight="bold" marginBottom="1rem">
             Response:
