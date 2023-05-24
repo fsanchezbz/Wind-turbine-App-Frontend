@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Rightbar = () => {
   const [users, setUsers] = useState([]);
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState('');
 
   useEffect(() => {
@@ -50,18 +50,18 @@ const Rightbar = () => {
     }
   }, [users]);
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get('https:///wind-turbine-app-backend.onrender.com/api/images');
-        setImages(response.data);
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchImages = async () => {
+  //     try {
+  //       const response = await axios.get('https:///wind-turbine-app-backend.onrender.com/api/images');
+  //       setImages(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching images:', error);
+  //     }
+  //   };
 
-    fetchImages();
-  }, []);
+  //   fetchImages();
+  // }, []);
 
   const ProfileRightbar = () => {
     return (

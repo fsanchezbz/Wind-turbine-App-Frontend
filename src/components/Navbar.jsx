@@ -9,28 +9,28 @@ const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-        setIsLoggedIn(true);
-        setIsAdmin(response.data.isAdmin);
-      } catch (error) {
-        console.log(error);
-        setIsLoggedIn(false);
-        setIsAdmin(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+  //       setIsLoggedIn(true);
+  //       setIsAdmin(response.data.isAdmin);
+  //     } catch (error) {
+  //       console.log(error);
+  //       setIsLoggedIn(false);
+  //       setIsAdmin(false);
+  //     }
+  //   };
 
-    fetchUserData();
-  }, []);
+  //   fetchUserData();
+  // }, []);
 
-  const handleLogout = () => {
-    Cookies.remove('loggedIn');
-    Cookies.remove('admin');
-    setIsLoggedIn(false);
-    setIsAdmin(false);
-  };
+  // const handleLogout = () => {
+  //   Cookies.remove('loggedIn');
+  //   Cookies.remove('admin');
+  //   setIsLoggedIn(false);
+  //   setIsAdmin(false);
+  // };
 
   return (
     <nav className="navbar">
