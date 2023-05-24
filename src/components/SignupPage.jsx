@@ -32,7 +32,7 @@ const SignUpPage = () => {
 
       // Make a request to sign up the user with the form data
       const signupResponse = await axios.post(
-        'https://wind-turbine-app-backend.onrender.com/users/signup',
+        `${import.meta.env.VITE_PRODUCTION_API}/users/signup`,
         {
           userName: userName,
           firstName: firstName,
