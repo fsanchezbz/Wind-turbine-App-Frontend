@@ -261,49 +261,47 @@ const Map = () => {
 
   return (
     <Flex marginTop="4rem">
-      <Flex direction="column" alignItems="flex-start">
-        <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      </Flex>  
-        <Flex direction="column" alignItems={'baseline'}>
-        <Box
-          backgroundColor="white"
-          padding="5rem"
-          borderRadius="md"
-          boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color="black"
-          marginBottom="2rem"
-        >
-          <Text fontWeight="bold" marginBottom="1rem">
-            Response:
-          </Text>
-          <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
-            {response}
-          </Text>
-        </Box>
-        <Box
-          backgroundColor="white"
-          padding="5rem"
-          borderRadius="md"
-          boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color="black"
-        >
-          <Text fontWeight="bold" marginBottom="1rem">
-            Directions:
-          </Text>
-          <Text>Duration: {directionsDuration}</Text>
-          <Text>Distance: {directionsDistance}</Text>
-        </Box>
-        </Flex>
-      <Flex direction="column" marginLeft="2rem">
+    <Flex direction="column" alignItems="flex-start" marginRight="2rem">
+      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
       <RightBar />
-      </Flex>
     </Flex>
+    <Flex direction="column">
+      <Box
+        backgroundColor="white"
+        padding="5rem"
+        borderRadius="md"
+        boxShadow="md"
+        height="300px"
+        maxWidth="400px"
+        overflowY="auto"
+        color="black"
+        marginBottom="2rem"
+      >
+        <Text fontWeight="bold" marginBottom="1rem">
+          Response:
+        </Text>
+        <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
+          {response}
+        </Text>
+      </Box>
+      <Box
+        backgroundColor="white"
+        padding="5rem"
+        borderRadius="md"
+        boxShadow="md"
+        height="300px"
+        maxWidth="400px"
+        overflowY="auto"
+        color="black"
+      >
+        <Text fontWeight="bold" marginBottom="1rem">
+          Directions:
+        </Text>
+        <Text>Duration: {directionsDuration}</Text>
+        <Text>Distance: {directionsDistance}</Text>
+      </Box>
+    </Flex>
+  </Flex>
   );
 };
 
