@@ -263,9 +263,6 @@ const Map = () => {
     <Flex marginTop="4rem">
     <Flex direction="column" alignItems="flex-start" marginRight="2rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <RightBar />
-    </Flex>
-    <Flex direction="column">
       <Box
         backgroundColor="white"
         padding="5rem"
@@ -300,6 +297,10 @@ const Map = () => {
         <Text>Duration: {directionsDuration}</Text>
         <Text>Distance: {directionsDistance}</Text>
       </Box>
+    </Flex>
+    <Flex direction="column">
+    <RightBar />
+      
     </Flex>
   </Flex>
   );
