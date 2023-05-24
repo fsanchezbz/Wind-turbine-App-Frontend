@@ -13,6 +13,7 @@ function LogoutPage() {
   // const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState('');
 
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -37,6 +38,7 @@ function LogoutPage() {
   };
 
   const updateUserStatus = async (userId) => {
+    console.log("userId:", userId); // Check the value of userId
     try {
       const response = await axios.put(
         `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
