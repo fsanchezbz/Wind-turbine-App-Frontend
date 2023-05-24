@@ -273,6 +273,7 @@ const Map = () => {
         maxWidth="400px"
         overflowY="auto"
         color="black"
+        alignItems={'center'}
       >
         
         <Text fontWeight="bold" marginBottom="1rem">
