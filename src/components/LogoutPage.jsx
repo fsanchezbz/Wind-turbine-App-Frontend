@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
-import axios from 'axios';
-import '../styles/LogoutPage.css'; 
-import videoBg from '../assets/rain.mp4'
-import { FaRegSmile} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-
 function LogoutPage() {
-  const [authenticated, setAuthenticated] = useState(true); // Set initial value to true for testing
+  const [authenticated, setAuthenticated] = useState(true);
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  // const [images, setImages] = useState([]);
   const [userStatus, setUserStatus] = useState(true);
+  const [userId, setUserId] = useState(null); // Add a new state variable to store the user ID
 
-
-  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -32,22 +22,20 @@ function LogoutPage() {
     try {
       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
       setUserStatus(response.data.status);
-      //setUserId
-      updateUserStatus(response.data._id); // Update user status on the backend
+      setUserId(response.data._id); // Store the user ID in the state
     } catch (error) {
       console.log(error);
     }
   };
 
-  const updateUserStatus = async (userId) => {
-    console.log("userId:", userId); // Check the value of userId
+  const updateUserStatus = async () => {
     try {
       const response = await axios.put(
         `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-        { status: false  },
+        { status: false },
         { withCredentials: true }
       );
-      console.log(response.data); // Optional: Log the response from the server
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -65,8 +53,7 @@ function LogoutPage() {
         withCredentials: true,
       });
 
-      const { _id } = response.data;
-      updateUserStatus(_id);
+      await updateUserStatus(); // Call updateUserStatus without the userId parameter
       setAuthenticated(false);
       Cookies.remove('token');
       navigate('/');
@@ -79,10 +66,10 @@ function LogoutPage() {
   return (
     <div className="logout-page">
       <div className="video-container">
-        <video src={videoBg} autoPlay loop muted /> 
+        <video src={videoBg} autoPlay loop muted />
       </div>
       <div className="logout-content text-overlay">
-        <h1>Thank you for coming, now get to work  <FaRegSmile/></h1>
+        <h1>Thank you for coming, now get to work <FaRegSmile/></h1>
         {authenticated && (
           <button className="logout-button" onClick={handleLogout}>
             Logout
