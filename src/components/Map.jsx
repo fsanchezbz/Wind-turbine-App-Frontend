@@ -259,45 +259,31 @@ const Map = () => {
   }, []);
 
   return (
-    <Box marginTop="4rem">
-      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <Flex justifyContent="center">
-        <Box
-          backgroundColor="white"
-          padding="5rem"
-          borderRadius="md"
-          boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color="black"
-          marginRight="2rem"
-        >
-          <Text fontWeight="bold" marginBottom="1rem">
-            Response:
-          </Text>
-          <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
-            {response}
-          </Text>
-        </Box>
-        <Box
-          backgroundColor="white"
-          padding="5rem"
-          borderRadius="md"
-          boxShadow="md"
-          height="300px"
-          maxWidth="400px"
-          overflowY="auto"
-          color="black"
-        >
-          <Text fontWeight="bold" marginBottom="1rem">
-            Directions:
-          </Text>
-          <Text>Duration: {directionsDuration}</Text>
-          <Text>Distance: {directionsDistance}</Text>
-        </Box>
-      </Flex>
-    </Box>
+    <Flex marginTop="4rem">
+      <Box ref={mapRef} height="500px" width="calc(100% - 400px)" marginBottom="2rem" />
+      <Box
+        backgroundColor="white"
+        padding="2rem"
+        borderRadius="md"
+        boxShadow="md"
+        height="500px"
+        width="400px"
+        overflowY="auto"
+        color="black"
+      >
+        <Text fontWeight="bold" marginBottom="1rem">
+          Directions:
+        </Text>
+        <Text>Duration: {directionsDuration}</Text>
+        <Text>Distance: {directionsDistance}</Text>
+        <Text marginTop="1rem" fontWeight="bold">
+          Response:
+        </Text>
+        <Text fontSize="15px" as="pre" whiteSpace="pre-wrap">
+          {response}
+        </Text>
+      </Box>
+    </Flex>
   );
 };
 
