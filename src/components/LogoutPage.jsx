@@ -1,3 +1,11 @@
+import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import axios from 'axios';
+import '../styles/LogoutPage.css'; 
+import videoBg from '../assets/rain.mp4'
+import { FaRegSmile} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true);
   const navigate = useNavigate();
@@ -81,3 +89,4 @@ function LogoutPage() {
 }
 
 export default LogoutPage;
+
