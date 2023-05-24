@@ -10,7 +10,7 @@ function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true);
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const [userStatus, setUserStatus] = useState(true);
+  const [userStatus, setUserStatus] = useState('');
   const [userId, setUserId] = useState(null); // Add a new state variable to store the user ID
 
   useEffect(() => {
