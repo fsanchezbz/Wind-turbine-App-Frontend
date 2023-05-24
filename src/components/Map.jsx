@@ -71,7 +71,7 @@ const Map = () => {
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputText);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(submitButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-      map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(locationButton);
+      map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(locationButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(directionsButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(trafficButton);
 
@@ -265,7 +265,7 @@ const Map = () => {
         <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
         <RightBar />
       </Flex>
-      <Flex direction="column" justifyContent="center">
+      <Box direction="column" justifyContent="center">
         <Box
           backgroundColor="white"
           padding="5rem"
@@ -300,7 +300,7 @@ const Map = () => {
           <Text>Duration: {directionsDuration}</Text>
           <Text>Distance: {directionsDistance}</Text>
         </Box>
-      </Flex>
+      </Box>
     </Flex>
   );
 };
