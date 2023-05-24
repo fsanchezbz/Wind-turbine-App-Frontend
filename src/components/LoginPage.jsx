@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import videoBg from '../assets/rain.mp4';
@@ -16,7 +16,7 @@ const LoginPage = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "https://wind-turbine-app-backend.onrender.com/users/login",
+        `${import.meta.env.VITE_PRODUCTION_API}/users/login`,
         {
           userName,
           password,
@@ -25,20 +25,44 @@ const LoginPage = () => {
         { withCredentials: true }
       );
 
-      const { isAdmin, status } = response.data;
+      const { isAdmin, _id, status } = response.data;
 
-      if (isAdmin) {
+      if (isAdmin && status) {
+        setUserStatus();
         setIsLoggedIn(true);
         setIsAdmin(true);
         navigate('/profile');
       } else {
+        setUserStatus();
         setIsLoggedIn(true);
         setIsAdmin(false);
         navigate('/profile');
       }
     } catch (error) {
       console.log(error);
-      setError("Invalid username or password");
+      setError('Invalid username or password');
+    }
+  };
+
+  const setUserStatus = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
+      updateUserStatus(response.data._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateUserStatus = async (userId) => {
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
+        { status: true },
+        { withCredentials: true }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 

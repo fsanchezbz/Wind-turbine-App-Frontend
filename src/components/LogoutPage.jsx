@@ -9,15 +9,13 @@ import { useNavigate } from 'react-router-dom';
 function LogoutPage() {
   const [authenticated, setAuthenticated] = useState(true);
   const navigate = useNavigate();
-  const [users, setUsers] = useState([]);
-  const [userStatus, setUserStatus] = useState('');
-  const [userId, setUserId] = useState(''); // Add a new state variable to store the user ID
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/all", { withCredentials: true });
-        setUsers(response.data);
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
+        setUserId(response.data._id);     
       } catch (error) {
         console.log(error);
       }
@@ -26,43 +24,29 @@ function LogoutPage() {
     fetchUserData();
   }, []);
 
-  const getUserStatus = async () => {
+  const updateUserStatus = async (userId) => {
     try {
-      const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
-      setUserStatus(response.data.status);
-      setUserId(response.data._id); // Store the user ID in the state
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const updateUserStatus = async () => {
-    try {
+      
       const response = await axios.put(
-        `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-        { status: false },
+        `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
+        { status: 'false' },
         { withCredentials: true }
       );
-      console.log(response.data);
+      console.log('Inside the UpdataUserStatus',response.data.status)
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (users.length > 0) {
-      getUserStatus();
-    }
-  }, [users]);
 
   const handleLogout = async () => {
     try {
-      await updateUserStatus(); // Call updateUserStatus without the userId parameter
-      const response = await axios.post("https://wind-turbine-app-backend.onrender.com/users/logout", null, {
+      console.log('handleLogout:', userId);
+      await updateUserStatus(userId);
+      
+      const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/users/logout`, null, {
         withCredentials: true,
       });
-
-     
+      console.log('Inside the handleLogout',response.data.status)
       setAuthenticated(false);
       Cookies.remove('token');
       navigate('/');
@@ -90,4 +74,3 @@ function LogoutPage() {
 }
 
 export default LogoutPage;
-

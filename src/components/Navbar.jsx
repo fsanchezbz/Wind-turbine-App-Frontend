@@ -12,7 +12,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
         setIsLoggedIn(true);
         setIsAdmin(response.data.isAdmin);
       } catch (error) {
@@ -23,14 +23,9 @@ const Navbar = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, [isLoggedIn]);
 
-  const handleLogout = () => {
-    Cookies.remove('loggedIn');
-    Cookies.remove('admin');
-    setIsLoggedIn(false);
-    setIsAdmin(false);
-  };
+  
 
   return (
     <nav className="navbar">
@@ -58,7 +53,7 @@ const Navbar = () => {
             ) : (
               <Link to="/profile">Profile</Link>
             )}
-            <Link to="/logout" onClick={handleLogout}>Logout</Link>
+            <Link to="/logout">Logout</Link>
           </>
         ) : (
           <Link to="/login">Login</Link>

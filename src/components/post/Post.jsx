@@ -17,7 +17,7 @@ const Post = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
         setIsAdmin(response.data.isAdmin);
       } catch (error) {
         console.log(error);
@@ -31,7 +31,7 @@ const Post = () => {
   useEffect(() => {
     const fetchWorkOrders = async () => {
       try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/work/all", { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/all`, { withCredentials: true });
         setWorkOrders(response.data);
       } catch (error) {
         console.error("Error fetching work orders:", error);
@@ -43,7 +43,7 @@ const Post = () => {
 
   const openAddInfoModal = async (workOrderId) => {
     try {
-      const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${workOrderId}`);
       const { addInfo } = response.data;
       setSelectedWorkOrderId(workOrderId);
       setAddInfo(addInfo);
@@ -56,7 +56,7 @@ const Post = () => {
 
   const openCommentsModal = async (workOrderId) => {
     try {
-      const response = await axios.get(`https://wind-turbine-app-backend.onrender.com/work/${workOrderId}`);
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${workOrderId}`);
       const { addInfo } = response.data;
       setSelectedWorkOrderId(workOrderId);
       setSelectedComments(addInfo);
@@ -81,7 +81,7 @@ const Post = () => {
   const handleAddInfoFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/work/update/${selectedWorkOrderId}`, {
+      const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, {
         addInfo: addInfo,
         status: true, // Set the status to true when the "Done" button is clicked
       });
@@ -104,7 +104,7 @@ const Post = () => {
 
   const deleteWorkOrder = async (workOrderId) => {
     try {
-      await axios.delete(`https://wind-turbine-app-backend.onrender.com/work/delete/${workOrderId}`, { withCredentials: true });
+      await axios.delete(`${import.meta.env.VITE_PRODUCTION_API}/work/delete/${workOrderId}`, { withCredentials: true });
       setWorkOrders((prevWorkOrders) => prevWorkOrders.filter((workOrder) => workOrder._id !== workOrderId));
     } catch (error) {
       console.error("Failed to delete work order:", error);

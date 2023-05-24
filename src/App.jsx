@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
         setIsLoggedIn(true);
         setIsAdmin(response.data.isAdmin);
       } catch (error) {
