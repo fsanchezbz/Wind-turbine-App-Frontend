@@ -263,8 +263,7 @@ const Map = () => {
     <Flex marginTop="4rem">
     <Flex direction="column" alignItems="flex-start" marginRight="2rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-    <Flex direction="column">
-    <Box
+      <Box
         backgroundColor="white"
         padding="5rem"
         borderRadius="md"
@@ -288,7 +287,6 @@ const Map = () => {
           {response}
         </Text>
       </Box>
-    </Flex>
     </Flex>
   </Flex>
   );
