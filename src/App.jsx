@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import SignupPage from './components/SignupPage';
 import Profile from './pages/profile/CompanyProfilePage';
 import WorkOrder from './components/WorkOrder';
-// import axios from 'axios';
+import axios from 'axios';
 import AdminPanel from './components/AdminPanel';
 import LogoutPage from './components/LogoutPage';
 
