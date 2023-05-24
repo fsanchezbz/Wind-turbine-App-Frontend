@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import '../styles/Map.css';
-import RightBar from '../components/rightbar/Rightbar';
+
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -71,7 +71,7 @@ const Map = () => {
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(inputText);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(submitButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(clearButton);
-      map.controls[window.google.maps.ControlPosition.BOTTOM_RIGHT].push(locationButton);
+      map.controls[window.google.maps.ControlPosition.BOTTOM_LEFT].push(locationButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(directionsButton);
       map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(trafficButton);
 
@@ -263,7 +263,11 @@ const Map = () => {
     <Flex marginTop="4rem">
     <Flex direction="column" alignItems="flex-start" marginRight="2rem">
       <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
-      <Box
+      
+      
+    </Flex>
+    <Flex direction="row">
+    <Box
         backgroundColor="white"
         padding="5rem"
         borderRadius="md"
@@ -287,6 +291,7 @@ const Map = () => {
           {response}
         </Text>
       </Box>
+      
     </Flex>
   </Flex>
   );
