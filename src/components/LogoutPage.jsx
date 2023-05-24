@@ -11,7 +11,7 @@ function LogoutPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [userStatus, setUserStatus] = useState('');
-  const [userId, setUserId] = useState(null); // Add a new state variable to store the user ID
+  const [userId, setUserId] = useState(true); // Add a new state variable to store the user ID
 
   useEffect(() => {
     const fetchUserData = async () => {
