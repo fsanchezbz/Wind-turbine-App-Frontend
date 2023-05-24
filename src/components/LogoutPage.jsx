@@ -24,7 +24,7 @@ function LogoutPage() {
     try {
       const response = await axios.get("https://wind-turbine-app-backend.onrender.com/users/me", { withCredentials: true });
       setUserStatus(response.data.status);
-      //updateUserStatus(response.data._id); // Update user status on the backend
+      updateUserStatus(response.data._id); // Update user status on the backend
     } catch (error) {
       console.log(error);
     }
