@@ -11,7 +11,7 @@ function LogoutPage() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   // const [images, setImages] = useState([]);
-  const [userStatus, setUserStatus] = useState('');
+  const [userStatus, setUserStatus] = useState(true);
 
   
   useEffect(() => {
@@ -42,7 +42,7 @@ function LogoutPage() {
     try {
       const response = await axios.put(
         `https://wind-turbine-app-backend.onrender.com/users/update/${userId}`,
-        { status: false },
+        { status: userStatus  },
         { withCredentials: true }
       );
       console.log(response.data); // Optional: Log the response from the server
