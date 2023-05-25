@@ -260,9 +260,9 @@ const Map = () => {
   }, []);
 
   return (
-    <Flex marginTop="4rem">
+    <Flex className="mapContainer leftColumn" marginLeft={'10rem'} marginTop="4rem">
     <Flex direction="column" alignItems="flex-start" marginRight="2rem">
-      <Box ref={mapRef} height="500px" width="1000px" marginBottom="2rem" />
+      <Box ref={mapRef}  height="500px" width="1000px" marginBottom="2rem" />
       
      
     </Flex>
@@ -271,6 +271,7 @@ const Map = () => {
       
     </Flex>
   </Flex>
+  
   );
 };
 

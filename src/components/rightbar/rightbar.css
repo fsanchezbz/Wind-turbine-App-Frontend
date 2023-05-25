@@ -1,91 +1,96 @@
-
 .rightbarWrapper {
   display: flex;
-  flex-direction: column; /* Update to column layout */
-  padding: 20px 20px 0 0;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
 }
 
+.rightbarAd {
+  width: 100%;
+  border-radius: 10px;
+  margin: 30px 0;
+}
 
+.rightbarTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.rightbarInfo {
+  margin-bottom: 30px;
+}
+
+.rightbarInfoKey {
+  font-weight: 500;
+  margin-right: 15px;
+  color: #555;
+}
+
+.rightbarInfoValue {
+  font-weight: 300;
+}
+
+.rightbarInfoItem {
+  margin-bottom: 10px;
+}
+
+.rightbarFollowing {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+}
+
+.rightbarFollowingImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.active-indicator {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+}
+
+.inactive-indicator {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(85, 87, 85);
+  border-radius: 50%;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 767px) {
+  .rightbarFollowingImg {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .rightbarWrapper {
+    padding: 10px;
+  }
   
   .rightbarAd {
-    width: 100%;
-    border-radius: 10px;
-    margin: 30px 0;
+    margin: 20px 0;
   }
   
   .rightbarTitle {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-  
-  .rightbarInfo {
-    margin-bottom: 30px;
+    font-size: 16px;
   }
   
   .rightbarInfoKey {
-    font-weight: 500;
-    margin-right: 15px;
-    color: #555;
+    margin-right: 10px;
   }
-  
-  .rightbarInfoValue {
-    font-weight: 300;
-  }
-  
-  .rightbarInfoItem {
-    margin-bottom: 10px;
-  }
-  
-  .rightbarFollowing {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    cursor: pointer;
-    align-items: center; /* Center align the content */
-    text-align: center; /* Center align the text */
-  }
-  
-  .rightbarFollowing {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .rightbarFollowingImg {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    object-fit: cover;
-  }
-  
-  .layout {
-    width: 1366px;
-    height: 768px;
-    display: grid;
-    grid-template-rows: repeat(auto-fit, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  
-  .active-indicator {
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    width: 10px;
-    height: 10px;
-    background-color: green;
-    border-radius: 50%;
-  }
-  
-  .inactive-indicator {
-    position: absolute;
-    top: 6px;
-    right: 10px;
-    width: 10px;
-    height: 10px;
-    background-color: rgb(85, 87, 85);
-    border-radius: 50%;
-  }
-  
+}

@@ -3,15 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 import videoBg from '../assets/rain.mp4';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 const LoginPage = () => {
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -24,20 +25,11 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
-
-      const { isAdmin, _id, status } = response.data;
-
-      if (isAdmin && status) {
-        setUserStatus();
-        setIsLoggedIn(true);
-        setIsAdmin(true);
-        navigate('/profile');
-      } else {
-        setUserStatus();
-        setIsLoggedIn(true);
-        setIsAdmin(false);
-        navigate('/profile');
-      }
+      setIsLoggedIn(true);
+      setIsAdmin(true);
+      setUserStatus();
+      navigate('/profile');
+     
     } catch (error) {
       console.log(error);
       setError('Invalid username or password');
@@ -47,7 +39,15 @@ const LoginPage = () => {
   const setUserStatus = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
-      updateUserStatus(response.data._id);
+      const { _id, status, isAdmin, isLoggedIn } = response.data;
+      
+      // Check the status, isAdmin, and isLoggedIn values
+      console.log(_id);
+      console.log(status); 
+      console.log(isAdmin);
+      console.log(isLoggedIn);
+  
+      updateUserStatus(_id);
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ const LoginPage = () => {
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
-        { status: true },
+        { status: true, isLoggedIn: true },
         { withCredentials: true }
       );
       console.log(response.data);
@@ -72,13 +72,12 @@ const LoginPage = () => {
   };
 
   return (
+    <>
+     
     <div className="login-page">
       <video className="login-video" src={videoBg} autoPlay loop muted />
       <div className="login-container">
-        <h2 className="login-title">Login</h2>
-        {isLoggedIn ? (
-          <p>You are logged in.</p>
-        ) : (
+        <h2 className="login-title">Login</h2>        
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email" className="form-label">Email</label>
@@ -113,13 +112,14 @@ const LoginPage = () => {
             </div>
             <button type="submit" className="login-button">Login</button>
           </form>
-        )}
         {error && <p className="error-message">{error}</p>}
         <div className="signup-link">
           Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

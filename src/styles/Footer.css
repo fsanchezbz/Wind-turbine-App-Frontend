@@ -5,10 +5,11 @@
 
 .footer-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-size: 14px;
+  text-align: center;
 }
 
 .footer-section {
@@ -23,8 +24,10 @@
 
 .social-icons {
   display: flex;
+  justify-content: center;
   gap: 8px;
   font-size: 18px;
+  margin-top: 10px;
 }
 
 .social-icons a {
@@ -73,4 +76,12 @@ h3 {
 
 .manufacturers-list li a:hover {
   color: blue;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
 }

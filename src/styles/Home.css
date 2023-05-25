@@ -280,6 +280,29 @@ body{
     .column {
       width: 100%;
       display: block;
+      margin-bottom: 16px;
+    }
+  
+    main {
+      margin: calc(var(--header-height) + 1rem) 0 0 0;
+      padding: 0 0.5rem;
+    }
+  
+    .header {
+      height: calc(var(--header-height) + 1rem);
+      padding-left: 0.5rem;
+    }
+  
+    .sidebar {
+      left: -50%;
+    }
+  
+    .show {
+      width: 100%;
+    }
+  
+    .space-toggle {
+      padding-left: 1rem;
     }
   }
   
@@ -291,7 +314,7 @@ body{
   
     .header {
       height: calc(var(--header-height) + 1rem);
-      padding-left: calc(var(--nav-width) + 2rem);
+      padding-left: calc(var(--nav-width) + 1rem);
     }
   
     .sidebar {
@@ -307,3 +330,4 @@ body{
       padding-left: calc(var(--nav-width) + 188px);
     }
   }
+  

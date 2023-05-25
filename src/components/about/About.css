@@ -23,23 +23,23 @@
 
 .about-content {
   position: relative;
-  max-width: 800px;
-  padding: 40px;
+  max-width: 80%;
+  padding: 15px;
   background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
 }
 
 .about-title {
-  font-size: 36px;
+  font-size: 20px;
   font-weight: bold;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .about-description {
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .highlight {
@@ -49,10 +49,10 @@
 
 .about-link {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 6px 12px;
   background-color: #2ecc71;
   color: #fff;
-  font-size: 12px;
+  font-size: 10px;
   text-decoration: none;
   border-radius: 5px;
 }
@@ -60,36 +60,44 @@
 /* Media Queries */
 @media only screen and (max-width: 480px) {
   .about-content {
-    padding: 20px;
+    max-width: 90%;
+    padding: 10px;
   }
 
   .about-title {
-    font-size: 24px;
+    font-size: 18px;
+    margin-bottom: 8px;
   }
 
   .about-description {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .about-link {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .about-content {
+    max-width: 90%;
+    padding: 12px;
+  }
+
+  .about-title {
     font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .about-description {
+    font-size: 12px;
+    margin-bottom: 8px;
   }
 
   .about-link {
     font-size: 10px;
-  }
-}
-
-@media only screen and (min-width: 481px) and (max-width: 1024px) {
-  .about-content {
-    padding: 30px;
-  }
-
-  .about-title {
-    font-size: 30px;
-  }
-
-  .about-description {
-    font-size: 16px;
-  }
-
-  .about-link {
-    font-size: 12px;
+    padding: 4px 8px;
   }
 }

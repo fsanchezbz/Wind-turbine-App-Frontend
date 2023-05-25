@@ -25,12 +25,11 @@
   box-sizing: border-box;
 }
 
-
-
 .landing-page-title {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: bold;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 .landing-page-content {
@@ -38,7 +37,7 @@
 }
 
 .landing-page-description {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 20px;
   color: #fff;
 }
@@ -46,7 +45,7 @@
 .landing-page-link {
   display: inline-block;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   background-color: #333;
   text-decoration: none;
@@ -65,44 +64,87 @@
 }
 
 .landing-page-footer-text {
-  font-size: 14px;
+  font-size: 12px;
   color: #ccc;
 }
-.video-container {
-    position: relative;
-    width: 100%;
-  }
-  
-  .video {
-    width: 100%;
-  }
-  
-  .scrollable-content {
-    height: 500px; /* Set the desired height */
-    overflow: auto; /* Enable scrolling */
-  }
- 
 
-  .map-card {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-    }
-    
-    .card-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .text-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #fff;
-    }
-   
-    
-  
+.video-container {
+  position: relative;
+  width: 100%;
+}
+
+.video {
+  width: 100%;
+}
+
+.scrollable-content {
+  height: auto;
+  overflow: auto;
+}
+
+.map-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  /* Styles for smaller mobile screens */
+  .landing-page-title {
+    font-size: 24px;
+  }
+
+  .landing-page-description {
+    font-size: 14px;
+  }
+
+  .landing-page-link {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .landing-page-footer-text {
+    font-size: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 414px) {
+  /* Styles for iPhone 6/7/8 and similar mobile screens */
+  .landing-page-title {
+    font-size: 20px;
+  }
+
+  .landing-page-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .landing-page-link {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+}

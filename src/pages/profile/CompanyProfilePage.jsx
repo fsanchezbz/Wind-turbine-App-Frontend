@@ -2,7 +2,6 @@ import React from 'react';
 import "./profile.css";
 import Map from '../../components/Map';
 import Post from "../../components/post/Post";
-import Rightbar from '../../components/rightbar/Rightbar'
 
 const CompanyProfilePage = () => {
 

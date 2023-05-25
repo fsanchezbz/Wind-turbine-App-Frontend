@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import React, { useEffect, useState } from 'react';
 import LoginPage from './components/LoginPage';
-import About from './components/About';
+import About from './components/about/About';
 import ContactForm from './components/Contact';
 import WindTurbines from './components/WindTurbines';
 import './styles/Footer.css'
@@ -12,35 +12,13 @@ import Footer from './components/Footer';
 import SignupPage from './components/SignupPage';
 import Profile from './pages/profile/CompanyProfilePage';
 import WorkOrder from './components/WorkOrder';
-import axios from 'axios';
-import AdminPanel from './components/AdminPanel';
+import AdminPanel from './components/admin/AdminPanel';
 import LogoutPage from './components/LogoutPage';
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
-        setIsLoggedIn(true);
-        setIsAdmin(response.data.isAdmin);
-      } catch (error) {
-        console.log(error);
-        setIsLoggedIn(false);
-        setIsAdmin(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-
-
-  return (
+return (
     <Router>
-      <Navbar isLoggedIn={isLoggedIn} isAdmin = {isAdmin}/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
