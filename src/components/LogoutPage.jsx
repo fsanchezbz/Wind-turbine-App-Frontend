@@ -5,9 +5,10 @@ import '../styles/LogoutPage.css';
 import videoBg from '../assets/rain.mp4'
 import { FaRegSmile} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import '../index.css';
+
 
 function LogoutPage() {
-  const [authenticated, setAuthenticated] = useState(true);
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
 
@@ -15,7 +16,10 @@ function LogoutPage() {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
-        setUserId(response.data._id);     
+        const { _id } = response.data;
+      
+  
+      updateUserStatus(_id);    
       } catch (error) {
         console.log(error);
       }
@@ -23,6 +27,13 @@ function LogoutPage() {
 
     fetchUserData();
   }, []);
+
+
+  const refreshPage = () => {
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 1000); // 2000 milliseconds delay (adjust the duration as needed)
+  };
 
   const updateUserStatus = async (userId) => {
     try {
@@ -32,7 +43,7 @@ function LogoutPage() {
         { status: 'false' }, // we dont know, but it is working for a string
         { withCredentials: true }
       );
-      console.log('Inside the UpdataUserStatus',response.data.status)
+     
     } catch (error) {
       console.log(error);
     }
@@ -40,38 +51,37 @@ function LogoutPage() {
 
   const handleLogout = async () => {
     try {
-      console.log('handleLogout:', userId);
       await updateUserStatus(userId);
       
       const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/users/logout`, null, {
         withCredentials: true,
       });
 
-      
-      console.log('Inside the handleLogout',response.data.status)
-      setAuthenticated(false);
       Cookies.remove('token');
       navigate('/');
-      console.log('logged out');
+      refreshPage();
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
+   <>
     <div className="logout-page">
       <div className="video-container">
         <video src={videoBg} autoPlay loop muted />
       </div>
       <div className="logout-content text-overlay">
         <h1>Thank you for coming, now get to work <FaRegSmile/></h1>
-        {authenticated && (
+        
           <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
-        )}
+        
       </div>
     </div>
+    {/* <Footer/> */}
+    </>
   );
 }
 

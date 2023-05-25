@@ -1,6 +1,13 @@
-.mapContainer {
+/* Default styles */
+.page-wrapper {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.mapContainer {
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
   margin: 1rem;
 }
@@ -15,16 +22,67 @@
   padding-top: 20px;
 }
 
-.input-text,
-.button-primary,
-.button-secondary {
-  width: 100%;
+.postComponent {
+  /* Add your styles for the post component on smaller screens */
+  padding: 0.5rem;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"],
-input[type="button"] {
-  width: 100%;
+.rightBarComponent {
+  /* Add your styles for the rightBar component */
+  background-color: #f8f8f8;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+
+.footer {
+  /* Add your styles for the footer component */
+  background-color: #333;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+
+
+.input-text {
+  /* Add your styles for the input-text class */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+input[type='button'] {
+  height: 40px;
+  cursor: pointer;
+}
+
+input[type='button']:hover {
+  background: rgb(235, 235, 235);
+}
+
+input[type='button'].button-primary {
+   /* Add your styles for the button-primary class */
+   background-color: white;
+   color: #007bff;
+   padding: 0.5rem 1rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin-right: 0.5rem;
+}
+
+input[type='button'].button-primary:hover {
+  background-color: #fbfdff;
+}
+
 
 #response-container {
   background-color: #fff;
@@ -32,7 +90,7 @@ input[type="button"] {
   border-radius: 2px;
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
   margin: 10px;
-  padding: 0 0.5em;
+  padding: 0.5em;
   font: 400 18px Roboto, Arial, sans-serif;
   overflow: hidden;
   overflow: auto;
@@ -48,19 +106,199 @@ input[type="button"] {
   border-radius: 2px;
   box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
   margin: 10px;
-  padding: 0 0.5em;
+  padding: 0.5em;
   font: 400 18px Roboto, Arial, sans-serif;
   overflow: hidden;
   padding: 1rem;
   font-size: medium;
 }
 
+#sVuEFc {
+  width: 29px;
+  height: 29px;
+  margin-right: 16px;
+  position: relative;
+  user-select: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-@media (max-width: 767px) {
+#sVuEFc .mNcDk {
+  background-image: url('https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-1x.png');
+  background-size: 180px 20px;
+  background-position: 0 0;
+  position: absolute;
+  justify-content: center;
+  top: 4px;
+  left: 4.5px;
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+#sVuEFc:hover {
+  background-color: #00ff0075;
+}
+
+.hArJGc {
+  color: #1a73e8;
+  cursor: pointer;
+  display: block;
+  font-size: 12px;
+  height: 48px;
+  opacity: 0.8;
+  text-align: center;
+  text-transform: uppercase;
+  width: 54px;
+}
+
+.hArJGc .eYqqWd {
+  background-image: url('https://maps.gstatic.com/tactile/omnibox/directions-2x-20150909.png');
+  background-size: 22px;
+  height: 22px;
+  width: 22px;
+  margin-left: 12px;
+}
+
+.id-content {
+  background: white;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+  white-space: normal;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.googlemap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 2rem;
+}
+
+.map {
+  height: 500px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+
+
+@media only screen and (max-width: 480px) {
+  
+  
+  .map {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .mapContainer {
+    margin-left: 0;
+    margin-top: 2rem;
+    align-items: center;
+  }
+
+  .googlemap {
+    margin-right: 0;
+  }
+
+  .postComponent {
+    /* Add your styles for the post component on iPhone */
+    /* Example styles */
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 8px;
+    /* Add more styles as needed */
+  }
+
+  .rightBarComponent {
+    /* Add your styles for the rightBar component on iPhone */
+    /* Example styles */
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 8px;
+    /* Add more styles as needed */
+  }
+
+  .footer {
+    /* Add your styles for the footer component on iPhone */
+    /* Example styles */
+    font-size: 14px;
+    padding: 10px;
+    /* Add more styles as needed */
+  }
+
+  .input-text {
+    /* Add your styles for the input-text class on iPhone */
+    /* Example styles */
+    font-size: 14px;
+    padding: 8px;
+    /* Add more styles as needed */
+  }
+
+  .sVuEFc {
+    /* Add your styles for the #sVuEFc ID on iPhone */
+    /* Example styles */
+    font-size: 12px;
+    padding: 6px;
+    margin: 4px;
+    /* Add more styles as needed */
+  }
+
+  .button-primary,
+  .button-secondary,
+  .button-primary-traffic {
+    /* Add your styles for the button classes on iPhone */
+    /* Example styles */
+    font-size: 12px;
+    padding: 6px;
+    margin: 4px;
+    /* Add more styles as needed */
+  }
+  .hArJGc .eYqqWd {
+    /* Add your styles for the .hArJGc .eYqqWd selector on iPhone */
+    background-image: url('https://maps.gstatic.com/tactile/omnibox/directions-2x-20150909.png');
+    background-size: 14px;
+    height: 14px;
+    width: 14px;
+    margin-left: 6px;
+  }
+  
+}
+
+@media only screen and (max-width: 767px) {
+  .map {
+    height: 300px;
+    width: 400px;
+    margin-right: 2rem;
+  }
+
   .container {
     flex-direction: column;
     align-items: flex-start;
     margin: 1rem; /* Adjust the margin as per your preference */
+  }
+
+  .mapContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 200px; /* Adjust the height as per your preference */
+  }
+
+  .postComponent {
+    /* Add your styles for the post component on smaller screens */
+    padding: 0.5rem;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .leftColumn {
@@ -68,22 +306,147 @@ input[type="button"] {
     margin-bottom: 2rem;
   }
 
-  .mapContainer {
-    width: 100%;
-    height: 200px; /* Adjust the height as per your preference */
+  .hArJGc .eYqqWd {
+    /* Add your styles for the .hArJGc .eYqqWd selector on iPad */
+    background-image: url('https://maps.gstatic.com/tactile/omnibox/directions-2x-20150909.png');
+    background-size: 16px;
+    height: 16px;
+    width: 16px;
+    margin-left: 8px;
   }
 
-  .map-card,
-  #response-container,
-  #instructions {
-    max-width: 100%;
+  .rightBarComponent {
+    /* Add your styles for the rightBar component on iPad */
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 10px;
+    /* Add more styles as needed */
   }
-}
 
-@media screen and (max-width: 600px) {
-  .googlemap{
+  .footer {
+    /* Add your styles for the footer component on iPad */
+    font-size: 16px;
+    padding: 12px;
+    /* Add more styles as needed */
+  }
+
+  .input-text {
+    /* Add your styles for the input-text class on iPad */
+    font-size: 16px;
+    padding: 10px;
+    /* Add more styles as needed */
+  }
+
+  .button-primary,
+  .button-secondary,
+  .button-primary-traffic {
+    /* Add your styles for the button classes on iPad */
+    font-size: 16px;
+    padding: 10px;
+    margin: 8px;
+    /* Add more styles as needed */
+  }
+
+  .sVuEFc {
+    /* Add your styles for the sVuEFc ID on iPad */
+    font-size: 16px;
+    padding: 12px;
+    /* Add more styles as needed */
+  }
+
+  .hArJGc  {
+    /* Add your styles for the .hArJGc .eYqqWd selector on iPad */
+    /* Example styles */
+    background-size: 18px;
+    height: 18px;
+    width: 18px;
     margin-left: 10px;
-    margin-right: -350px;
+    /* Add more styles as needed */
+  }
+
+  .eYqqWd {
+    /* Add your styles for the .hArJGc .eYqqWd selector on iPad */
+    /* Example styles */
+    background-size: 18px;
+    height: 18px;
+    width: 18px;
+    margin-left: 10px;
+    /* Add more styles as needed */
   }
 }
 
+
+@media only screen and (min-width: 769px) {
+  .map {
+    height: 600px;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .mapContainer {
+    margin-left: 10rem;
+    margin-top: 4rem;
+    flex-direction: row;
+  }
+
+  .googlemap {
+    margin-right: 2rem;
+  }
+
+  .postComponent {
+    /* Add your styles for the post component on iMac and larger screens */
+
+    font-size: 18px;
+    padding: 14px;
+    margin-bottom: 12px;
+    /* Add more styles as needed */
+  }
+
+  .rightBarComponent {
+    /* Add your styles for the rightBar component on iMac and larger screens */
+    font-size: 18px;
+    padding: 14px;
+    margin-bottom: 12px;
+    /* Add more styles as needed */
+  }
+
+  .footer {
+    /* Add your styles for the footer component on iMac and larger screens */
+    font-size: 18px;
+    padding: 14px;
+    /* Add more styles as needed */
+  }
+
+  .input-text {
+    /* Add your styles for the input-text class on iMac and larger screens */
+    font-size: 18px;
+    padding: 12px;
+    /* Add more styles as needed */
+  }
+
+  .button-primary,
+  .button-secondary,
+  .button-primary-traffic {
+    /* Add your styles for the button classes on iMac and larger screens */
+    font-size: 18px;
+    padding: 12px;
+    margin: 10px;
+    /* Add more styles as needed */
+  }
+
+  .sVuEFc {
+    /* Add your styles for the sVuEFc ID on iMac and larger screens */
+    font-size: 18px;
+    padding: 14px;
+    /* Add more styles as needed */
+  }
+
+  .hArJGc .eYqqWd {
+    /* Add your styles for the .hArJGc .eYqqWd selector on iMac and larger screens */
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+    margin-left: 16px;
+    /* Add more styles as needed */
+  }
+}

@@ -4,6 +4,7 @@ import '../styles/LoginPage.css';
 import videoBg from '../assets/rain.mp4';
 import axios from 'axios';
 import Navbar from './Navbar';
+import '../index.css';
 
 const LoginPage = () => {
   const [userName, setUsername] = useState('');
@@ -11,8 +12,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -25,8 +25,6 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
-      setIsLoggedIn(true);
-      setIsAdmin(true);
       setUserStatus();
       navigate('/profile');
      
@@ -34,6 +32,7 @@ const LoginPage = () => {
       console.log(error);
       setError('Invalid username or password');
     }
+
   };
 
   const setUserStatus = async () => {
@@ -59,21 +58,32 @@ const LoginPage = () => {
         `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
         { status: true, isLoggedIn: true },
         { withCredentials: true }
+        
       );
-      console.log(response.data);
+  
+      console.log('Inside updateUserStatus', response.data.isLoggedIn)
+      console.log(setIsLoggedIn(response.data.isLoggedIn));
     } catch (error) {
       console.log(error);
     }
   };
 
+  const refreshPage = () => {
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 1000); // 2000 milliseconds delay (adjust the duration as needed)
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
+    refreshPage();
+
   };
 
   return (
     <>
-     
+
     <div className="login-page">
       <video className="login-video" src={videoBg} autoPlay loop muted />
       <div className="login-container">

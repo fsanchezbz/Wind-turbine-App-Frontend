@@ -1,69 +1,317 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media only screen and (max-width: 480px) {
+  .contact-form-title {
+    font-size: 1.5rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .contact-title {
+    font-size: 1.25rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .contact-label {
+    font-size: 0.9rem;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Add more styles for mobile devices */
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  /* Add more styles for screens larger than 768px */
+}
+
+@media only screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  main {
+    margin: calc(var(--header-height) + 1rem) 0 0 0;
+    padding: 0 0.5rem;
+  }
+
+  /* Add more styles for screens with max-width 650px */
+}
+
+/* Add more media queries as needed */
+
+@media (max-width: 576px) {
+  /* Styles for smaller mobile screens */
+  .landing-page-title {
+    font-size: 24px;
+  }
+
+  .landing-page-description {
+    font-size: 14px;
+  }
+
+  .landing-page-link {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .landing-page-footer-text {
+    font-size: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  /* Add more styles for screens with max-width 576px */
+}
+
+@media (max-width: 414px) {
+  /* Styles for iPhone 6/7/8 and similar mobile screens */
+  .landing-page-title {
+    font-size: 20px;
+  }
+
+  .landing-page-description {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .landing-page-link {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  /* Add more styles for screens with max-width 414px */
+}
+
+@media (max-width: 768px) {
+  .login-title {
+    font-size: 30px;
+  }
+
+  .form-label {
+    font-size: 16px;
+  }
+
+  .form-input {
+    font-size: 14px;
+  }
+
+  .login-button,
+  .signup-button {
+    font-size: 16px;
+  }
+
+  .signup-link {
+    font-size: 14px;
+  }
+
+  /* Add more styles for screens with max-width 768px */
+}
+
+@media (max-width: 480px) {
+  /* Styles for mobile screens */
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logout-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Add more styles for screens with max-width 480px */
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem; /* Adjust the margin as per your preference */
+  }
+  .mapContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 200px; /* Adjust the height as per your preference */
+  }
+  .leftColumn {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .map-card,
+  #response-container,
+  #instructions {
+    max-width: 100%;
+  }
+
+  /* Add more styles for screens with max-width 767px */
+}
+
+@media screen and (max-width: 600px) {
+  .googlemap {
+    margin-left: 10px;
+    margin-right: -350px;
+  }
+
+  /* Add more styles for screens with max-width 600px */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-brand,
+  .navbar-links {
+    margin-bottom: 10px;
+  }
+
+  .navbar-links a {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* Add more styles for screens with max-width 768px */
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+    overflow-y: visible;
+    position: static;
+  }
+
+  .sidebarWrapper {
+    padding: 10px;
+  }
+
+  .sidebarListItem {
+    margin-bottom: 10px;
+  }
+
+  .sidebarButton {
+    width: 120px;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  /* Add more styles for screens with max-width 768px */
+}
+
+@media (max-width: 768px) {
+  .share {
+    height: auto;
+    padding: 10px;
+  }
+
+  .shareTop {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .shareProfileImg {
+    margin-bottom: 10px;
+  }
+
+  .shareInput {
+    width: 100%;
+  }
+
+  .shareOptions {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .shareOption {
+    margin-right: 10px;
+  }
+
+  .shareButton {
+    margin-right: 0;
+  }
+
+  /* Add more styles for screens with max-width 768px */
+}
+
+@media (max-width: 767px) {
+  .postProfileImg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .postUsername {
+    font-size: 13px;
+    margin: 0 5px;
+  }
+
+  .postDate {
+    font-size: 11px;
+  }
+
+  .postImg {
+    margin-top: 10px;
+    max-height: 300px;
+  }
+
+  .postLikeCounter,
+  .postCommenttext {
+    font-size: 13px;
+  }
+
+  .date {
+    font-size: 12px;
+  }
+
+  .workOrderCard,
+  .separatedWorkOrderCard {
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+
+  /* Add more styles for screens with max-width 767px */
+}
+
+@media only screen and (max-width: 480px) {
+  .contact-form-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-title {
+    font-size: 1.25rem;
+  }
+
+  .contact-label {
+    font-size: 0.9rem;
+  }
+
+  .contact-input,
+  .contact-textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }

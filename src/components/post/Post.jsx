@@ -3,6 +3,7 @@ import { Box, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, Moda
 import axios from 'axios';
 import './post.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../index.css';
 
 const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);

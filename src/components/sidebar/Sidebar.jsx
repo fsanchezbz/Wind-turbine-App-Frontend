@@ -4,6 +4,7 @@ import {RssFeed,Chat, PlayCircleFilledOutlined,Group,Bookmark,
         HelpOutline,WorkOutline,Event,School} from '@mui/icons-material'
 import {Users} from "../../dummyData"
 import CloseFriend from '../closeFriend/CloseFriend'
+import '../index.css';
 
 export default function Sidebar() {
     return(

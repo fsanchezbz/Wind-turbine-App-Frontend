@@ -1,0 +1,159 @@
+.footer {
+  background-color: #333;
+  padding: 20px;
+  position: relative;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.footer-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+ 
+ 
+}
+
+.footer-vertical-line {
+  width: 1px;
+  height: 120px;
+  background-color: #fff;
+  margin: 0 10px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3b5998;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  position: relative;
+  color: white;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.footer-info {
+  margin-bottom: 8px;
+}
+
+
+
+
+@media screen and (max-width: 767px), (min-width: 768px) {
+  .footer-content {
+    justify-content: space-between;
+    text-align: left;
+    
+  }
+
+  .footer-section {
+    margin-bottom: 0;
+    padding: 0;
+    text-align: left;
+    
+  }
+
+  .social-icons {
+    justify-content: center;
+    gap: 8px;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .footer-logo {
+    width: 170px;
+  }
+
+  .footer-vertical-line {
+    width: 1px;
+    height: 120px;
+    background-color: #fff;
+    margin: 0 10px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .footer-horizontal-line.full-width {
+    display: none;
+  }
+
+  .footer-copyright {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .footer-section {
+    padding: 0 20px;
+  }
+
+  .footer-section-title {
+    font-size: 24px;
+  }
+
+  .footer-vertical-line {
+    height: 150px;
+  }
+  
+
+  .social-icons {
+    gap: 8px;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .footer-logo {
+    width: 200px;
+  }
+
+  h3 {
+    font-size: 34px;
+  }
+
+  .footer-copyright {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
+    color: 'white';
+  }
+}

@@ -1,10 +1,13 @@
 import React from 'react';
-import '../styles/About.css';
-import videoBg1 from '../assets/rain.mp4';
+import './About.css';
+import videoBg1 from '../../assets/rain.mp4';
+import '../../index.css';
+// import Footer from '../footer/Footer';
 
 const About = () => {
   return (
-    <div className="landing-page">
+    <>
+      <div className="landing-page">
       <div className='main'>
         <div className="overlay"></div>
         <video src={videoBg1} autoPlay loop muted />  
@@ -49,6 +52,8 @@ const About = () => {
         
       </div>
     </div>
+    {/* <Footer/> */}
+    </>
   );
 };
 

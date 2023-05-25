@@ -1,144 +1,143 @@
 .postWrapper {
-    padding: 10px;
-  }
-  
-  .postTop {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .postTopLeft {
-    display: flex;
-    align-items: center;
-  }
-  
+  padding: 10px;
+}
+
+.postTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postTopLeft {
+  display: flex;
+  align-items: center;
+}
+
+.postProfileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.postUsername {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.postDate {
+  font-size: 12px;
+}
+
+.postCenter {
+  margin: 20px 0;
+}
+
+.postImg {
+  margin-top: 20px;
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postBottomLeft {
+  display: flex;
+  align-items: center;
+}
+
+.likeIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.postLikeCounter {
+  font-size: 15px;
+}
+
+.postCommenttext {
+  cursor: pointer;
+  border-bottom: 1px dashed gray;
+  font-size: 15px;
+}
+
+.date {
+  font-weight: bold;
+}
+
+.workOrderCard {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-color: lightgreen;
+  border-radius: 10px;
+  border-width: 2px;
+}
+
+.separatedWorkOrderCard {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.card-done {
+  background-color: green;
+}
+
+.card-status-done {
+  background-color: green;
+}
+
+.card-deck {
+  gap: 10px;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 767px) {
   .postProfileImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .postUsername {
-    font-size: 15px;
-    font-weight: 500;
-    margin: 0 10px;
-  }
-  
-  .postDate {
-    font-size: 12px;
-  }
-  
-  .postCenter {
-    margin: 20px 0;
-  }
-  
-  .postImg {
-    margin-top: 20px;
-    width: 100%;
-    max-height: 500px;
-    object-fit: contain;
-  }
-  
-  .postBottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .postBottomLeft {
-    display: flex;
-    align-items: center;
-  }
-  
-  .likeIcon {
     width: 24px;
     height: 24px;
-    margin-right: 5px;
-    cursor: pointer;
   }
-  
-  .postLikeCounter {
-    font-size: 15px;
+
+  .postUsername {
+    font-size: 13px;
+    margin: 0 5px;
   }
-  
+
+  .postDate {
+    font-size: 11px;
+  }
+
+  .postImg {
+    margin-top: 10px;
+    max-height: 300px;
+  }
+
+  .postLikeCounter,
   .postCommenttext {
-    cursor: pointer;
-    border-bottom: 1px dashed gray;
-    font-size: 15px;
+    font-size: 13px;
   }
-  
+
   .date {
-    font-weight: bold;
+    font-size: 12px;
   }
-  
-  .workOrderCard {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-color: lightgreen;
-    border-radius: 10px;
-    border-width: 2px;
-  }
-  
+
+  .workOrderCard,
   .separatedWorkOrderCard {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    margin-bottom: 1rem;
+    padding: 0.7rem;
+    margin-bottom: 0.7rem;
   }
-  
-  .card {
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  }
-  
-  .card-done {
-    background-color: green;
-  }
-  
-  .card-status-done {
-    background-color: green;
-  }
-  
-  .card-deck {
-    gap: 10px;
-  }
-  
-  /* Media Query for Mobile Devices */
-  @media (max-width: 767px) {
-    .postProfileImg {
-      width: 24px;
-      height: 24px;
-    }
-  
-    .postUsername {
-      font-size: 13px;
-      margin: 0 5px;
-    }
-  
-    .postDate {
-      font-size: 11px;
-    }
-  
-    .postImg {
-      margin-top: 10px;
-      max-height: 300px;
-    }
-  
-    .postLikeCounter,
-    .postCommenttext {
-      font-size: 13px;
-    }
-  
-    .date {
-      font-size: 12px;
-    }
-  
-    .workOrderCard,
-    .separatedWorkOrderCard {
-      padding: 0.7rem;
-      margin-bottom: 0.7rem;
-    }
-  }
-  
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Input, Textarea, Button } from '@chakra-ui/react';
-
+import '../index.css';
 import axios from 'axios';
+// import Footer from './footer/Footer';
 
 const WorkOrder = () => {
   const [turbineModel, setTurbineModel] = useState('');
@@ -47,7 +48,8 @@ const WorkOrder = () => {
   // 39.576838, -2.258782
   // 39.573908, -2.260765
   return (
-    <Box padding="2rem">
+    <>
+     <Box padding="2rem">
       <Text fontSize="2xl" fontWeight="bold" marginBottom="1rem">
         Work Order Form
       </Text>
@@ -120,6 +122,8 @@ const WorkOrder = () => {
         </Button>
       </form>
     </Box>
+    {/* <Footer /> */}
+    </>
   );
 };
 

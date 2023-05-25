@@ -4,26 +4,32 @@ import '../styles/Navbar.css';
 import companyLogo from '../img/company-logo.png';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import '../index.css';
 
 const Navbar = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
-        setIsLoggedIn(true);
-        setIsAdmin(response.data.isAdmin);
-      } catch (error) {
-        console.log(error);
-        setIsLoggedIn(false);
-        setIsAdmin(false);
-      }
-    };
-
-    fetchUserData();
-  }, [isLoggedIn]);
+  
+    useEffect(() => {
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
+          const { _id, status, isAdmin } = response.data;
+          
+          setIsAdmin(isAdmin)
+          setIsLoggedIn(status);
+        } catch (error) {
+          console.log(error);
+          
+          setIsAdmin(false);
+        }
+      };
+  
+      fetchUserData();
+    }, [isLoggedIn]);
+ 
+  
 
   
 

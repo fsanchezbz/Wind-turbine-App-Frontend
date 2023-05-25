@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/ContactForm.css';
-import videoBg from '../assets/rain.mp4';
+import './ContactForm.css';
+import videoBg from '../../assets/rain.mp4';
 
 const ContactForm = () => {
   const [formStatus, setFormStatus] = React.useState('Send');

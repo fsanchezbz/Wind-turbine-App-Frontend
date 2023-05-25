@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../styles/SignUpPage.css';
 import videoBg from '../assets/rain.mp4';
 import axios from 'axios';
+import '../index.css';
+// import Footer from './footer/Footer';
 
 const SignUpPage = () => {
   const [userName, setUserName] = useState('');
@@ -64,6 +66,7 @@ const SignUpPage = () => {
   };
 
   return (
+    <>
     <div className="signup-page">
       <video className="signup-video" src={videoBg} autoPlay loop muted />
       <div className="signup-container text-overlay">
@@ -149,6 +152,8 @@ const SignUpPage = () => {
         </div>
       </div>
     </div>
+    {/* <Footer/> */}
+    </>
   );
 };
 

@@ -1,10 +1,12 @@
 import React from 'react';
-import '../styles/LandingPage.css';
-import videoBg from '../assets/wind.mp4'
+import './LandingPage.css';
+import videoBg from '../../assets/wind.mp4'
+// import Footer from '../footer/Footer';
 
 const LandingPage = () => {
   
   return (
+   <>
     <div className="landing-page">
       <div className='main'>
         <div className="overlay"></div>
@@ -18,6 +20,8 @@ const LandingPage = () => {
         </div>
     </div>
     </div>
+    {/* <Footer /> */}
+   </>
   );
 };
 

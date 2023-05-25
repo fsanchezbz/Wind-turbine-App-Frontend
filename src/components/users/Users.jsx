@@ -1,7 +1,8 @@
-import './rightbar.css';
+import './users.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../index.css';
 
 const Rightbar = () => {
     const [users, setUsers] = useState([]);
@@ -20,35 +21,6 @@ const Rightbar = () => {
 
     fetchUserData();
   }, []);
-
-  // const getUserStatus = async () => {
-  //   try {
-  //     const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
-  //     setUserStatus(response.data.status);
-  //     updateUserStatus(response.data._id); // Update user status on the backend
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const updateUserStatus = async (userId) => {
-  //   try {
-  //     const response = await axios.put(
-  //       `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
-  //       { status: true },
-  //       { withCredentials: true }
-  //     );
-  //     console.log(response.data); // Optional: Log the response from the server
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (users.length > 0) {
-  //     getUserStatus();
-  //   }
-  // }, [users]);
 
 
   const ProfileRightbar = () => {
