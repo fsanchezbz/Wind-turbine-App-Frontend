@@ -106,7 +106,8 @@
 }
 
 #you .message-content {
-  justify-content: flex-start;
+  justify-content: center;
+  padding-bottom: 3px;
 }
 
 #you .message-meta {
@@ -119,7 +120,8 @@
 }
 
 #other .message-content {
-  justify-content: flex-end;
+  justify-content: center;
+  padding-bottom: 3px;
   background-color: cornflowerblue;
 }
 
