@@ -45,16 +45,15 @@ const CompanyProfilePage = () => {
 
   return (
     <>
-    <div className="card-footer">
-      <Button onClick={() => openCommentsModal()}>Live Chat</Button>
-    </div>
+   
       <div className="profile">
         <div className="profileInfo">
-          <h4 className='profileInfoName'>Company Profile Page</h4>
+          <h2 className='profileInfoName'>Company Profile Page</h2>
           <span className='profileInfoDesc'>Hello {users.firstName}</span>
+          <Button  onClick={() => openCommentsModal()} style={{marginTop: '10px'}} colorScheme="yellow">Live Chat</Button>
         </div>
-        
-        <center><Map /></center>
+  
+        <Map />
       </div>
       <Modal isOpen={isOpenComments} onClose={closeCommentsModal} isCentered>
         <ModalOverlay />
