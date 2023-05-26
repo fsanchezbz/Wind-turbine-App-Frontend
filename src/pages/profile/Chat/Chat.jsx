@@ -41,7 +41,6 @@ function Chat({ socket, username, room, onCloseChat }) {
     }
   }, [messageList]);
 
-  
   return (
     <div className="chat-window">
       <div className="chat-header">
@@ -49,31 +48,30 @@ function Chat({ socket, username, room, onCloseChat }) {
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
-          {messageList.map((messageContent, index) => (
-            <div
-              key={index}
-              className={`message ${
-                username === messageContent.author ? "you" : "other"
-              }`}
-            >
-              <div>
-                <div className="message-content">
-                  <p>{messageContent.message}</p>
-                </div>
-                <div className="message-meta">
-                  <p id="time">{messageContent.time}</p>
-                  <p
-                    id="author"
-                    className={
-                      username === messageContent.author ? "you" : "blue"
-                    }
-                  >
-                    {username === messageContent.author ? "You" : messageContent.author}
-                  </p>
+          {messageList.map((messageContent, index) => {
+            const isUserMessage = messageContent.author === username;
+            const messageClass = isUserMessage ? "you" : "other";
+            const authorClass = isUserMessage ? "you" : "blue";
+
+            return (
+              <div
+                key={index}
+                className={`message ${messageClass}`}
+              >
+                <div>
+                  <div className="message-content">
+                    <p>{messageContent.message}</p>
+                  </div>
+                  <div className="message-meta">
+                    <p id="time">{messageContent.time}</p>
+                    <p id="author" className={authorClass}>
+                      {isUserMessage ? "You" : messageContent.author}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
           <div ref={messageContainerRef} />
         </ScrollToBottom>
       </div>
@@ -88,7 +86,6 @@ function Chat({ socket, username, room, onCloseChat }) {
           }}
         />
         <button onClick={sendMessage}>&#9658;</button>
-       
       </div>
     </div>
   );
