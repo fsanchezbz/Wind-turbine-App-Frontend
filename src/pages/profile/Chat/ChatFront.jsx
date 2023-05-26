@@ -2,7 +2,7 @@ import React, {useState, useEffect } from "react";
 import io from "socket.io-client";
 import Chat from './Chat';
 import axios from 'axios';
-const socket = io.connect("http://localhost:5005");
+const socket = io.connect(`${import.meta.env.VITE_PRODUCTION_API}`);
 
 
 
