@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Text, Flex } from '@chakra-ui/react';
-import '../styles/Map.css';
-import RightBar from './users/Users';
-import Post from './post/Post';
+import './Map.css';
+import RightBar from '../users/Users';
+import Post from '../post/Post';
+
 // import Footer from './footer/Footer';
 
 const Map = () => {
@@ -16,7 +17,7 @@ const Map = () => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBEvd7_wH6EBGHYts6-vi0OQDeGBfgBsq4&libraries=places&callback=initMap`;
+    script.src = `${import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_URL}`;
     script.defer = true;
     document.body.appendChild(script);
 
@@ -278,6 +279,7 @@ const Map = () => {
       </Flex>
       <Flex direction="column">
         <RightBar />
+       
       </Flex>
     </Flex>
     {/* <Footer /> */}

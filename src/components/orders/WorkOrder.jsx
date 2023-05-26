@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Text, Input, Textarea, Button } from '@chakra-ui/react';
-import '../index.css';
+import '../../index.css';
 import axios from 'axios';
 // import Footer from './footer/Footer';
 

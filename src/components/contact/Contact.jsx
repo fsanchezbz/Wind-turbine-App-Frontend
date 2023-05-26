@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './ContactForm.css';
 import videoBg from '../../assets/rain.mp4';
 
 const ContactForm = () => {
-  const [formStatus, setFormStatus] = React.useState('Send');
+  const { t } = useTranslation();
+  const [formStatus, setFormStatus] = React.useState(t('contactPage.formButton'));
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('Submitting...');
+    setFormStatus(t('contactPage.submitting'));
     const { name, email, message } = e.target.elements;
     let conFom = {
       name: name.value,
@@ -24,30 +26,30 @@ const ContactForm = () => {
       </div>
       <div className="contact-text-overlay">
         <div className="contact-section">
-          <h3 className="contact-title">Contact Us</h3>
-          <p className="contact-info">123 Street, City</p>
-          <p className="contact-info">Email: example@example.com</p>
-          <p className="contact-info">Phone: +1234567890</p>
+          <h3 className="contact-title">{t('contactPage.title')}</h3>
+          <p className="contact-info">{t('contactPage.address')}</p>
+          <p className="contact-info">{t('contactPage.email')}</p>
+          <p className="contact-info">{t('contactPage.phone')}</p>
         </div>
-        <h2 className="contact-form-title">Please Reach out to us!</h2>
+        <h2 className="contact-form-title">{t('contactPage.formTitle')}</h2>
         <form className="contact-form" onSubmit={onSubmit}>
           <div className="contact-form-group">
             <label className="contact-label" htmlFor="name">
-              Name:
+              {t('contactPage.formNameLabel')}
             </label>
             &nbsp;
             <input className="contact-input" type="text" id="name" required />
           </div>
           <div className="contact-form-group">
             <label className="contact-label" htmlFor="email">
-              Email:
+              {t('contactPage.formEmailLabel')}
             </label>
             &nbsp;
             <input className="contact-input" type="email" id="email" required />
           </div>
           <div className="contact-form-group">
             <label className="contact-label" htmlFor="message">
-              Message:
+              {t('contactPage.formMessageLabel')}
             </label>
             &nbsp;
             <textarea className="contact-textarea" id="message" required />

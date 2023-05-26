@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import '../styles/LogoutPage.css'; 
-import videoBg from '../assets/rain.mp4'
+import './LogoutPage.css'; 
+import videoBg from '../../assets/rain.mp4'
 import { FaRegSmile} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import '../index.css';
-
 
 function LogoutPage() {
   const navigate = useNavigate();

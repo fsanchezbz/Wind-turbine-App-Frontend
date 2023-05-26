@@ -1,0 +1,41 @@
+{
+    "landingPage": {
+        "welcome": "Bienvenue chez PJ TurbinePro GmbH",
+        "slogan": "Restauration de puissance et renouvellement de confiance",
+        "description1": "Chez PJ TurbinePro GmbH, nous sommes spécialisés dans la maintenance et la réparation de turbines. Notre mission est de restaurer la puissance et de renouveler la confiance en fournissant des solutions fiables pour des performances optimales de la turbine.",
+        "description2": "Avec une équipe de professionnels expérimentés et des technologies avancées, nous proposons des services exceptionnels qui dépassent les normes de l'industrie. De la maintenance de routine aux réparations d'urgence, nous accordons la priorité à la sécurité, à la qualité et à la satisfaction du client.",
+        "description3": "Faites confiance à PJ TurbinePro GmbH pour être votre partenaire fiable dans le maintien des performances et de la fiabilité de vos centrales électriques. Vivez la différence avec nous alors que nous restaurons la puissance et renouvelons la confiance dans chaque projet que nous entreprenons."
+    },
+    "about": {
+        "title": "Nous faisons la différence",
+        "description1": "Chez PJ TurbinePro GmbH, nous nous engageons à avoir un impact positif sur l'environnement et à faire face à la crise climatique. Notre mission est de contribuer à un avenir durable en veillant à la performance optimale et à la longévité des éoliennes.",
+        "description2": "Avec une équipe de techniciens hautement qualifiés et une grande expérience dans la réparation d'éoliennes, nous nous efforçons de fournir un service de la plus haute qualité à nos clients. Nous nous engageons à maintenir l'intégrité et l'efficacité des éoliennes, leur permettant de tirer parti de la puissance du vent et de produire une énergie propre et renouvelable.",
+        "description3": "Notre entreprise est animée par une passion pour la durabilité et une compréhension profonde de l'importance des sources d'énergie renouvelables. Nous travaillons en étroite collaboration avec nos clients pour fournir des solutions sur mesure répondant à leurs besoins spécifiques, en minimisant les temps d'arrêt et en maximisant les performances de leurs systèmes d'éoliennes.",
+        "description4": "En accordant la priorité à l'amélioration continue, à l'innovation et à un service client exceptionnel, nous visons à être des leaders de l'industrie de l'énergie éolienne. Nous nous engageons à repousser les limites, à explorer de nouvelles technologies et à mettre en œuvre les meilleures pratiques pour faire progresser l'énergie propre et verte.",
+        "openingHours": "Heures d'ouverture",
+        "monThu": "Lun - Jeu",
+        "friSat": "Ven - Sam",
+        "sunday": "Dimanche"
+    },
+    "contactPage": {
+        "title": "Contactez-nous",
+        "address": "123 Rue, Ville",
+        "email": "Email : exemple@exemple.com",
+        "phone": "Téléphone : +1234567890",
+        "formTitle": "Veuillez nous contacter !",
+        "formNameLabel": "Nom :",
+        "formEmailLabel": "Email :",
+        "formMessageLabel": "Message :",
+        "formButton": "Envoyer"
+    },
+    "loginPage": {
+        "title": "Connexion",
+        "emailLabel": "Email",
+        "usernameLabel": "Nom d'utilisateur",
+        "passwordLabel": "Mot de passe",
+        "loginButton": "Se connecter",
+        "signupText": "Vous n'avez pas de compte ?",
+        "signupLink": "Inscrivez-vous maintenant"
+    }
+}
+  

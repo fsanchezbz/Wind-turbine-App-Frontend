@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/SignUpPage.css';
-import videoBg from '../assets/rain.mp4';
+import './SignUpPage.css';
+import videoBg from '../../assets/rain.mp4';
 import axios from 'axios';
-import '../index.css';
 // import Footer from './footer/Footer';
 
 const SignUpPage = () => {

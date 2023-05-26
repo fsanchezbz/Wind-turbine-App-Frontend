@@ -1,0 +1,45 @@
+{
+    "landingPage": {
+      "welcome": "Willkommen bei PJ TurbinePro GmbH",
+      "slogan": "Energie wiederherstellen und Vertrauen erneuern",
+      "description1": "Bei <span class=\"highlight\">PJ TurbinePro GmbH</span> sind wir auf die Wartung und Reparatur von Turbinen spezialisiert. Unsere Mission besteht darin, Energie wiederherzustellen und Vertrauen zu erneuern, indem wir zuverlässige Lösungen für optimale Turbinenleistung bieten.",
+      "description2": "Mit einem Team von erfahrenen Fachleuten und fortschrittlichen Technologien bieten wir außergewöhnliche Dienstleistungen, die über branchenübliche Standards hinausgehen. Von routinemäßiger Wartung bis hin zu Notfallreparaturen legen wir Wert auf Sicherheit, Qualität und Kundenzufriedenheit.",
+      "description3": "Vertrauen Sie <span class=\"highlight\">PJ TurbinePro GmbH</span>, um Ihr verlässlicher Partner bei der Aufrechterhaltung der Leistung und Zuverlässigkeit Ihrer Kraftwerksanlagen zu sein. Machen Sie die Erfahrung des Unterschieds mit uns, während wir Energie wiederherstellen und Vertrauen bei jedem Projekt erneuern, das wir übernehmen."
+    },
+
+    "about": {
+        "title": "Wir machen den Unterschied",
+    "description1": "Bei <span class=\"highlight\">PJ TurbinePro GmbH</span> widmen wir uns der Schaffung eines positiven Einflusses auf die Umwelt und der Bewältigung der Klimakrise. Unsere Mission besteht darin, zu einer nachhaltigen Zukunft beizutragen, indem wir eine optimale Leistung und Langlebigkeit von Windturbinen sicherstellen.",
+    "description2": "Mit einem Team hochqualifizierter Techniker und umfangreicher Erfahrung in der Reparatur von Windturbinen setzen wir uns dafür ein, unseren Kunden den bestmöglichen Service von höchster Qualität zu bieten. Wir sind bestrebt, die Integrität und Effizienz von Windturbinen zu erhalten, damit sie die Kraft des Windes nutzen und saubere, erneuerbare Energie erzeugen können.",
+    "description3": "Unser Unternehmen wird von einer Leidenschaft für Nachhaltigkeit und einem tiefen Verständnis für die Bedeutung erneuerbarer Energiequellen angetrieben. Wir arbeiten eng mit unseren Kunden zusammen, um maßgeschneiderte Lösungen anzubieten, die ihren spezifischen Anforderungen entsprechen, und minimale Ausfallzeiten sowie maximale Leistung ihrer Windturbinensysteme gewährleisten.",
+    "description4": "Durch die Priorisierung kontinuierlicher Verbesserung, Innovation und außergewöhnlichem Kundenservice streben wir danach, führend in der Windenergiebranche zu sein. Wir sind bestrebt, Grenzen zu überschreiten, neue Technologien zu erkunden und bewährte Verfahren zu implementieren, um den Fortschritt sauberer, grüner Energie voranzutreiben.",
+    "openingHours": "Öffnungszeiten",
+    "monThu": "Mo - Do",
+    "openingTime1": "8:00 - 21:00 Uhr",
+    "friSat": "Fr - Sa",
+    "openingTime2": "8:00 - 1:00 Uhr",
+    "sunday": "Sonntag",
+    "openingTime3": "9:00 - 22:00 Uhr"
+    },
+    "contactPage": {
+        "title": "Kontaktieren Sie uns",
+        "address": "123 Straße, Stadt",
+        "email": "E-Mail: beispiel@beispiel.com",
+        "phone": "Telefon: +1234567890",
+        "formTitle": "Bitte kontaktieren Sie uns!",
+        "formNameLabel": "Name:",
+        "formEmailLabel": "E-Mail:",
+        "formMessageLabel": "Nachricht:",
+        "formButton": "Senden"
+    },
+    "loginPage": {
+        "title": "Anmelden",
+        "emailLabel": "E-Mail",
+        "usernameLabel": "Benutzername",
+        "passwordLabel": "Passwort",
+        "loginButton": "Anmelden",
+        "signupText": "Sie haben noch keinen Account?",
+        "signupLink": "Jetzt registrieren"
+    }
+}
+  

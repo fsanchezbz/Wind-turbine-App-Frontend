@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../styles/LoginPage.css';
-import videoBg from '../assets/rain.mp4';
+import { useTranslation } from 'react-i18next';
+import './LoginPage.css';
+import videoBg from '../../assets/rain.mp4';
 import axios from 'axios';
-import Navbar from './Navbar';
-import '../index.css';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const [userName, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -27,25 +27,22 @@ const LoginPage = () => {
       );
       setUserStatus();
       navigate('/profile');
-     
     } catch (error) {
       console.log(error);
-      setError('Invalid username or password');
+      setError(t('loginPage.invalidCredentials'));
     }
-
   };
 
   const setUserStatus = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
       const { _id, status, isAdmin, isLoggedIn } = response.data;
-      
-      // Check the status, isAdmin, and isLoggedIn values
+
       console.log(_id);
-      console.log(status); 
+      console.log(status);
       console.log(isAdmin);
       console.log(isLoggedIn);
-  
+
       updateUserStatus(_id);
     } catch (error) {
       console.log(error);
@@ -58,10 +55,9 @@ const LoginPage = () => {
         `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
         { status: true, isLoggedIn: true },
         { withCredentials: true }
-        
       );
-  
-      console.log('Inside updateUserStatus', response.data.isLoggedIn)
+
+      console.log('Inside updateUserStatus', response.data.isLoggedIn);
       console.log(setIsLoggedIn(response.data.isLoggedIn));
     } catch (error) {
       console.log(error);
@@ -71,26 +67,24 @@ const LoginPage = () => {
   const refreshPage = () => {
     setTimeout(() => {
       window.location.reload(true);
-    }, 1000); // 2000 milliseconds delay (adjust the duration as needed)
+    }, 1000);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
     refreshPage();
-
   };
 
   return (
     <>
-
-    <div className="login-page">
-      <video className="login-video" src={videoBg} autoPlay loop muted />
-      <div className="login-container">
-        <h2 className="login-title">Login</h2>        
+      <div className="login-page">
+        <video className="login-video" src={videoBg} autoPlay loop muted />
+        <div className="login-container">
+          <h2 className="login-title">{t('loginPage.title')}</h2>
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
+              <label htmlFor="email" className="form-label">{t('loginPage.emailLabel')}</label>
               <input
                 type="text"
                 id="email"
@@ -100,7 +94,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="username" className="form-label">Username</label>
+              <label htmlFor="username" className="form-label">{t('loginPage.usernameLabel')}</label>
               <input
                 type="text"
                 id="username"
@@ -110,26 +104,24 @@ const LoginPage = () => {
               />
             </div>
             <div className="form-group">
-              <label  htmlFor="password" className="form-label">Password</label>
+              <label htmlFor="password" className="form-label">{t('loginPage.passwordLabel')}</label>
               <input
                 type="password"
                 id="password"
                 className="form-input"
                 value={password}
-                color='black'
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button type="submit" className="login-button">Login</button>
+            <button type="submit" className="login-button">{t('loginPage.loginButton')}</button>
           </form>
-        {error && <p className="error-message">{error}</p>}
-        <div className="signup-link">
-          Don't have an account? <Link to="/signup">Sign up</Link>
+          {error && <p className="error-message">{error}</p>}
+          <div className="signup-link">
+            {t('loginPage.signupText')} <Link to="/signup">{t('loginPage.signupLink')}</Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
-    
   );
 };
 

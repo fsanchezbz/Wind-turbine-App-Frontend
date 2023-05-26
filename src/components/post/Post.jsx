@@ -4,17 +4,18 @@ import axios from 'axios';
 import './post.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../index.css';
+import ChatFront from '../../pages/profile/Chat/ChatFront';
+
 
 const Post = () => {
   const [workOrders, setWorkOrders] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
   const [isOpenAddInfo, setIsOpenAddInfo] = useState(false);
-  const [isOpenComments, setIsOpenComments] = useState(false);
+ 
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
-  const [selectedComments, setSelectedComments] = useState(''); // State for tracking the selected work order comments
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,17 +56,7 @@ const Post = () => {
     }
   };
 
-  const openCommentsModal = async (workOrderId) => {
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${workOrderId}`);
-      const { addInfo } = response.data;
-      setSelectedWorkOrderId(workOrderId);
-      setSelectedComments(addInfo);
-      setIsOpenComments(true);
-    } catch (error) {
-      console.error('Failed to fetch work order comments:', error);
-    }
-  };
+ 
 
   const closeAddInfoModal = () => {
     setSelectedWorkOrderId(null);
@@ -73,11 +64,7 @@ const Post = () => {
     setAddInfo('');
   };
 
-  const closeCommentsModal = () => {
-    setSelectedWorkOrderId(null);
-    setIsOpenComments(false);
-    setSelectedComments('');
-  };
+ 
 
   const handleAddInfoFormSubmit = async (event) => {
     event.preventDefault();
@@ -135,14 +122,15 @@ const Post = () => {
                   )}
 
                   {!workOrder.status && (
-                   <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
-                      Done
-                    </Button>
+                    <>
+                      <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
+                        Done
+                      </Button>
+                      
+                    </>
                   )}
 
-                  <div className="card-footer">
-                    <Button onClick={() => openCommentsModal(workOrder._id)}>View Comments</Button>
-                  </div>
+                  
                 </div>
               </div>
             ))
@@ -183,27 +171,9 @@ const Post = () => {
           </ModalContent>
         </Modal>
       )}
-      {selectedWorkOrderId && (
-        <Modal isOpen={isOpenComments} onClose={closeCommentsModal}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Comments</ModalHeader>
-            <ModalBody>
-              <Button colorScheme="blue" mr={3} onClick={closeCommentsModal}>
-                Close
-              </Button>
-              <ModalBody>
-                <Text className="tech" marginBottom="0.5rem">
-                  Comments: {selectedComments}
-                </Text>
-              </ModalBody>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
-      )}
+      
     </div>
   );
 };
 
 export default Post;
-

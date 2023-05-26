@@ -1,0 +1,41 @@
+{
+    "landingPage": {
+      "welcome": "Welcome to PJ TurbinePro GmbH",
+      "slogan": "Restoring power and Renewing trust",
+      "description1": "At <span class=\"highlight\">PJ TurbinePro GmbH</span>, we specialize in turbine maintenance and repair. Our mission is to restore power and renew trust by providing reliable solutions for optimal turbine performance.",
+      "description2": "With a team of experienced professionals and advanced technologies, we offer exceptional services that go beyond industry standards. From routine maintenance to emergency repairs, we prioritize safety, quality, and customer satisfaction.",
+      "description3": "Trust <span class=\"highlight\">PJ TurbinePro GmbH</span> to be your reliable partner in maintaining the performance and reliability of your power plants. Experience the difference with us as we restore power and renew trust in every project we undertake."
+    },
+    "about": {
+      "title": "We Make a Difference",
+      "description1": "At <span class=\"highlight\">PJ TurbinePro GmbH</span>, we are dedicated to making a positive impact on the environment and addressing the climate crisis. Our mission is to contribute to a sustainable future by ensuring the optimal performance and longevity of wind turbines.",
+      "description2": "With a team of highly skilled technicians and a wealth of experience in wind turbine repair, we strive to deliver the highest quality service to our clients. We are committed to maintaining the integrity and efficiency of wind turbines, enabling them to harness the power of wind and generate clean, renewable energy.",
+      "description3": "Our company is driven by a passion for sustainability and a deep understanding of the importance of renewable energy sources. We work closely with our clients to provide tailored solutions that meet their specific needs, ensuring minimal downtime and maximizing the performance of their wind turbine systems.",
+      "description4": "By prioritizing continuous improvement, innovation, and exceptional customer service, we aim to be leaders in the wind energy industry. We are dedicated to pushing the boundaries, exploring new technologies, and implementing best practices to drive the advancement of clean, green energy.",
+      "openingHours": "Opening Hours",
+      "monThu": "Mon - Thu",
+      "friSat": "Fri - Sat",
+      "sunday": "Sunday"
+    },
+    "contactPage": {
+        "title": "Contact Us",
+        "address": "123 Street, City",
+        "email": "Email: example@example.com",
+        "phone": "Phone: +1234567890",
+        "formTitle": "Please Reach out to us!",
+        "formNameLabel": "Name:",
+        "formEmailLabel": "Email:",
+        "formMessageLabel": "Message:",
+        "formButton": "Send"
+    },
+    "loginPage": {
+        "title": "Login",
+        "emailLabel": "Email",
+        "usernameLabel": "Username",
+        "passwordLabel": "Password",
+        "loginButton": "Login",
+        "signupText": "Don't have an account?",
+        "signupLink": "Sign up now"
+    }
+}
+  
