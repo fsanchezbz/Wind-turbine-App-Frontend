@@ -1,45 +1,34 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import "./Chat.css";
 
-function Chat({ socket, username, room, onCloseChat }) {
+function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
-  const messageContainerRef = useRef(null);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
+        time:
+          new Date(Date.now()).getHours() +
+          ":" +
+          new Date(Date.now()).getMinutes(),
       };
 
-      socket.emit("send_message", messageData);
+      await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
   };
 
   useEffect(() => {
-    const handleReceiveMessage = (data) => {
+    socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
-    };
-
-    socket.on("receive_message", handleReceiveMessage);
-
-    return () => {
-      socket.off("receive_message", handleReceiveMessage);
-    };
+    });
   }, [socket]);
-
-  useEffect(() => {
-    // Scroll to the bottom of the message container when a new message is added
-    if (messageContainerRef.current) {
-      messageContainerRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messageList]);
 
   return (
     <div className="chat-window">
@@ -48,15 +37,11 @@ function Chat({ socket, username, room, onCloseChat }) {
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
-          {messageList.map((messageContent, index) => {
-            const isUserMessage = messageContent.author === username;
-            const messageClass = isUserMessage ? "you" : "other";
-            const authorClass = isUserMessage ? "you" : "blue";
-
+          {messageList.map((messageContent) => {
             return (
               <div
-                key={index}
-                className={`message ${messageClass}`}
+                className="message"
+                id={username === messageContent.author ? "you" : "other"}
               >
                 <div>
                   <div className="message-content">
@@ -64,15 +49,12 @@ function Chat({ socket, username, room, onCloseChat }) {
                   </div>
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
-                    <p id="author" className={authorClass}>
-                      {isUserMessage ? "You" : messageContent.author}
-                    </p>
+                    <p id="author">{messageContent.author}</p>
                   </div>
                 </div>
               </div>
             );
           })}
-          <div ref={messageContainerRef} />
         </ScrollToBottom>
       </div>
       <div className="chat-footer">
@@ -80,7 +62,9 @@ function Chat({ socket, username, room, onCloseChat }) {
           type="text"
           value={currentMessage}
           placeholder="Hey..."
-          onChange={(event) => setCurrentMessage(event.target.value)}
+          onChange={(event) => {
+            setCurrentMessage(event.target.value);
+          }}
           onKeyDown={(event) => {
             event.key === "Enter" && sendMessage();
           }}
