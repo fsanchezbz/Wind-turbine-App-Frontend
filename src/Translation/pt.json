@@ -1,0 +1,121 @@
+{
+    "landingPage": {
+      "welcome": "Bem-vindo à PJ TurbinePro GmbH",
+      "slogan": "Restaurando poder e renovando confiança",
+      "description1": "Na <span class=\"highlight\">PJ TurbinePro GmbH</span>, somos especializados em manutenção e reparo de turbinas. Nossa missão é restaurar o poder e renovar a confiança, fornecendo soluções confiáveis para um desempenho ideal da turbina.",
+      "description2": "Com uma equipe de profissionais experientes e tecnologias avançadas, oferecemos serviços excepcionais que vão além dos padrões do setor. Desde a manutenção de rotina até reparos de emergência, priorizamos a segurança, qualidade e satisfação do cliente.",
+      "description3": "Confie na <span class=\"highlight\">PJ TurbinePro GmbH</span> para ser seu parceiro confiável na manutenção do desempenho e confiabilidade de suas usinas. Experimente a diferença conosco enquanto restauramos o poder e renovamos a confiança em cada projeto que realizamos."
+    },
+    "about": {
+      "title": "Fazemos a diferença",
+      "description1": "Na <span class=\"highlight\">PJ TurbinePro GmbH</span>, somos dedicados a causar um impacto positivo no meio ambiente e enfrentar a crise climática. Nossa missão é contribuir para um futuro sustentável garantindo o desempenho e a longevidade ideais das turbinas eólicas.",
+      "description2": "Com uma equipe de técnicos altamente qualificados e uma vasta experiência em reparo de turbinas eólicas, nos esforçamos para oferecer o serviço de mais alta qualidade aos nossos clientes. Comprometemo-nos a manter a integridade e eficiência das turbinas eólicas, permitindo que elas aproveitem o poder do vento e gerem energia limpa e renovável.",
+      "description3": "Nossa empresa é impulsionada por uma paixão pela sustentabilidade e um profundo entendimento da importância das fontes de energia renovável. Trabalhamos em estreita colaboração com nossos clientes para fornecer soluções personalizadas que atendam às suas necessidades específicas, garantindo um tempo mínimo de inatividade e maximizando o desempenho de seus sistemas de turbinas eólicas.",
+      "description4": "Ao priorizar a melhoria contínua, a inovação e um atendimento ao cliente excepcional, buscamos ser líderes na indústria de energia eólica. Estamos dedicados a ultrapassar os limites, explorar novas tecnologias e implementar as melhores práticas para impulsionar o avanço da energia limpa e sustentável.",
+      "openingHours": "Horário de funcionamento",
+      "monThu": "Seg - Qui",
+      "friSat": "Sex - Sab",
+      "sunday": "Domingo"
+    },
+    "contactPage": {
+      "title": "Entre em contato",
+      "address": "Rua 123, Cidade",
+      "email": "Email: exemplo@exemplo.com",
+      "phone": "Telefone: +1234567890",
+      "formTitle": "Entre em contato conosco!",
+      "formNameLabel": "Nome:",
+      "formEmailLabel": "Email:",
+      "formMessageLabel": "Mensagem:",
+      "formButton": "Enviar"
+    },
+    "loginPage": {
+      "title": "Login",
+      "emailLabel": "Email",
+      "usernameLabel": "Nome de usuário",
+      "passwordLabel": "Senha",
+      "loginButton": "Entrar",
+      "signupText": "Não tem uma conta?",
+      "signupLink": "Cadastre-se agora"
+    },
+    "navbar": {
+        "home": "Início",
+        "about": "Sobre",
+        "contact": "Contato",
+        "profile": "Perfil",
+        "work": "Trabalho",
+        "admin": "Admin",
+        "logout": "Sair",
+        "login": "Entrar"
+    },
+    "WorkOrder": {
+        "formTitle": "Título do Formulário",
+        "turbineModelLabel": "Modelo de Turbina",
+        "turbineModelPlaceholder": "Digite o modelo de turbina",
+        "descriptionLabel": "Descrição",
+        "descriptionPlaceholder": "Digite a descrição",
+        "locationLabel": "Localização",
+        "locationPlaceholder": "Digite a localização",
+        "technicianLabel": "Técnico",
+        "technicianPlaceholder": "Digite o técnico",
+        "dateLabel": "Data",
+        "addInfoLabel": "Informações Adicionais",
+        "addInfoPlaceholder": "Digite informações adicionais",
+        "statusLabel": "Status",
+        "nameLabel": "Nome",
+        "namePlaceholder": "Digite o nome",
+        "dateTimeLabel": "Data e Hora",
+        "dateTimePlaceholder": "Digite a data e hora",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Digite o email",
+        "phoneLabel": "Telefone",
+        "phonePlaceholder": "Digite o telefone",
+        "requestDetailsLabel": "Detalhes da Solicitação",
+        "requestDetailsPlaceholder": "Digite os detalhes da solicitação",
+        "bestTimesLabel": "Melhores Horários",
+        "bestTimesPlaceholder": "Digite os melhores horários",
+        "completionDateLabel": "Data de Conclusão",
+        "completionDatePlaceholder": "Digite a data de conclusão",
+        "submitButton": "Enviar"
+    },
+    "Post": {
+        "orderStatus": "Status do Pedido",
+        "postedBy": "Postado por",
+        "open": "Aberto",
+        "close": "Fechado",
+        "model": "Modelo",
+        "description": "Descrição",
+        "coordinates": "Coordenadas",
+        "technician": "Técnico",
+        "date": "Data",
+        "requestDetails": "Detalhes do Pedido",
+        "bestTimes": "Melhores Horários",
+        "completionDate": "Data de Conclusão",
+        "name": "Nome",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "dateTime": "Data, Hora",
+        "comments": "Comentários",
+        "deleteButton": "Excluir",
+        "doneButton": "Concluído",
+        "addInfoModalTitle": "Adicionar Informações",
+        "informationLabel": "Informação",
+        "closeButton": "Fechar",
+        "saveButton": "Salvar"
+    },
+    "Users": {
+        "rightbarTitle": "Informações do Usuário",
+        "onlineText": "Online",
+        "adminManager": "Admin: Gerente"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "Página do Perfil da Empresa",
+        "helloMessage": "Olá {{name}}",
+        "liveChatButton": "Chat Ao Vivo",
+        "chatRoomTitle": "Sala de Chat da PJ TurbinePro GmbH",
+        "chatRoomDescription": "Aqui neste chat você pode conversar com todos os usuários online",
+        "closeButton": "Fechar"
+    }
+      
+      
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './Navbar.css';
 import companyLogo from '../../img/company-logo.png';
 import Cookies from 'js-cookie';
@@ -7,6 +8,7 @@ import axios from 'axios';
 import LanguageSwitcher from '../Language/LanguageSwitcher';
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -39,26 +41,26 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/">{t('navbar.home')}</Link>
+          <Link to="/about">{t('navbar.about')}</Link>
+          <Link to="/contact">{t('navbar.contact')}</Link>
           {isLoggedIn ? (
             <>
               {isAdmin ? (
                 <>
-                  <Link to="/profile">Profile</Link>
-                  <Link to="/work">Work</Link>
-                  <Link to="/admin">Admin</Link>
+                  <Link to="/profile">{t('navbar.profile')}</Link>
+                  <Link to="/work">{t('navbar.work')}</Link>
+                  <Link to="/admin">{t('navbar.admin')}</Link>
                 </>
               ) : (
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">{t('navbar.profile')}</Link>
               )}
-              <Link to="/logout">Logout</Link>
+              <Link to="/logout">{t('navbar.logout')}</Link>
             </>
           ) : (
-            <Link to="/login">Login</Link>
+            <Link to="/login">{t('navbar.login')}</Link>
           )}
-          <LanguageSwitcher className="language-switcher" />
+          <LanguageSwitcher className="language-switcher " />
         </div>
       </div>
     </nav>

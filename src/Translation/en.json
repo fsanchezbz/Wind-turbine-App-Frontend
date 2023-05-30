@@ -36,6 +36,86 @@
         "loginButton": "Login",
         "signupText": "Don't have an account?",
         "signupLink": "Sign up now"
+    },
+    "navbar": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "profile": "Profile",
+        "work": "Work",
+        "admin": "Admin",
+        "logout": "Logout",
+        "login": "Login"
+    },
+    "WorkOrder": {
+        "formTitle": "Form Title",
+        "turbineModelLabel": "Turbine Model",
+        "turbineModelPlaceholder": "Enter Turbine Model",
+        "descriptionLabel": "Description",
+        "descriptionPlaceholder": "Enter Description",
+        "locationLabel": "Location",
+        "locationPlaceholder": "Enter Location",
+        "technicianLabel": "Technician",
+        "technicianPlaceholder": "Enter Technician",
+        "dateLabel": "Date",
+        "addInfoLabel": "Additional Information",
+        "addInfoPlaceholder": "Enter Additional Information",
+        "statusLabel": "Status",
+        "nameLabel": "Name",
+        "namePlaceholder": "Enter Name",
+        "dateTimeLabel": "Date and Time",
+        "dateTimePlaceholder": "Enter Date and Time",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter Email",
+        "phoneLabel": "Phone",
+        "phonePlaceholder": "Enter Phone",
+        "requestDetailsLabel": "Request Details",
+        "requestDetailsPlaceholder": "Enter Request Details",
+        "bestTimesLabel": "Best Times",
+        "bestTimesPlaceholder": "Enter Best Times",
+        "completionDateLabel": "Completion Date",
+        "completionDatePlaceholder": "Enter Completion Date",
+        "submitButton": "Submit"
+    },
+    "Post": {
+        "orderStatus": "Order Status",
+        "postedBy": "Posted By",
+        "open": "Open",
+        "close": "Closed",
+        "model": "Model",
+        "description": "Description",
+        "coordinates": "Coordinates",
+        "technician": "Technician",
+        "date": "Date",
+        "requestDetails": "Request Details",
+        "bestTimes": "Best Times",
+        "completionDate": "Completion Date",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "dateTime": "Date, Time",
+        "comments": "Comments",
+        "deleteButton": "Delete",
+        "doneButton": "Done",
+        "addInfoModalTitle": "Add Info",
+        "informationLabel": "Information",
+        "closeButton": "Close",
+        "saveButton": "Save"
+    },
+    "Users": {
+        "rightbarTitle": "User Information",
+        "onlineText": "Online",
+        "adminManager": "Admin: Manager"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "Company Profile Page",
+        "helloMessage": "Hello {{name}}",
+        "liveChatButton": "Live Chat",
+        "chatRoomTitle": "PJ TurbinePro GmbH Chat Room",
+        "chatRoomDescription": "Here in this chat you can talk to all online",
+        "closeButton": "Close"
     }
+      
+      
 }
   

@@ -40,6 +40,90 @@
         "loginButton": "Anmelden",
         "signupText": "Sie haben noch keinen Account?",
         "signupLink": "Jetzt registrieren"
+    },
+    "navbar": {
+        "home": "Startseite",
+        "about": "Über uns",
+        "contact": "Kontakt",
+        "profile": "Profil",
+        "work": "Arbeit",
+        "admin": "Admin",
+        "logout": "Abmelden",
+        "login": "Anmelden"
+    },
+    "WorkOrder": {
+        "formTitle": "Formulartitel",
+        "turbineModelLabel": "Turbomodell",
+        "turbineModelPlaceholder": "Turbinenmodell eingeben",
+        "descriptionLabel": "Beschreibung",
+        "descriptionPlaceholder": "Beschreibung eingeben",
+        "locationLabel": "Ort",
+        "locationPlaceholder": "Ort eingeben",
+        "technicianLabel": "Techniker",
+        "technicianPlaceholder": "Techniker eingeben",
+        "dateLabel": "Datum",
+        "addInfoLabel": "Zusätzliche Informationen",
+        "addInfoPlaceholder": "Zusätzliche Informationen eingeben",
+        "statusLabel": "Status",
+        "nameLabel": "Name",
+        "namePlaceholder": "Name eingeben",
+        "dateTimeLabel": "Datum und Uhrzeit",
+        "dateTimePlaceholder": "Datum und Uhrzeit eingeben",
+        "emailLabel": "E-Mail",
+        "emailPlaceholder": "E-Mail eingeben",
+        "phoneLabel": "Telefon",
+        "phonePlaceholder": "Telefonnummer eingeben",
+        "requestDetailsLabel": "Anforderungsdetails",
+        "requestDetailsPlaceholder": "Anforderungsdetails eingeben",
+        "bestTimesLabel": "Beste Zeiten",
+        "bestTimesPlaceholder": "Beste Zeiten eingeben",
+        "completionDateLabel": "Abschlussdatum",
+        "completionDatePlaceholder": "Abschlussdatum eingeben",
+        "submitButton": "Senden"
+    },
+    "Post": {
+        "orderStatus": "Auftragsstatus",
+        "postedBy": "Veröffentlicht von",
+        "open": "Offen",
+        "close": "Geschlossen",
+        "model": "Modell",
+        "description": "Beschreibung",
+        "coordinates": "Koordinaten",
+        "technician": "Techniker",
+        "date": "Datum",
+        "requestDetails": "Anfrage Details",
+        "bestTimes": "Beste Zeiten",
+        "completionDate": "Abschlussdatum",
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "dateTime": "Datum, Zeit",
+        "comments": "Kommentare",
+        "deleteButton": "Löschen",
+        "doneButton": "Erledigt",
+        "addInfoModalTitle": "Zusatzinformationen",
+        "informationLabel": "Informationen",
+        "closeButton": "Schließen",
+        "saveButton": "Speichern"
+    },
+    "Users": {
+        "rightbarTitle": "Benutzerinformationen",
+        "onlineText": "Online",
+        "adminManager": "Admin: Chef"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "Unternehmensprofilseite",
+        "helloMessage": "Hallo {{name}}",
+        "liveChatButton": "Live-Chat",
+        "chatRoomTitle": "PJ TurbinePro GmbH Chat-Raum",
+        "chatRoomDescription": "Hier in diesem Chat kannst du mit allen Online-Benutzern sprechen",
+        "closeButton": "Schließen"
     }
+
+      
+    
+      
+      
+      
 }
   

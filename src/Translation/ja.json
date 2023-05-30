@@ -1,0 +1,117 @@
+{
+    "landingPage": {
+      "welcome": "PJ TurbinePro GmbHへようこそ",
+      "slogan": "電力を回復し、信頼を取り戻す",
+      "description1": "PJ TurbinePro GmbHでは、タービンのメンテナンスと修理を専門としています。私たちの使命は、信頼性のある最適なタービンのパフォーマンスを提供することによって、電力を回復し、信頼を取り戻すことです。",
+      "description2": "経験豊富な専門家チームと先進技術を活用して、業界の基準を超える優れたサービスを提供しています。定期的なメンテナンスから緊急の修理まで、安全性、品質、お客様の満足度を最優先にしています。",
+      "description3": "PJ TurbinePro GmbHを信頼して、発電所のパフォーマンスと信頼性の維持における信頼できるパートナーとなってください。私たちが手がけるすべてのプロジェクトで、電力を回復し、信頼を取り戻す違いを実感してください。"
+    },
+    "about": {
+      "title": "私たちは違いを生み出します",
+      "description1": "PJ TurbinePro GmbHでは、環境への積極的な影響を与え、気候危機に対処することに専念しています。私たちの使命は、風力タービンの最適なパフォーマンスと寿命を確保することにより、持続可能な未来への貢献です。",
+      "description2": "高度な技術者チームと豊富な風力タービン修理の経験を活かし、最高品質のサービスをお客様に提供することに努めています。風力タービンの完全性と効率を維持することに取り組み、風力を利用してクリーンで再生可能なエネルギーを生成することを可能にしています。",
+      "description3": "私たちの会社は、持続可能な発展の情熱と再生可能エネルギー源の重要性を深く理解しています。お客様と緊密に連携し、特定のニーズに応じたカスタマイズされたソリューションを提供し、ダウンタイムを最小限に抑え、風力タービンシステムのパフォーマンスを最大化します。",
+      "description4": "持続的な改善、革新、卓越した顧客サービスを重視することで、風力エネルギー産業のリーダーを目指しています。クリーンで環境に優しいエネルギーの進歩を推進するために、限界を押し広げ、新しい技術を探求し、ベストプラクティスを実施することに取り組んでいます。"
+    },
+    "contactPage": {
+      "title": "お問い合わせ",
+      "address": "〒1234567 都道府県市町村1-2-3",
+      "email": "メールアドレス：example@example.com",
+      "phone": "電話番号：+1234567890",
+      "formTitle": "お気軽にお問い合わせください！",
+      "formNameLabel": "お名前：",
+      "formEmailLabel": "メールアドレス：",
+      "formMessageLabel": "メッセージ：",
+      "formButton": "送信"
+    },
+    "loginPage": {
+      "title": "ログイン",
+      "emailLabel": "メールアドレス",
+      "usernameLabel": "ユーザー名",
+      "passwordLabel": "パスワード",
+      "loginButton": "ログイン",
+      "signupText": "アカウントをお持ちでない場合は、",
+      "signupLink": "今すぐ登録"
+    },
+    "navbar": {
+        "home": "ホーム",
+        "about": "会社概要",
+        "contact": "お問い合わせ",
+        "profile": "プロフィール",
+        "work": "仕事",
+        "admin": "管理者",
+        "logout": "ログアウト",
+        "login": "ログイン"
+    },
+    "WorkOrder": {
+        "formTitle": "フォームのタイトル",
+        "turbineModelLabel": "タービンモデル",
+        "turbineModelPlaceholder": "タービンモデルを入力してください",
+        "descriptionLabel": "説明",
+        "descriptionPlaceholder": "説明を入力してください",
+        "locationLabel": "場所",
+        "locationPlaceholder": "場所を入力してください",
+        "technicianLabel": "技術者",
+        "technicianPlaceholder": "技術者を入力してください",
+        "dateLabel": "日付",
+        "addInfoLabel": "追加情報",
+        "addInfoPlaceholder": "追加情報を入力してください",
+        "statusLabel": "ステータス",
+        "nameLabel": "名前",
+        "namePlaceholder": "名前を入力してください",
+        "dateTimeLabel": "日時",
+        "dateTimePlaceholder": "日時を入力してください",
+        "emailLabel": "メール",
+        "emailPlaceholder": "メールを入力してください",
+        "phoneLabel": "電話",
+        "phonePlaceholder": "電話番号を入力してください",
+        "requestDetailsLabel": "リクエストの詳細",
+        "requestDetailsPlaceholder": "リクエストの詳細を入力してください",
+        "bestTimesLabel": "最適な時間帯",
+        "bestTimesPlaceholder": "最適な時間帯を入力してください",
+        "completionDateLabel": "完了日",
+        "completionDatePlaceholder": "完了日を入力してください",
+        "submitButton": "送信"
+    },
+    "Post": {
+        "orderStatus": "注文のステータス",
+        "postedBy": "投稿者",
+        "open": "オープン",
+        "close": "クローズ",
+        "model": "モデル",
+        "description": "説明",
+        "coordinates": "座標",
+        "technician": "技術者",
+        "date": "日付",
+        "requestDetails": "リクエストの詳細",
+        "bestTimes": "最適な時間",
+        "completionDate": "完了日",
+        "name": "名前",
+        "email": "メールアドレス",
+        "phone": "電話番号",
+        "dateTime": "日付、時間",
+        "comments": "コメント",
+        "deleteButton": "削除",
+        "doneButton": "完了",
+        "addInfoModalTitle": "情報の追加",
+        "informationLabel": "情報",
+        "closeButton": "閉じる",
+        "saveButton": "保存"
+    },
+    "Users": {
+        "rightbarTitle": "ユーザー情報",
+        "onlineText": "オンライン",
+        "adminManager": "管理者：マネージャー"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "会社のプロフィールページ",
+        "helloMessage": "こんにちは、{{name}}さん",
+        "liveChatButton": "ライブチャット",
+        "chatRoomTitle": "PJ TurbinePro GmbH チャットルーム",
+        "chatRoomDescription": "こちらのチャットではオンラインの全員とお話できます",
+        "closeButton": "閉じる"
+    }
+      
+      
+  }
+  

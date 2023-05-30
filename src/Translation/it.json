@@ -1,0 +1,121 @@
+{
+    "landingPage": {
+      "welcome": "Benvenuti in PJ TurbinePro GmbH",
+      "slogan": "Ripristiniamo l'energia e rinnoviamo la fiducia",
+      "description1": "Presso <span class=\"highlight\">PJ TurbinePro GmbH</span>, siamo specializzati nella manutenzione e riparazione delle turbine. La nostra missione è ripristinare l'energia e rinnovare la fiducia fornendo soluzioni affidabili per una prestazione ottimale delle turbine.",
+      "description2": "Grazie a un team di professionisti esperti e tecnologie avanzate, offriamo servizi eccezionali che vanno oltre gli standard del settore. Dalla manutenzione ordinaria alle riparazioni d'emergenza, mettiamo al primo posto la sicurezza, la qualità e la soddisfazione del cliente.",
+      "description3": "Affidati a <span class=\"highlight\">PJ TurbinePro GmbH</span> come tuo partner affidabile per mantenere le prestazioni e l'affidabilità delle tue centrali elettriche. Scopri la differenza con noi mentre ripristiniamo l'energia e rinnoviamo la fiducia in ogni progetto che intraprendiamo."
+    },
+    "about": {
+      "title": "Facciamo la differenza",
+      "description1": "Presso <span class=\"highlight\">PJ TurbinePro GmbH</span>, siamo dedicati a avere un impatto positivo sull'ambiente e affrontare la crisi climatica. La nostra missione è contribuire a un futuro sostenibile garantendo prestazioni ottimali e longevità delle turbine eoliche.",
+      "description2": "Con un team di tecnici altamente qualificati e una vasta esperienza nella riparazione delle turbine eoliche, ci sforziamo di offrire il servizio di più alta qualità ai nostri clienti. Siamo impegnati a mantenere l'integrità e l'efficienza delle turbine eoliche, consentendo loro di sfruttare la potenza del vento e generare energia pulita e rinnovabile.",
+      "description3": "La nostra azienda è guidata da una passione per la sostenibilità e una profonda comprensione dell'importanza delle fonti di energia rinnovabile. Lavoriamo a stretto contatto con i nostri clienti per fornire soluzioni personalizzate che soddisfino le loro esigenze specifiche, garantendo tempi di inattività minimi e massimizzando le prestazioni dei loro sistemi di turbine eoliche.",
+      "description4": "Ponendo al primo posto il miglioramento continuo, l'innovazione e un servizio clienti eccezionale, miriamo a essere leader nell'industria dell'energia eolica. Siamo dedicati a spingere i limiti, esplorare nuove tecnologie e attuare le migliori pratiche per promuovere l'avanzamento dell'energia pulita e verde.",
+      "openingHours": "Orari di apertura",
+      "monThu": "Lun - Gio",
+      "friSat": "Ven - Sab",
+      "sunday": "Domenica"
+    },
+    "contactPage": {
+      "title": "Contattaci",
+      "address": "Via 123, Città",
+      "email": "Email: esempio@esempio.com",
+      "phone": "Telefono: +1234567890",
+      "formTitle": "Contattaci!",
+      "formNameLabel": "Nome:",
+      "formEmailLabel": "Email:",
+      "formMessageLabel": "Messaggio:",
+      "formButton": "Invia"
+    },
+    "loginPage": {
+      "title": "Accesso",
+      "emailLabel": "Email",
+      "usernameLabel": "Nome utente",
+      "passwordLabel": "Password",
+      "loginButton": "Accedi",
+      "signupText": "Non hai un account?",
+      "signupLink": "Registrati ora"
+    },
+    "navbar": {
+        "home": "Home",
+        "about": "Chi siamo",
+        "contact": "Contatti",
+        "profile": "Profilo",
+        "work": "Lavoro",
+        "admin": "Admin",
+        "logout": "Logout",
+        "login": "Login"
+    },
+    "WorkOrder": {
+        "formTitle": "Titolo del modulo",
+        "turbineModelLabel": "Modello di turbina",
+        "turbineModelPlaceholder": "Inserisci il modello di turbina",
+        "descriptionLabel": "Descrizione",
+        "descriptionPlaceholder": "Inserisci la descrizione",
+        "locationLabel": "Posizione",
+        "locationPlaceholder": "Inserisci la posizione",
+        "technicianLabel": "Tecnico",
+        "technicianPlaceholder": "Inserisci il tecnico",
+        "dateLabel": "Data",
+        "addInfoLabel": "Informazioni aggiuntive",
+        "addInfoPlaceholder": "Inserisci informazioni aggiuntive",
+        "statusLabel": "Stato",
+        "nameLabel": "Nome",
+        "namePlaceholder": "Inserisci il nome",
+        "dateTimeLabel": "Data e ora",
+        "dateTimePlaceholder": "Inserisci data e ora",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Inserisci l'email",
+        "phoneLabel": "Telefono",
+        "phonePlaceholder": "Inserisci il telefono",
+        "requestDetailsLabel": "Dettagli della richiesta",
+        "requestDetailsPlaceholder": "Inserisci i dettagli della richiesta",
+        "bestTimesLabel": "Migliori orari",
+        "bestTimesPlaceholder": "Inserisci i migliori orari",
+        "completionDateLabel": "Data di completamento",
+        "completionDatePlaceholder": "Inserisci la data di completamento",
+        "submitButton": "Invia"
+    },
+    "Post": {
+        "orderStatus": "Stato dell'ordine",
+        "postedBy": "Pubblicato da",
+        "open": "Aperto",
+        "close": "Chiuso",
+        "model": "Modello",
+        "description": "Descrizione",
+        "coordinates": "Coordinate",
+        "technician": "Tecnico",
+        "date": "Data",
+        "requestDetails": "Dettagli della richiesta",
+        "bestTimes": "Migliori orari",
+        "completionDate": "Data di completamento",
+        "name": "Nome",
+        "email": "Email",
+        "phone": "Telefono",
+        "dateTime": "Data, Ora",
+        "comments": "Commenti",
+        "deleteButton": "Elimina",
+        "doneButton": "Fatto",
+        "addInfoModalTitle": "Aggiungi informazioni",
+        "informationLabel": "Informazioni",
+        "closeButton": "Chiudi",
+        "saveButton": "Salva"
+    },
+    "Users": {
+        "rightbarTitle": "Informazioni Utente",
+        "onlineText": "Online",
+        "adminManager": "Admin: Manager"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "Pagina del Profilo Aziendale",
+        "helloMessage": "Ciao {{name}}",
+        "liveChatButton": "Chat Live",
+        "chatRoomTitle": "Sala Chat PJ TurbinePro GmbH",
+        "chatRoomDescription": "Qui in questa chat puoi parlare con tutti gli utenti online",
+        "closeButton": "Chiudi"
+    }
+      
+      
+  }
+  

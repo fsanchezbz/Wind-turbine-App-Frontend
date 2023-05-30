@@ -1,0 +1,123 @@
+{
+    "landingPage": {
+      "welcome": "مرحبًا بك في PJ TurbinePro GmbH",
+      "slogan": "استعادة القوة وتجديد الثقة",
+      "description1": "في <span class=\"highlight\">PJ TurbinePro GmbH</span>، نختص في صيانة وإصلاح التوربينات. مهمتنا هي استعادة القوة وتجديد الثقة من خلال توفير حلول موثوقة لأداء التوربينات الأمثل.",
+      "description2": "بفريق من المحترفين ذوي الخبرة والتكنولوجيا المتقدمة، نقدم خدمات استثنائية تتجاوز معايير الصناعة. من الصيانة الروتينية إلى إصلاحات الطوارئ، نعطي الأولوية للسلامة والجودة ورضا العملاء.",
+      "description3": "ثق بـ <span class=\"highlight\">PJ TurbinePro GmbH</span> لتكون شريكًا موثوقًا في الحفاظ على أداء وموثوقية محطات الطاقة الخاصة بك. اكتشف الفرق معنا حيث نستعيد القوة ونجدد الثقة في كل مشروع نقوم به."
+    },
+    "about": {
+      "title": "نحن نحدث فرقًا",
+      "description1": "في <span class=\"highlight\">PJ TurbinePro GmbH</span>، نكرس جهودنا لتحقيق تأثير إيجابي على البيئة ومعالجة أزمة التغير المناخي. مهمتنا هي المساهمة في مستقبل مستدام من خلال ضمان الأداء الأمثل والطويل الأمد للتوربينات الرياح.",
+      "description2": "مع فريق من الفنيين المهرة وثروة من الخبرة في إصلاح التوربينات الرياح، نسعى لتقديم أعلى جودة الخدمة لعملائنا. نحن ملتزمون بالحفاظ على سلامة وكفاءة التوربينات الرياح، مما يمكّنها من استغلال قوة الرياح وتوليد الطاقة النظيفة والمتجددة.",
+      "description3": "تدفعنا شغفنا بالاستدامة وفهمنا العميق لأهمية مصادر الطاقة المتجددة. نعمل عن كثب مع عملائنا لتقديم حلول مخصصة تلبي احتياجاتهم الخاصة، مع ضمان أقل وقت توقف وأعلى أداء لأنظمة التوربينات الرياح الخاصة بهم.",
+      "description4": "من خلال التركيز على التحسين المستمر والابتكار وخدمة العملاء الممتازة، نهدف إلى أن نكون روادًا في صناعة الطاقة الرياحية. نحن ملتزمون بدفع الحدود، واستكشاف التقنيات الجديدة، وتنفيذ أفضل الممارسات لدفع تقدم الطاقة النظيفة والخضراء.",
+      "openingHours": "ساعات العمل",
+      "monThu": "الاثنين - الخميس",
+      "friSat": "الجمعة - السبت",
+      "sunday": "الأحد"
+    },
+    "contactPage": {
+      "title": "اتصل بنا",
+      "address": "شارع 123، المدينة",
+      "email": "البريد الإلكتروني: example@example.com",
+      "phone": "الهاتف: +1234567890",
+      "formTitle": "الرجاء التواصل معنا!",
+      "formNameLabel": "الاسم:",
+      "formEmailLabel": "البريد الإلكتروني:",
+      "formMessageLabel": "الرسالة:",
+      "formButton": "إرسال"
+    },
+    "loginPage": {
+      "title": "تسجيل الدخول",
+      "emailLabel": "البريد الإلكتروني",
+      "usernameLabel": "اسم المستخدم",
+      "passwordLabel": "كلمة المرور",
+      "loginButton": "تسجيل الدخول",
+      "signupText": "ليس لديك حساب؟",
+      "signupLink": "سجل الآن"
+    },
+    "navbar": {
+        "home": "الصفحة الرئيسية",
+        "about": "عنا",
+        "contact": "اتصل بنا",
+        "profile": "الملف الشخصي",
+        "work": "العمل",
+        "admin": "المشرف",
+        "logout": "تسجيل الخروج",
+        "login": "تسجيل الدخول"
+    },
+    "WorkOrder": {
+        "formTitle": "عنوان النموذج",
+        "turbineModelLabel": "نموذج التوربينة",
+        "turbineModelPlaceholder": "أدخل نموذج التوربينة",
+        "descriptionLabel": "الوصف",
+        "descriptionPlaceholder": "أدخل الوصف",
+        "locationLabel": "الموقع",
+        "locationPlaceholder": "أدخل الموقع",
+        "technicianLabel": "فني",
+        "technicianPlaceholder": "أدخل الفني",
+        "dateLabel": "التاريخ",
+        "addInfoLabel": "معلومات إضافية",
+        "addInfoPlaceholder": "أدخل معلومات إضافية",
+        "statusLabel": "الحالة",
+        "nameLabel": "الاسم",
+        "namePlaceholder": "أدخل الاسم",
+        "dateTimeLabel": "التاريخ والوقت",
+        "dateTimePlaceholder": "أدخل التاريخ والوقت",
+        "emailLabel": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل البريد الإلكتروني",
+        "phoneLabel": "الهاتف",
+        "phonePlaceholder": "أدخل الهاتف",
+        "requestDetailsLabel": "تفاصيل الطلب",
+        "requestDetailsPlaceholder": "أدخل تفاصيل الطلب",
+        "bestTimesLabel": "أفضل الأوقات",
+        "bestTimesPlaceholder": "أدخل أفضل الأوقات",
+        "completionDateLabel": "تاريخ الانتهاء",
+        "completionDatePlaceholder": "أدخل تاريخ الانتهاء",
+        "submitButton": "إرسال"
+    },
+    "Post": {
+        "orderStatus": "حالة الطلب:",
+        "postedBy": "نشر بواسطة:",
+        "open": "مفتوح",
+        "close": "مغلق",
+        "model": "النموذج:",
+        "description": "الوصف:",
+        "coordinates": "الإحداثيات:",
+        "technician": "الفني:",
+        "date": "التاريخ:",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني:",
+        "phone": "الهاتف:",
+        "requestDetails": "تفاصيل الطلب:",
+        "bestTimes": "أفضل الأوقات:",
+        "completionDate": "تاريخ الانتهاء:",
+        "posted": "نشر بواسطة:",
+        "comments": "التعليقات:",
+        "deleteButton": "حذف",
+        "doneButton": "تم",
+        "addInfoModalTitle": "إضافة معلومات",
+        "informationLabel": "المعلومات:",
+        "closeButton": "إغلاق",
+        "saveButton": "حفظ"
+    },
+    "Users": {
+        "rightbarTitle": "معلومات المستخدم",
+        "onlineText": "متصل",
+        "adminManager": "المسؤول: المدير"
+    },
+    "CompanyProfilePage": {
+        "profilePageTitle": "صفحة ملف الشركة",
+        "helloMessage": "مرحبًا {{name}}",
+        "liveChatButton": "الدردشة المباشرة",
+        "chatRoomTitle": "غرفة الدردشة لشركة PJ TurbinePro GmbH",
+        "chatRoomDescription": "هنا في هذه الدردشة يمكنك التحدث إلى جميع المستخدمين المتصلين",
+        "closeButton": "إغلاق"
+    }
+      
+    
+      
+      
+}
+  

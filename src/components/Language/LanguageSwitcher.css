@@ -1,54 +1,60 @@
 .language-switcher {
-  position: relative;
-  display: inline-block;
-}
-
-.language-dropdown-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.globe-icon {
-  color: #ffffff;
-  font-size: 20px;
-}
-
-.language-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: none;
-}
-
-.language-dropdown-menu.show {
-  display: block;
-}
-
-.language-option-button {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  font-size: 14px;
-  color: #333;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.language-option-button:hover {
-  background-color: #eee;
-}
-
-.language-flag {
-  margin-right: 5px;
-}
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .language-dropdown-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .globe-icon {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  
+  .language-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-width: 150px;
+    position: relative;
+  }
+  
+  .language-option-button {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-size: 14px;
+    color: #333;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .language-option-button:hover {
+    background-color: #eee;
+  }
+  
+  .language-flag {
+    margin-right: 5px;
+  }
+  .text-overlay {
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+  }

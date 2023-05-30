@@ -1,19 +1,19 @@
-import './users.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../index.css';
+import './Users.css';
+import { useTranslation } from 'react-i18next';
 
-const Rightbar = () => {
-    const [users, setUsers] = useState([]);
-    const [userStatus, setUserStatus] = useState('');
+const Users = () => {
+  const [users, setUsers] = useState([]);
+  const { t } = useTranslation(); // Initialize the useTranslation hook
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/all`, { withCredentials: true });
         setUsers(response.data);
-        console.log(response.data);
+        
       } catch (error) {
         console.log(error);
       }
@@ -22,25 +22,24 @@ const Rightbar = () => {
     fetchUserData();
   }, []);
 
-
   const ProfileRightbar = () => {
     return (
       <>
         <br />
-        <center><h4 className="rightbarTitle">User information</h4></center>
+        <center><h4 className="rightbarTitle">{t('Users.rightbarTitle')}</h4></center>
         <div className="rightbarWrapper">
           <div className="card-deck row row-cols-1 row-cols-md-3">
             {users.map((user) => (
               <div key={user._id} className="col mb-3" style={{ width: '12rem' }}>
-                <div className={`card h-100 ${user.status === true ?  'active-user' : 'inactive-user'}`}>
+                <div className={`card h-100 ${user.status === true ? 'active-user' : 'inactive-user'}`}>
                   <div className={`indicator ${user.status === true ? 'active-indicator' : 'inactive-indicator'}`}></div>
                   <div>
-                    {user.status === true && <span className="online-text"> USER ONLINE</span>}
+                    {user.status === true && <span className="online-text">{t('Users.onlineText')}</span>}
                     <br />
                     <img src={user.profileImage} className="card-img-top" alt="" />
                     <div className="card-body">
                       <h5 className="card-title">{`${user.firstName} ${user.lastName}`}</h5>
-                      {user.isAdmin && <span>Admin: Manager</span>}
+                      {user.isAdmin && <span>{t('Users.adminManager')}</span>}
                     </div>
                   </div>
                 </div>
@@ -59,4 +58,4 @@ const Rightbar = () => {
   );
 };
 
-export default Rightbar;
+export default Users;

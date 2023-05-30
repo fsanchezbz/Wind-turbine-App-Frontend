@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './ContactForm.css';
 import videoBg from '../../assets/rain.mp4';
+import axios from 'axios'; // Import Axios library
 
 const ContactForm = () => {
   const { t } = useTranslation();
@@ -11,13 +12,24 @@ const ContactForm = () => {
     e.preventDefault();
     setFormStatus(t('contactPage.submitting'));
     const { name, email, message } = e.target.elements;
-    let conFom = {
+  
+    const formData = {
       name: name.value,
       email: email.value,
       message: message.value,
     };
-    console.log(conFom);
+  
+    axios.post(`${import.meta.env.VITE_PRODUCTION_API}/send-notification`, formData)
+      .then((response) => {
+        console.log('Notification sent successfully');
+        setFormStatus(t('contactPage.formButton'));
+      })
+      .catch((error) => {
+        console.error('Error sending notification:', error);
+        setFormStatus('Error');
+      });
   };
+  
 
   return (
     <div className="contact-container">
