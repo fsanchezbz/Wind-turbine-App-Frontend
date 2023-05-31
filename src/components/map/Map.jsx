@@ -285,7 +285,7 @@ const Map = () => {
           <Box ref={mapRef} className="map" marginBottom="2rem" />
           <Post />
         </Flex>
-        <Flex direction="column">
+        <Flex direction="column"  style={{marginRight: '80px'}}>
           <Users />
         </Flex>
       </Flex>

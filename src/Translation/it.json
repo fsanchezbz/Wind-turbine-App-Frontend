@@ -48,7 +48,7 @@
         "login": "Login"
     },
     "WorkOrder": {
-        "formTitle": "Titolo del modulo",
+        "formTitle": " Richiesta di ordine di lavoro",
         "turbineModelLabel": "Modello di turbina",
         "turbineModelPlaceholder": "Inserisci il modello di turbina",
         "descriptionLabel": "Descrizione",

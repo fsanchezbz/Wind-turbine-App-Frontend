@@ -48,7 +48,7 @@
     "login": "登录"
   },
   "WorkOrder": {
-    "formTitle": "表单标题",
+    "formTitle": "工单请求",
     "turbineModelLabel": "涡轮型号",
     "turbineModelPlaceholder": "请输入涡轮型号",
     "descriptionLabel": "描述",

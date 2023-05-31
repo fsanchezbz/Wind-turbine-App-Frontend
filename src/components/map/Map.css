@@ -446,6 +446,7 @@ input[type='button'].button-primary:hover {
     height: 600px;
     width: 1000PX;
     margin-bottom: 2rem;
+    margin-left: 90px;
   }
 
   .mapContainer {

@@ -48,7 +48,7 @@
         "login": "تسجيل الدخول"
     },
     "WorkOrder": {
-        "formTitle": "عنوان النموذج",
+        "formTitle": "طلب أمر عمل",
         "turbineModelLabel": "نموذج التوربينة",
         "turbineModelPlaceholder": "أدخل نموذج التوربينة",
         "descriptionLabel": "الوصف",

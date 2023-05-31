@@ -52,7 +52,7 @@
         "login": "Anmelden"
     },
     "WorkOrder": {
-        "formTitle": "Formulartitel",
+        "formTitle": "Arbeitsauftragsanfrage",
         "turbineModelLabel": "Turbomodell",
         "turbineModelPlaceholder": "Turbinenmodell eingeben",
         "descriptionLabel": "Beschreibung",

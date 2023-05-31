@@ -56,27 +56,30 @@ const languageOptions = [
   },
 ];
 
-const defaultLangFlag = (
-  <img src={languageOptions[0].flagimg} height="30" width="30" alt="nope" />
-);
-
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const currentLanguage = i18n.language;
 
   const handleLanguageChange = (event) => {
     const selectedLanguage = event.target.value;
     i18n.changeLanguage(selectedLanguage);
+    setDropdownOpen(false); // Close the dropdown after language change
   };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const getLanguageName = (languageId) => {
+    const language = languageOptions.find((lang) => lang.id === languageId);
+    return language ? language.name : '';
+  };
+
   return (
     <div className="language-switcher">
       <button className="language-dropdown-button" onClick={toggleDropdown}>
-        Select Language <FiGlobe className="globe-icon" />{/* Use the globe icon */}
+        {getLanguageName(currentLanguage)} <FiGlobe className="globe-icon" />
       </button>
       {dropdownOpen && (
         <div className="language-dropdown-menu">

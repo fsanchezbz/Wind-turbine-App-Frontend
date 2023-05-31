@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Text, Input, Textarea, Button, VStack } from '@chakra-ui/react';
+import { Box, Text, Input, Textarea, Button, VStack, FormControl, FormLabel } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { PDFDocument, rgb } from 'pdf-lib';
 
 const WorkOrder = () => {
   const { t } = useTranslation();
+  const [orderId, setOrderId] = useState('');
   const [turbineModel, setTurbineModel] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
@@ -78,16 +79,22 @@ const WorkOrder = () => {
     
       const pdfBytes = await pdfDoc.save();
     
-      const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
-    
-      const downloadLink = document.createElement('a');
-      downloadLink.href = URL.createObjectURL(pdfBlob);
-      downloadLink.download = 'work_order.pdf';
-      downloadLink.click();
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-    }
-  };
+    const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const formData = new FormData();
+    formData.append('pdfs', pdfBlob);
+    formData.append('orderId', orderId); // Use the orderId parameter
+  
+    const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/pdf/upload-pdf`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  
+    console.log('PDF uploaded successfully:', response.data);
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+  }
+};
   
   
   
@@ -96,6 +103,7 @@ const WorkOrder = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/work/work-orders`, {
+        orderId: orderId,
         turbineModel: turbineModel,
         description: description,
         location: location,
@@ -111,6 +119,7 @@ const WorkOrder = () => {
       navigate('/profile');
       console.log('Work order submitted:', response.data);
       // Reset the form fields
+      setOrderId('');
       setTurbineModel('');
       setDescription('');
       setLocation('');
@@ -146,8 +155,20 @@ const WorkOrder = () => {
      <Text fontSize="2xl" fontWeight="bold" marginBottom="1rem">
           {t('WorkOrder.formTitle')}
         </Text>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <VStack spacing="1rem" align="start">
+        <Box marginBottom="1rem">
+              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
+                {'Work Order ID'}
+              </Text>
+              <Input
+                type="text"
+                value={orderId}
+                onChange={(e) => setOrderId(e.target.value)}
+                placeholder={'Enter Work Order ID'}
+                required
+              />
+            </Box>
             <Box marginBottom="1rem">
               <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
                 {t('WorkOrder.turbineModelLabel')}
@@ -277,7 +298,7 @@ const WorkOrder = () => {
                 required
               />
             </Box>
-           
+            
             <Button type="submit" colorScheme="blue">
               {t('WorkOrder.submitButton')}
             </Button>

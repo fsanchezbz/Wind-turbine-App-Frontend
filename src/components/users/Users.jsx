@@ -26,11 +26,11 @@ const Users = () => {
     return (
       <>
         <br />
-        <center><h4 className="rightbarTitle">{t('Users.rightbarTitle')}</h4></center>
+        <h4 className="rightbarTitle">{t('Users.rightbarTitle')}</h4>
         <div className="rightbarWrapper">
-          <div className="card-deck row row-cols-1 row-cols-md-3">
+          <div className="card-deck row ">
             {users.map((user) => (
-              <div key={user._id} className="col mb-3" style={{ width: '12rem' }}>
+              <div key={user._id} className="" style={{ width: '14rem' }}>
                 <div className={`card h-100 ${user.status === true ? 'active-user' : 'inactive-user'}`}>
                   <div className={`indicator ${user.status === true ? 'active-indicator' : 'inactive-indicator'}`}></div>
                   <div>

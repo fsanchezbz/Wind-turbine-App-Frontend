@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, FormControl, FormLabel, Input } from '@chakra-ui/react';
 import axios from 'axios';
+import {
+  Box,
+  Text,
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  FormControl,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import './post.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,11 +23,14 @@ import ChatFront from '../../pages/profile/Chat/ChatFront';
 const Post = () => {
   const { t } = useTranslation();
   const [workOrders, setWorkOrders] = useState([]);
+  const [pdf, setPdf] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
   const [isOpenAddInfo, setIsOpenAddInfo] = useState(false);
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [uploadedFiles, setUploadedFiles] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,12 +58,30 @@ const Post = () => {
 
     fetchWorkOrders();
   }, []);
+    
+  
 
-  const openAddInfoModal = async (workOrderId) => {
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/pdf/all`, { withCredentials: true });
+        setPdf(response.data);  
+        console.log(response.data[0])           
+      } catch (error) {
+        console.error('Error fetching work orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
+    
+
+
+  const openAddInfoModal = async (orderId) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${workOrderId}`);
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${orderId}`);
       const { addInfo } = response.data;
-      setSelectedWorkOrderId(workOrderId);
+      setSelectedWorkOrderId(orderId);
       setAddInfo(addInfo);
       setIsOpenAddInfo(true);
     } catch (error) {
@@ -64,15 +98,21 @@ const Post = () => {
   const handleAddInfoFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, {
-        addInfo: addInfo,
-        status: true, // Set the status to true when the "Done" button is clicked
+      const formData = new FormData();
+      formData.append('addInfo', addInfo);
+      formData.append('status', true); // Set the status to true when the "Done" button is clicked
+      formData.append('pdfs', selectedFile); // Append the selected file to form data
+
+      const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Set the content type to 'multipart/form-data'
+        },
       });
-      console.log("Work order updated:", response.data);
+      console.log('Work order updated:', response.data);
       closeAddInfoModal();
       setWorkOrders((prevWorkOrders) =>
         prevWorkOrders.map((workOrder) => {
-          if (workOrder._id === selectedWorkOrderId) {
+          if (workOrder.orderId === selectedWorkOrderId) {
             return { ...workOrder, status: true };
           } else {
             return workOrder;
@@ -80,10 +120,40 @@ const Post = () => {
         })
       );
     } catch (error) {
-      console.error("Failed to update work order:", error);
+      console.error('Failed to update work order:', error);
     }
   };
 
+  const handleFileUpload = async (orderId) => {
+    try {
+      if (!selectedFile) {
+        console.error('No file selected');
+        return;
+      }
+  
+      const formData = new FormData();
+      formData.append('pdfs', selectedFile);
+      formData.append('orderId', orderId); // Use the orderId parameter
+  
+      const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/pdf/upload-pdf`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      console.log('File uploaded successfully:', response.data);
+  
+      setUploadedFiles((prevUploadedFiles) => ({
+        ...prevUploadedFiles,
+        [orderId]: response.data,
+      }));
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+  
+  
+  
   const deleteWorkOrder = async (workOrderId) => {
     try {
       await axios.delete(`${import.meta.env.VITE_PRODUCTION_API}/work/delete/${workOrderId}`, { withCredentials: true });
@@ -97,95 +167,90 @@ const Post = () => {
     <div className="post">
       <div className="postWrapper">
         <div className="card-deck row row-cols-1 row-cols-md-3">
-          {workOrders.length > 0 ? (
-            workOrders.map((workOrder) => (
-              <div key={workOrder._id} className={`card ${workOrder.status ? 'card-done' : ''}`} style={{ width: '18rem', backgroundColor: workOrder.status ? 'green' : '' }}>
-                <div className="card-body">
-                  <div className="card-title">
-                    {t('Post.orderStatus')}:{workOrder.status} &nbsp; {!workOrder.status ?  t('Post.open') : t('Post.close') }        
-                  </div>
-                  <h5 className="card-title">
-                    {t('Post.model')}:&nbsp; <span style={{fontWeight: 'normal'}}>{workOrder.turbineModel}</span>
-                  </h5>
-                  <hr />
-                  <div style={{ border: '1px solid black', padding: '10px', borderRadius: '10px' ,boxShadow: '0px 0px 16px 1px rgba(0, 0, 0, 0.68)' }}>
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.description')}:&nbsp;</span> {workOrder.description}
-                      <hr />
-                    </div>
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.coordinates')}:&nbsp;</span> {workOrder.location}
-                      <hr />
-                    </div>
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.technician')}:&nbsp;</span> {workOrder.technician}
-                      <hr />
-                    </div>
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.date')}:&nbsp;</span> {workOrder.date.substring(0, 10)}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.name')}:&nbsp;</span> {workOrder.name}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.dateTime')}:&nbsp;</span> {workOrder.dateTime}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.email')}:&nbsp;</span> {workOrder.email}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.phone')}:&nbsp;</span> {workOrder.phone}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.requestDetails')}:&nbsp;</span> {workOrder.requestDetails}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.bestTimes')}:&nbsp;</span> {workOrder.bestTimes}  
-                    </div>
-                    <hr />
-                    <div className="card-text">
-                      <span style={{fontWeight: 'bold', fontSize: '18px'}}>{t('Post.completionDate')}:&nbsp;</span> {workOrder.completionDate}  
-                    </div>
-                  </div>
-                  <hr />
-
-                  {/* const [turbineModel, setTurbineModel] = useState('');
-                      const [description, setDescription] = useState('');
-                      const [location, setLocation] = useState('');
-                      const [technician, setTechnician] = useState('');
-                      const [date, setDate] = useState('');
-                      const [name, setName] = useState('');
-                      const [dateTime, setDateTime] = useState('');
-                      const [email, setEmail] = useState('');
-                      const [phone, setPhone] = useState('');
-                      const [requestDetails, setRequestDetails] = useState('');
-                      const [bestTimes, setBestTimes] = useState('');
-                      const [completionDate, setCompletionDate] = useState(''); */}
-                  {isAdmin && (
-                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
-                      {t('Post.deleteButton')}
-                    </Button>
-                  )}
-                  &nbsp;
-                  {!workOrder.status && (
-                    <>
-                      <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
-                        {t('Post.doneButton')}
-                      </Button>
-                    </>
-                  )}
+        {workOrders.length > 0 ? (
+          workOrders.map((workOrder) => (
+            <div
+              key={workOrder._id }
+              className={`card ${workOrder.status ? 'card-done' : ''}`}
+              style={{ width: '18rem', backgroundColor: workOrder.status ? 'green' : '' }}
+            >
+              <div className="card-body">
+                <div className="card-title">
+                  {t('Post.orderStatus')}:{workOrder.status} &nbsp; {!workOrder.status ? t('Post.open') : t('Post.close')}
                 </div>
+                <h5 className="card-title">
+                  {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.turbineModel}</span>
+                </h5>
+                <hr />
+                <h5 className="card-title">
+                  {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.orderId}</span>
+                </h5>
+                <div
+                  style={{
+                    border: '1px solid black',
+                    padding: '10px',
+                    borderRadius: '10px',
+                    boxShadow: '0px 0px 16px 1px rgba(0, 0, 0, 0.68)',
+                  }}
+                >
+                  <div className="card-text">
+                    <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{t('Post.coordinates')}:&nbsp;</span>{' '}
+                    {workOrder.location}
+                    <hr />
+                  </div>
+                  {/* Other card texts */}
+                </div>
+                <hr />
+
+                <Box marginBottom="1rem">
+                  <FormControl>
+                    <FormLabel fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
+                      {t('Post.fileLabel')}
+                    </FormLabel>
+                    <Input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} name="pdfs" />
+                  </FormControl>
+                </Box>
+                <Button onClick={() => handleFileUpload(workOrder.orderId)}>Upload File</Button>
+                {isAdmin && (
+                  <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                    {t('Post.deleteButton')}
+                  </Button>
+                )}
+                &nbsp;
+                {!workOrder.status && (
+                  <>
+                    <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
+                      {t('Post.doneButton')}
+                    </Button>
+                  </>
+                )}
+
+                  {uploadedFiles[workOrder.orderId] && uploadedFiles[workOrder.orderId].filePath && (
+                    <div>
+                      <h6>Uploaded File:</h6>
+                      <a href={`${import.meta.env.VITE_PRODUCTION_API}/${uploadedFiles[workOrder.orderId].filePath}`} target="_blank" rel="noopener noreferrer">
+                        {uploadedFiles[workOrder.orderId].filename}
+                      </a>
+                    </div>
+                  )}
+                     
+               
+                  {/* {Object.keys(pdf).forEach((key, index) => {
+                    if (workOrder.orderId === pdf[key].orderId) {
+                        <div>
+                          <h6>Uploaded File:</h6>
+                          <a href={`${import.meta.env.VITE_PRODUCTION_API}/${pdf.filePath}`} target="_blank" rel="noopener noreferrer">
+                            {pdf.filename}
+                          </a>
+                        </div>
+                      }  
+                })  }   */}
               </div>
-            ))
-          ) : (
-            <p>{t('Post.noWorkOrders')}</p>
-          )}
+            </div>
+          ))
+        ) : (
+          <p>{t('Post.noWorkOrders')}</p>
+        )}
         </div>
       </div>
       {selectedWorkOrderId && (

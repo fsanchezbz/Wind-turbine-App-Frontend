@@ -48,7 +48,7 @@
         "login": "Connexion"
     },
     "WorkOrder": {
-        "formTitle": "Titre du formulaire",
+        "formTitle": "Demande de bon de travail",
         "turbineModelLabel": "Modèle de turbine",
         "turbineModelPlaceholder": "Entrez le modèle de turbine",
         "descriptionLabel": "Description",

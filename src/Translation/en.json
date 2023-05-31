@@ -48,7 +48,7 @@
         "login": "Login"
     },
     "WorkOrder": {
-        "formTitle": "Form Title",
+        "formTitle": "Work Order Request",
         "turbineModelLabel": "Turbine Model",
         "turbineModelPlaceholder": "Enter Turbine Model",
         "descriptionLabel": "Description",

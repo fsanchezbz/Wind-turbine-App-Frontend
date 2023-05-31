@@ -48,7 +48,7 @@
         "login": "Войти"
     },
     "WorkOrder": {
-        "formTitle": "Заголовок формы",
+        "formTitle": "Запрос на рабочий ордер",
         "turbineModelLabel": "Модель турбины",
         "turbineModelPlaceholder": "Введите модель турбины",
         "descriptionLabel": "Описание",

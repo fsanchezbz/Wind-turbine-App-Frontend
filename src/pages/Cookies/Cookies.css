@@ -1,0 +1,57 @@
+
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .text-overlay {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px); /* Adjust the height as needed */
+    padding: 2rem;
+  }
+  
+
+/* Styles for iPhones */
+@media (max-width: 576px) {
+    .landing-page {
+      padding: 1rem;
+    }
+  
+    .main {
+      padding: 1rem;
+    }
+  
+    .about-title {
+      font-size: 24px;
+      margin-bottom: 0.5rem;
+    }
+  
+    .cookiePolicy-description {
+      font-size: 14px;
+    }
+  }
+  /* Styles for iPads */
+@media (min-width: 577px) and (max-width: 1024px) {
+    .about-title {
+      font-size: 36px;
+      margin-bottom: 1rem;
+    }
+  
+    .cookiePolicy-description {
+      font-size: 18px;
+    }
+  }
+  /* Styles for iMacs */
+@media (min-width: 1025px) {
+    .about-title {
+      font-size: 48px;
+      margin-bottom: 1.5rem;
+    }
+  
+    .cookiePolicy-description {
+      font-size: 20px;
+    }
+  }
+  

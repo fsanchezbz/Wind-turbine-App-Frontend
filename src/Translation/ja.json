@@ -44,7 +44,7 @@
         "login": "ログイン"
     },
     "WorkOrder": {
-        "formTitle": "フォームのタイトル",
+        "formTitle": "作業依頼",
         "turbineModelLabel": "タービンモデル",
         "turbineModelPlaceholder": "タービンモデルを入力してください",
         "descriptionLabel": "説明",

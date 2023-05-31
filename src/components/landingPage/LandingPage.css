@@ -26,14 +26,14 @@
 }
 
 .landing-page-title {
-  font-size: 38px;
+  font-size: 48px;
   font-weight: bold;
   color: #fff;
   margin-bottom: 10px;
 }
 
 .landing-page-slogan {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: bold;
   color: #fff;
   margin-bottom: 10px;
@@ -44,7 +44,7 @@
 }
 
 .landing-page-description {
-  font-size: 16px;
+  font-size: 18px;
   margin-bottom: 20px;
   color: #fff;
 }
