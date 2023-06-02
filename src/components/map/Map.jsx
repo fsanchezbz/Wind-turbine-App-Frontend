@@ -13,6 +13,7 @@ const Map = () => {
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [infoWindowVisible, setInfoWindowVisible] = useState(false);
   const [infoWindowContent, setInfoWindowContent] = useState('');
+  const [mapMarkers, setMapMarkers] = useState([]);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -38,9 +39,8 @@ const Map = () => {
       trafficLayer.setMap(map);
       const infoWindow = new window.google.maps.InfoWindow();
       const geocoder = new window.google.maps.Geocoder();
-      const marker = new window.google.maps.Marker({
-        map,
-      });
+      const directionsRenderer = new window.google.maps.DirectionsRenderer({ map });
+      const marker = new window.google.maps.Marker();
 
       const inputText = document.createElement('input');
       inputText.type = 'text';
@@ -109,16 +109,17 @@ const Map = () => {
         // Clear markers
         marker.setMap(null);
         // Clear directions
-        if (directionsRenderer) {
-          directionsRenderer.setMap(null);
-          setDirectionsRenderer(null); // Reset the directions renderer
-          setDirectionsDuration('');
-          setDirectionsDistance('');
-        }
+        directionsRenderer.setDirections({ routes: [] });
+        setDirectionsRenderer(null); // Reset the directions renderer
+        setDirectionsDuration('');
+        setDirectionsDistance('');
         // Clear info window
         setInfoWindowVisible(false);
         setInfoWindowContent('');
         infoWindow.close();
+        // Clear all markers from the map
+        mapMarkers.forEach((marker) => marker.setMap(null));
+        setMapMarkers([]);
       }
 
       function geocode(request) {
@@ -139,7 +140,7 @@ const Map = () => {
 
               const infoWindowContent = `<div>${results[0].formatted_address}</div>`;
               setInfoWindowContent(infoWindowContent);
-
+              setMapMarkers((prevMarkers) => [...prevMarkers, marker]);
               // Check if directions response exists and update the info window content
               if (directionsResponse) {
                 const route = directionsResponse.routes[0];
@@ -203,10 +204,6 @@ const Map = () => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const { latitude, longitude } = position.coords;
-              const directionsService = new window.google.maps.DirectionsService();
-              const directionsRenderer = new window.google.maps.DirectionsRenderer();
-              directionsRenderer.setMap(map);
-              setDirectionsRenderer(directionsRenderer);
               const start = new window.google.maps.LatLng(latitude, longitude);
               const end = marker.getPosition();
               const request = {
@@ -215,14 +212,18 @@ const Map = () => {
                 travelMode: window.google.maps.TravelMode.DRIVING, // Default travel mode
                 unitSystem: window.google.maps.UnitSystem.METRIC,
                 provideRouteAlternatives: true, // Request multiple routes
+                drivingOptions: {
+                  departureTime: new Date(), // Specify the desired time of departure
+                  trafficModel: 'bestguess', // Specify the traffic model
+                },
               };
-
+      
               // Show travel mode options to the user
               const selectedMode = window.prompt(
                 'Select travel mode:\n1. Driving\n2. Walking\n3. Bicycling\n4. Transit',
                 '1'
               );
-
+      
               // Update the request with the selected travel mode
               switch (selectedMode) {
                 case '1':
@@ -241,22 +242,75 @@ const Map = () => {
                   alert('Invalid travel mode selected');
                   return;
               }
-
+      
+              const directionsService = new window.google.maps.DirectionsService();
+              const directionsRenderer = new window.google.maps.DirectionsRenderer({
+                map,
+                suppressMarkers: true, // Suppress default markers
+              });
+              setDirectionsRenderer(directionsRenderer); // Store the directions renderer
+      
               directionsService.route(request, (result, status) => {
                 if (status === window.google.maps.DirectionsStatus.OK) {
                   setDirectionsResponse(result); // Store the directions response
                   directionsRenderer.setDirections(result);
-                  const route = result.routes[0];
-                  const leg = route.legs[0];
-                  setDirectionsDuration(leg.duration.text);
-                  const distance = leg.distance.text;
-                  setDirectionsDistance(distance);
-
-                  const infoWindowContent = `<div><strong>Distance:</strong> ${distance}</div>
-                                             <div><strong>Duration:</strong> ${leg.duration.text}</div>`;
-                  setInfoWindowContent(infoWindowContent);
-                  infoWindow.setContent(infoWindowContent);
-                  infoWindow.open(map, marker);
+      
+                  // Clear existing markers
+                  mapMarkers.forEach((marker) => marker.setMap(null));
+                  setMapMarkers([]);
+      
+                  const routes = result.routes;
+                  routes.forEach((route, index) => {
+                    const leg = route.legs[0];
+      
+                    // Create a marker for the start and end of each route
+                    const routeStartMarker = new window.google.maps.Marker({
+                      position: leg.start_location,
+                      map,
+                      label: `${index + 1}`, // Use route index as the label
+                    });
+                    const routeEndMarker = new window.google.maps.Marker({
+                      position: leg.end_location,
+                      map,
+                      label: `${index + 1}`, // Use route index as the label
+                    });
+      
+                    // Add markers to the mapMarkers state
+                    setMapMarkers((prevMarkers) => [...prevMarkers, routeStartMarker, routeEndMarker]);
+      
+                    // Draw the route polyline on the map
+                    const routePolyline = new window.google.maps.Polyline({
+                      path: leg.steps.map((step) => step.path).flat(),
+                      strokeColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // Random color
+                      strokeWeight: 5,
+                      map,
+                    });
+      
+                    // Add polyline to the mapMarkers state
+                    setMapMarkers((prevMarkers) => [...prevMarkers, routePolyline]);
+      
+                    // Add click event listener to the route start marker
+                    window.google.maps.event.addListener(routeStartMarker, 'click', () => {
+                      // Handle route selection logic here
+                      // You can access the selected route's index from the event listener
+                      const selectedRouteIndex = index;
+                      // Perform any actions you want with the selected route
+                      // Example: Show route details, highlight the selected route, etc.
+                      console.log('Selected route index:', selectedRouteIndex);
+                    });
+                  });
+      
+                  // Open info window for the first route
+                  if (routes.length > 0) {
+                    const firstRoute = routes[0];
+                    const firstLeg = firstRoute.legs[0];
+                    const firstInfoWindowContent = `<div><strong>Route 1</strong></div>
+                                                     <div><strong>Distance:</strong> ${firstLeg.distance.text}</div>
+                                                     <div><strong>Duration:</strong> ${firstLeg.duration.text}</div>`;
+                    setInfoWindowContent(firstInfoWindowContent);
+                    infoWindow.setContent(firstInfoWindowContent);
+                    infoWindow.open(map, mapMarkers[0]);
+                  }
                 } else {
                   alert('Unable to retrieve directions. Error: ' + status);
                 }
@@ -270,10 +324,12 @@ const Map = () => {
           alert('Geolocation is not supported by your browser.');
         }
       }
+      
     };
-
+    
     return () => {
       document.body.removeChild(script);
+      mapMarkers.forEach((marker) => marker.setMap(null));
     };
   }, []);
 

@@ -50,7 +50,7 @@ const AdminPanel = () => {
       const confirmed = window.confirm(`Are you sure you want to update the ${field} field?`);
       if (confirmed) {
         console.log(`Updating user ${userId} field ${field} to ${value}`);
-        const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+        const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`, {
           [field]: value,
         });
         console.log(`Updated user ${userId}:`, response.data);
@@ -74,11 +74,40 @@ const AdminPanel = () => {
     }
   };
 
+  const handleDeleteField = async (userId, userName) => {
+    try {
+      const confirmed = window.confirm(`Are you sure you want to DELETE the user:${userName} with ID:${userId} `);
+      if (confirmed) {
+        console.log(`Deleting user ${userName} ID: ${userId}`);
+        const response = await axios.delete(`${import.meta.env.VITE_PRODUCTION_API}/users/delete/${userId}`);
+        console.log(`Deleted user ${userName} ID: ${userId}`);
+        fetchUsers(); // Refresh the user list after the update
+        toast({
+          title: 'User Deleted',
+          status: 'success',
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.error(`Failed to delete user ${userName} ID: ${userId}`, error);
+      toast({
+        title: 'Error Deleting User',
+        description: 'An error occurred while Deleting the user. Please try again later.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
+
+
+
   const toggleAdminStatus = async (userId, currentStatus) => {
     try {
       const newStatus = !currentStatus; // Toggle the value
       console.log(`Toggling admin status for user ${userId}. New status: ${newStatus}`);
-      const response = await axios.put(`https://wind-turbine-app-backend.onrender.com/users/update/${userId}`, {
+      const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`, {
         isAdmin: newStatus,
       });
       console.log(`Updated user ${userId}:`, response.data);
@@ -147,6 +176,11 @@ const AdminPanel = () => {
               <Td>
                 <Button colorScheme="blue" onClick={() => handleEditField(user._id, user.userName, user.email)}>
                   Edit
+                </Button>
+              </Td>
+              <Td>
+                <Button colorScheme="blue" onClick={() => handleDeleteField(user._id, user.userName)}>
+                  Delete
                 </Button>
               </Td>
             </Tr>

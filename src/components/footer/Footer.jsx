@@ -2,6 +2,8 @@ import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaLinkedin } from 'react-icons/fa';
+import { BsFillSunFill, BsMoon } from 'react-icons/bs';
+import useDarkMode from '../hooks/useDarkMode';
 
 const Footer = () => {
   return (
@@ -29,6 +31,13 @@ const Footer = () => {
           <Link to="/cookiepolicy">Cookie policy</Link>
 
         </div>
+          {/* <button
+          type='button'
+          onClick={toggleMode}
+          className='DarkMode'
+          >
+          {mode === 'dark' ? <BsFillSunFill /> : <BsMoon />}
+          </button> */}
       </div>
     </footer>
   );

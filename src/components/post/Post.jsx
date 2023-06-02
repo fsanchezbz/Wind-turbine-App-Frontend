@@ -59,19 +59,19 @@ const Post = () => {
     fetchWorkOrders();
   }, []);
 
-  useEffect(() => {
-    const fetchPdf = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/pdf/all`, { withCredentials: true });
-        setPdfs(response.data);  
-        console.log('UseEffect takes all pdfs:', response.data)           
-      } catch (error) {
-        console.error('Error fetching work orders:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPdf = async () => {
+  //     try {
+  //       const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/pdf/all`, { withCredentials: true });
+  //       setPdfs(response.data);  
+  //       console.log('UseEffect takes all pdfs:', response.data)           
+  //     } catch (error) {
+  //       console.error('Error fetching work orders:', error);
+  //     }
+  //   };
 
-    fetchPdf();
-  }, []);
+  //   fetchPdf();
+  // }, []);
 
   const openAddInfoModal = async (orderId) => {
     try {
