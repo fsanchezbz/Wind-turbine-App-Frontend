@@ -75,7 +75,7 @@ h3 {
 
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media screen and (min-width: 190px), (max-width: 480px) {
   .footer-content {
     flex-direction: column;
   }
@@ -86,6 +86,15 @@ h3 {
 
   .footer-vertical-line {
     display: none;
+  }
+
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10px;
+    margin-top: 10px;
   }
 }
 
