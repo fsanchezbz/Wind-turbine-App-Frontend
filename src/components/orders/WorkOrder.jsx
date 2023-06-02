@@ -1,12 +1,26 @@
 import React, { useState } from 'react';
-import { Box, Text, Input, Textarea, Button, VStack, FormControl, FormLabel } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Input,
+  Textarea,
+  Button,
+  VStack,
+  useToast,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { PDFDocument, rgb } from 'pdf-lib';
 
 const WorkOrder = () => {
   const { t } = useTranslation();
+  const toast = useToast();
+
   const [orderId, setOrderId] = useState('');
   const [turbineModel, setTurbineModel] = useState('');
   const [description, setDescription] = useState('');
@@ -19,89 +33,97 @@ const WorkOrder = () => {
   const [requestDetails, setRequestDetails] = useState('');
   const [bestTimes, setBestTimes] = useState('');
   const [completionDate, setCompletionDate] = useState('');
-  const navigate = useNavigate();
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
-  const generateWorkOrderPDF = async () => {
-    try {
-      const existingPdfBytes = await fetch('/src/components/pdf/Work-Order-Request-Form.pdf').then((res) => res.arrayBuffer());
-      const pdfDoc = await PDFDocument.load(existingPdfBytes);
-    
-      const page = pdfDoc.getPage(0);
-      const font = await pdfDoc.embedFont('Helvetica');
-    
-      function addTextInBoxToPdf(text, x, y, width, height, fontSize) {
-        const availableWidth = width - 10; // Adjusted for padding
-        const availableHeight = height - 10; // Adjusted for padding
-    
-        const lines = [];
-        let currentLine = '';
-    
-        for (let i = 0; i < text.length; i++) {
-          const char = text[i];
-          const lineWidth = font.widthOfTextAtSize(currentLine + char, fontSize);
-    
-          if (lineWidth > availableWidth && currentLine !== '') {
-            lines.push(currentLine);
-            currentLine = '';
-          }
-    
-          currentLine += char;
-        }
-    
-        if (currentLine !== '') {
-          lines.push(currentLine);
-        }
-    
-        let textToRender = lines.join('\n');
-    
-        if (lines.length > Math.floor(availableHeight / (fontSize + 2))) {
-          const overflowLines = Math.floor(availableHeight / (fontSize + 2)) - 1;
-          textToRender = lines.slice(0, overflowLines).join('\n') + '...';
-        }
-    
-        const textX = x + 0; // Adjusted for padding
-        const textY = y - 0; // Adjusted for padding
-    
-        page.drawText(textToRender, { x: textX, y: textY, font, size: fontSize, color: rgb(0, 0, 0) });
-      }
-    
-      addTextInBoxToPdf(`${turbineModel}`, 150, 625, 180, 40, 10);
-      addTextInBoxToPdf(`${description}`, 400, 625, 180, 40, 10);
-      addTextInBoxToPdf(`${location}`, 160, 587, 280, 40, 10);
-      addTextInBoxToPdf(`${technician}`, 160, 552, 180, 40, 10);
-      addTextInBoxToPdf(`${date}`, 390, 490, 180, 40, 10);
-      addTextInBoxToPdf(`${name}`, 135, 490, 180, 40, 10);
-      addTextInBoxToPdf(`${email}`, 135, 452, 180, 40, 10);
-      addTextInBoxToPdf(`${phone}`, 390, 452, 180, 40, 10);
-      addTextInBoxToPdf(`${requestDetails}`, 80, 375, 440, 100, 10);
-      addTextInBoxToPdf(`${bestTimes}`, 265, 207, 180, 40, 10);
-      addTextInBoxToPdf(`${completionDate}`, 265, 170, 180, 40, 10);
-    
-      const pdfBytes = await pdfDoc.save();
-    
-    const pdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const formData = new FormData();
-    formData.append('pdfs', pdfBlob);
-    formData.append('orderId', orderId); // Use the orderId parameter
-  
-    const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/pdf/upload-pdf`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+  const loadImage = (data) => {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = (error) => reject(error);
+      image.src = URL.createObjectURL(new Blob([data]));
     });
-  
-    console.log('PDF uploaded successfully:', response.data);
-  } catch (error) {
-    console.error('Error generating PDF:', error);
-  }
-};
-  
-  
-  
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  };
+
+  const generateWorkOrderImage = async () => {
     try {
+      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.jpg').then((res) =>
+        res.arrayBuffer()
+      );
+      const image = await loadImage(existingImageBytes);
+
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      context.drawImage(image, 0, 0);
+
+      function drawTextBox(x, y, width, height, text, fontSize) {
+        const padding = 10;
+        const textX = x + padding;
+        const textY = y + padding;
+        const availableWidth = width - 2 * padding;
+        const availableHeight = height - 2 * padding;
+
+        context.fillStyle = 'transparent'; // Box background color
+        context.fillRect(x, y, width, height);
+
+        context.font = `${fontSize}px Helvetica`;
+        context.fillStyle = '#000000'; // Text color
+
+        const words = text.split(' ');
+        let currentLine = '';
+        const lines = [];
+
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i];
+          const lineWidth = context.measureText(currentLine + ' ' + word).width;
+
+          if (lineWidth < availableWidth) {
+            currentLine += ' ' + word;
+          } else {
+            lines.push(currentLine.trim());
+            currentLine = word;
+          }
+        }
+
+        lines.push(currentLine.trim());
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const lineY = textY + i * fontSize;
+
+          context.fillText(line, textX, lineY);
+        }
+      }
+
+      drawTextBox(305, 335, 180, 40, turbineModel, 18);
+      drawTextBox(830, 335, 180, 40, description, 18);
+      drawTextBox(325, 415, 280, 40, location, 18);
+      drawTextBox(325, 490, 180, 40, technician, 18);
+      drawTextBox(815, 620, 180, 40, date, 18);
+      drawTextBox(285, 620, 180, 40, name, 18);
+      drawTextBox(285, 700, 180, 40, email, 18);
+      drawTextBox(815, 700, 180, 40, phone, 18);
+      drawTextBox(165, 860, 840, 100, requestDetails, 18);
+      drawTextBox(550, 1210, 180, 40, bestTimes, 18);
+      drawTextBox(550, 1285, 180, 40, completionDate, 18);
+
+      const imageDataUrl = canvas.toDataURL('image/jpeg');
+      const imageBlob = await (await fetch(imageDataUrl)).blob();
+
+      const formData = new FormData();
+      formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
+      formData.append('file', imageBlob, orderId);
+
+      const uploadResponse = await axios.post(
+        'https://api.cloudinary.com/v1_1/windturbineprofile/image/upload',
+        formData
+      );
+
+      const imageUrl = uploadResponse.data.url;
+
       const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/work/work-orders`, {
         orderId: orderId,
         turbineModel: turbineModel,
@@ -115,10 +137,9 @@ const WorkOrder = () => {
         requestDetails: requestDetails,
         bestTimes: bestTimes,
         completionDate: completionDate,
+        image: imageUrl, // Pass the Cloudinary image URL to the server
       });
-      navigate('/profile');
-      console.log('Work order submitted:', response.data);
-      // Reset the form fields
+
       setOrderId('');
       setTurbineModel('');
       setDescription('');
@@ -131,182 +152,201 @@ const WorkOrder = () => {
       setRequestDetails('');
       setBestTimes('');
       setCompletionDate('');
-      // Generate the PDF work order form
-      await generateWorkOrderPDF();
+
+      setIsConfirmationOpen(false);
+
+      // Show success toast notification
+      toast({
+        title: 'Work Order Submitted',
+        description: 'The work order has been successfully submitted.',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.error('Error generating images:', error);
+
+      // Show error toast notification
+      toast({
+        title: 'Error Submitting Work Order',
+        description: 'An error occurred while submitting the work order. Please try again later.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Open confirmation modal
+    setIsConfirmationOpen(true);
+  };
+
+  const handleWorkOrderSubmit = async () => {
+    setIsConfirmationOpen(false);
+    try {
+      await generateWorkOrderImage();
     } catch (error) {
       console.error('Error submitting work order:', error);
     }
   };
 
-  // 39.627038, -2.287618
-  // 39.630678, -2.284431
-  // 39.634185, -2.281091
-  // 39.637196, -2.278140
-  // 39.640481, -2.277091
-  // 39.641390, -2.294946
-  // 39.638467, -2.298962
-  // 39.635318, -2.303638
-  // 39.580464, -2.253965
-  // 39.576838, -2.258782
-  // 39.573908, -2.260765
   return (
-    <>
-     <Box padding="2rem">
-     <Text fontSize="2xl" fontWeight="bold" marginBottom="1rem">
-          {t('WorkOrder.formTitle')}
-        </Text>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <VStack spacing="1rem" align="start">
-        <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {'Work Order ID'}
-              </Text>
-              <Input
-                type="text"
-                value={orderId}
-                onChange={(e) => setOrderId(e.target.value)}
-                placeholder={'Enter Work Order ID'}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.turbineModelLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={turbineModel}
-                onChange={(e) => setTurbineModel(e.target.value)}
-                placeholder={t('WorkOrder.turbineModelPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.descriptionLabel')}
-              </Text>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder={t('WorkOrder.descriptionPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.locationLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder={t('WorkOrder.locationPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.technicianLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={technician}
-                onChange={(e) => setTechnician(e.target.value)}
-                placeholder={t('WorkOrder.technicianPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.dateLabel')}
-              </Text>
-              <Input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.nameLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={t('WorkOrder.namePlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.emailLabel')}
-              </Text>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t('WorkOrder.emailPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.phoneLabel')}
-              </Text>
-              <Input
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder={t('WorkOrder.phonePlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.requestDetailsLabel')}
-              </Text>
-              <Textarea
-                value={requestDetails}
-                onChange={(e) => setRequestDetails(e.target.value)}
-                placeholder={t('WorkOrder.requestDetailsPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.bestTimesLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={bestTimes}
-                onChange={(e) => setBestTimes(e.target.value)}
-                placeholder={t('WorkOrder.bestTimesPlaceholder')}
-                required
-              />
-            </Box>
-            <Box marginBottom="1rem">
-              <Text fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                {t('WorkOrder.completionDateLabel')}
-              </Text>
-              <Input
-                type="text"
-                value={completionDate}
-                onChange={(e) => setCompletionDate(e.target.value)}
-                placeholder={t('WorkOrder.completionDatePlaceholder')}
-                required
-              />
-            </Box>
-            
-            <Button type="submit" colorScheme="blue">
-              {t('WorkOrder.submitButton')}
-            </Button>
-          </VStack>
+    <Box
+    maxWidth="500px" width="100%" padding="2rem" margin="0 auto"
+      
+    >
+      <Box
+        padding="2rem"
+        border="1px solid #ccc"
+        boxShadow="0px 2px 4px rgba(0, 0, 0, 0.1)"
+        borderRadius="md"
+        maxWidth="500px"
+        width="100%"
+        bg="gray.200"
+      ><Box maxWidth="600px" width="100%" padding="2rem">
+      <Text fontSize="2xl" fontWeight="bold" marginBottom="1rem" textAlign="center">
+        {t('WorkOrder.formTitle')}
+      </Text>
+      <form onSubmit={handleSubmit}>
+        <VStack spacing="1rem" align="stretch">
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.workOrderIdLabel')}</Text>
+            <Input
+              type="text"
+              value={orderId}
+              onChange={(e) => setOrderId(e.target.value)}
+              placeholder={t('WorkOrder.workOrderIdPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.turbineModelLabel')}</Text>
+            <Input
+              type="text"
+              value={turbineModel}
+              onChange={(e) => setTurbineModel(e.target.value)}
+              placeholder={t('WorkOrder.turbineModelPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.descriptionLabel')}</Text>
+            <Textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder={t('WorkOrder.descriptionPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.locationLabel')}</Text>
+            <Input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder={t('WorkOrder.locationPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.technicianLabel')}</Text>
+            <Input
+              type="text"
+              value={technician}
+              onChange={(e) => setTechnician(e.target.value)}
+              placeholder={t('WorkOrder.technicianPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.dateLabel')}</Text>
+            <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.nameLabel')}</Text>
+            <Input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={t('WorkOrder.namePlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.emailLabel')}</Text>
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={t('WorkOrder.emailPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.phoneLabel')}</Text>
+            <Input
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder={t('WorkOrder.phonePlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.requestDetailsLabel')}</Text>
+            <Textarea
+              value={requestDetails}
+              onChange={(e) => setRequestDetails(e.target.value)}
+              placeholder={t('WorkOrder.requestDetailsPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.bestTimesLabel')}</Text>
+            <Input
+              type="text"
+              value={bestTimes}
+              onChange={(e) => setBestTimes(e.target.value)}
+              placeholder={t('WorkOrder.bestTimesPlaceholder')}
+              required
+            />
+          </Box>
+          <Box>
+            <Text fontWeight="bold">{t('WorkOrder.completionDateLabel')}</Text>
+            <Input
+              type="text"
+              value={completionDate}
+              onChange={(e) => setCompletionDate(e.target.value)}
+              placeholder={t('WorkOrder.completionDatePlaceholder')}
+              required
+            />
+          </Box>
+          <Button type="submit" colorScheme="blue" alignSelf="center">
+            {t('WorkOrder.submitButton')}
+          </Button>
+        </VStack>
       </form>
+      <Modal isOpen={isConfirmationOpen} onClose={() => setIsConfirmationOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{t('WorkOrder.confirmationTitle')}</ModalHeader>
+          <ModalBody>{t('WorkOrder.confirmationMessage')}</ModalBody>
+          <ModalFooter>
+            <Button variant="ghost" onClick={() => setIsConfirmationOpen(false)}>
+              {t('WorkOrder.cancelButton')}
+            </Button>
+            <Button colorScheme="blue" ml={3} onClick={handleWorkOrderSubmit}>
+              {t('WorkOrder.confirmButton')}
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </Box></Box>
+      
     </Box>
-    {/* <Footer /> */}
-    </>
   );
 };
 

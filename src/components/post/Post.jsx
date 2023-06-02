@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Box,
-  Text,
   Button,
   Modal,
   ModalOverlay,
@@ -18,12 +17,12 @@ import { useTranslation } from 'react-i18next';
 import './post.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../index.css';
-import ChatFront from '../../pages/profile/Chat/ChatFront';
+import { pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 const Post = () => {
   const { t } = useTranslation();
   const [workOrders, setWorkOrders] = useState([]);
-  const [pdf, setPdf] = useState([]);
   const [selectedWorkOrderId, setSelectedWorkOrderId] = useState(null);
   const [isOpenAddInfo, setIsOpenAddInfo] = useState(false);
   const [addInfo, setAddInfo] = useState('');
@@ -31,6 +30,7 @@ const Post = () => {
   const [status, setStatus] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState({});
+  const [pdfs, setPdfs] = useState([]); // Add the missing state setter function
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,24 +58,20 @@ const Post = () => {
 
     fetchWorkOrders();
   }, []);
-    
-  
 
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchPdf = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/pdf/all`, { withCredentials: true });
-        setPdf(response.data);  
-        console.log(response.data[0])           
+        setPdfs(response.data);  
+        console.log('UseEffect takes all pdfs:', response.data)           
       } catch (error) {
         console.error('Error fetching work orders:', error);
       }
     };
 
-    fetchOrders();
+    fetchPdf();
   }, []);
-    
-
 
   const openAddInfoModal = async (orderId) => {
     try {
@@ -103,11 +99,15 @@ const Post = () => {
       formData.append('status', true); // Set the status to true when the "Done" button is clicked
       formData.append('pdfs', selectedFile); // Append the selected file to form data
 
-      const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Set the content type to 'multipart/form-data'
-        },
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data', // Set the content type to 'multipart/form-data'
+          },
+        }
+      );
       console.log('Work order updated:', response.data);
       closeAddInfoModal();
       setWorkOrders((prevWorkOrders) =>
@@ -130,19 +130,19 @@ const Post = () => {
         console.error('No file selected');
         return;
       }
-  
+
       const formData = new FormData();
       formData.append('pdfs', selectedFile);
       formData.append('orderId', orderId); // Use the orderId parameter
-  
+
       const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/pdf/upload-pdf`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-  
+
       console.log('File uploaded successfully:', response.data);
-  
+
       setUploadedFiles((prevUploadedFiles) => ({
         ...prevUploadedFiles,
         [orderId]: response.data,
@@ -151,9 +151,7 @@ const Post = () => {
       console.error('Error uploading file:', error);
     }
   };
-  
-  
-  
+
   const deleteWorkOrder = async (workOrderId) => {
     try {
       await axios.delete(`${import.meta.env.VITE_PRODUCTION_API}/work/delete/${workOrderId}`, { withCredentials: true });
@@ -162,95 +160,99 @@ const Post = () => {
       console.error('Failed to delete work order:', error);
     }
   };
-
+  pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="card-deck row row-cols-1 row-cols-md-3">
-        {workOrders.length > 0 ? (
-          workOrders.map((workOrder) => (
-            <div
-              key={workOrder._id }
-              className={`card ${workOrder.status ? 'card-done' : ''}`}
-              style={{ width: '18rem', backgroundColor: workOrder.status ? 'green' : '' }}
-            >
-              <div className="card-body">
-                <div className="card-title">
-                  {t('Post.orderStatus')}:{workOrder.status} &nbsp; {!workOrder.status ? t('Post.open') : t('Post.close')}
-                </div>
-                <h5 className="card-title">
-                  {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.turbineModel}</span>
-                </h5>
-                <hr />
-                <h5 className="card-title">
-                  {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.orderId}</span>
-                </h5>
-                <div
-                  style={{
-                    border: '1px solid black',
-                    padding: '10px',
-                    borderRadius: '10px',
-                    boxShadow: '0px 0px 16px 1px rgba(0, 0, 0, 0.68)',
-                  }}
-                >
-                  <div className="card-text">
-                    <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{t('Post.coordinates')}:&nbsp;</span>{' '}
-                    {workOrder.location}
-                    <hr />
+          {workOrders.length > 0 ? (
+            workOrders.map((workOrder) => (
+              <div
+                key={workOrder._id}
+                className={`card ${workOrder.status ? 'card-done' : ''}`}
+                style={{ width: '18rem', backgroundColor: workOrder.status ? 'green' : '' }}
+              >
+                <div className="card-body">
+                  <div className="card-title">
+                    {t('Post.orderStatus')}:{workOrder.status} &nbsp; {!workOrder.status ? t('Post.open') : t('Post.close')}
                   </div>
-                  {/* Other card texts */}
-                </div>
-                <hr />
-
-                <Box marginBottom="1rem">
+                  <h5 className="card-title">
+                    {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.turbineModel}</span>
+                  </h5>
+                  <hr />
+                  <h5 className="card-title">
+                    {t('Post.orderId')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.orderId}</span>
+                  </h5>
+                  <hr />
+                  <div
+                    
+                    
+                  >
+                    <div className="card-text">
+                      <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{t('Post.coordinates')}:&nbsp;</span>{' '}
+                      {workOrder.location}
+                      <hr />
+                    </div>
+                    {/* Other card texts */}
+                  </div>
                   <FormControl>
-                    <FormLabel fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                      {t('Post.fileLabel')}
-                    </FormLabel>
-                    <Input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} name="pdfs" />
-                  </FormControl>
-                </Box>
-                <Button onClick={() => handleFileUpload(workOrder.orderId)}>Upload File</Button>
-                {isAdmin && (
-                  <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
-                    {t('Post.deleteButton')}
-                  </Button>
-                )}
-                &nbsp;
-                {!workOrder.status && (
-                  <>
-                    <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
-                      {t('Post.doneButton')}
+                      <FormLabel fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
+                        {t('Post.fileLabel')}
+                      </FormLabel>
+                      <Input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} name="pdfs" />
+                    </FormControl>
+                    <Button onClick={() => handleFileUpload(workOrder.orderId)}>Upload File</Button>
+                  <Box marginBottom="1rem">
+                   
+                  </Box>
+                  
+                  {isAdmin && (
+                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                      {t('Post.deleteButton')}
                     </Button>
-                  </>
-                )}
+                  )}
+                  &nbsp;
+                  {!workOrder.status && (
+                    <>
+                      <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
+                        {t('Post.doneButton')}
+                      </Button>
+                    </>
+                  )}
 
                   {uploadedFiles[workOrder.orderId] && uploadedFiles[workOrder.orderId].filePath && (
                     <div>
                       <h6>Uploaded File:</h6>
-                      <a href={`${import.meta.env.VITE_PRODUCTION_API}/${uploadedFiles[workOrder.orderId].filePath}`} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={`${import.meta.env.VITE_PRODUCTION_API}/${uploadedFiles[workOrder.orderId].filePath}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {uploadedFiles[workOrder.orderId].filename}
                       </a>
                     </div>
                   )}
-                     
-               
-                  {/* {Object.keys(pdf).forEach((key, index) => {
-                    if (workOrder.orderId === pdf[key].orderId) {
-                        <div>
-                          <h6>Uploaded File:</h6>
-                          <a href={`${import.meta.env.VITE_PRODUCTION_API}/${pdf.filePath}`} target="_blank" rel="noopener noreferrer">
-                            {pdf.filename}
-                          </a>
-                        </div>
-                      }  
-                })  }   */}
+                     {/* Display WorkOrder Image Name */}
+                     {workOrder.image && (
+                      <div>
+                        {/* <h6>WorkOrder Image:</h6> */}
+                        <a
+                          href={workOrder.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                        >
+                          <h4>Doc Orders:</h4>
+                          
+                        </a>
+                      </div>
+                    )}
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>{t('Post.noWorkOrders')}</p>
-        )}
+            ))
+          ) : (
+            <p>{t('Post.noWorkOrders')}</p>
+          )}
         </div>
       </div>
       {selectedWorkOrderId && (
@@ -285,6 +287,7 @@ const Post = () => {
           </ModalContent>
         </Modal>
       )}
+      
     </div>
   );
 };
