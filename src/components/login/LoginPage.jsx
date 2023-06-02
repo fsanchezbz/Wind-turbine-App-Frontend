@@ -35,7 +35,7 @@ const LoginPage = () => {
 
   const setUserStatus = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true, });
       const { _id, status, isAdmin, isLoggedIn } = response.data;
 
       console.log(_id);

@@ -157,6 +157,7 @@ const AdminPanel = () => {
             <Th>Email</Th>
             <Th>Admin</Th>
             <Th>Edit</Th>
+            <Th>Delete</Th>
           </Tr>
         </Thead>
         <Tbody>
