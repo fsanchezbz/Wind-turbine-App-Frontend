@@ -74,7 +74,20 @@ h3 {
 }
 
 
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .footer-content {
+    flex-direction: column;
+  }
 
+  .footer-section {
+    margin-bottom: 10px;
+  }
+
+  .footer-vertical-line {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 767px), (min-width: 768px) {
   .footer-content {

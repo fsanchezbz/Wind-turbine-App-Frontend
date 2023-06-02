@@ -21,7 +21,7 @@ const languageOptions = [
   },
   {
     id: 'fr',
-    name: 'French',
+    name: 'Français',
     flagimg: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg',
   },
   {
