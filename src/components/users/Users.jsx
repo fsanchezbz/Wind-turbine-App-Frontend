@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Users.css';
+import './users.css';
 import { useTranslation } from 'react-i18next';
 
 const Users = () => {
