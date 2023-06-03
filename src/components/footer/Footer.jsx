@@ -2,8 +2,8 @@ import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaTiktok, FaLinkedin } from 'react-icons/fa';
-import { BsFillSunFill, BsMoon } from 'react-icons/bs';
-import useDarkMode from '../hooks/useDarkMode';
+// import { BsFillSunFill, BsMoon } from 'react-icons/bs';
+// import useDarkMode from '../hooks/useDarkMode';
 
 const Footer = () => {
   return (
