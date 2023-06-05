@@ -43,7 +43,7 @@ const ContactForm = () => {
           <p className="contact-info">{t('contactPage.email')}</p>
           <p className="contact-info">{t('contactPage.phone')}</p>
         </div>
-        <h2 className="contact-form-title">{t('contactPage.formTitle')}</h2>
+        <h5 className="contact-form-title">{t('contactPage.formTitle')}</h5>
         <form className="contact-form" onSubmit={onSubmit}>
           <div className="contact-form-group">
             <label className="contact-label" htmlFor="name">
