@@ -40,14 +40,13 @@ const WorkOrder = () => {
       const image = new Image();
       image.onload = () => resolve(image);
       image.onerror = (error) => reject(error);
-      image.src = data;
+      image.src = URL.createObjectURL(new Blob([data]));
     });
   };
-  
 
   const generateWorkOrderImage = async () => {
     try {
-      const existingImageBytes = await fetch('/Work-Order-Request-Form.jpg').then((res) =>
+      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.jpg').then((res) =>
         res.arrayBuffer()
       );
       const image = await loadImage(existingImageBytes);
