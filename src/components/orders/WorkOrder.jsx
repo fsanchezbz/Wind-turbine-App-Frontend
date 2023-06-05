@@ -37,15 +37,18 @@ const WorkOrder = () => {
 
   const generateWorkOrderImage = async () => {
     try {
-      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.png').then((res) =>
-        res.arrayBuffer()
-      );
+      // Fetch the image URL from the backend API
+      const pngresponse = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/png/file/647dcbb8d62bb06bcf8ee356`);
+      const pngImage = pngresponse.data;
+
+      const existingImageBytes = await fetch(pngImage).then((res) => res.arrayBuffer());
       const image = new Image();
       await new Promise((resolve, reject) => {
         image.onload = resolve;
         image.onerror = reject;
         image.src = URL.createObjectURL(new Blob([existingImageBytes]));
       });
+     
 
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
@@ -106,7 +109,7 @@ const WorkOrder = () => {
       drawTextBox(550, 1210, 180, 40, bestTimes, 18);
       drawTextBox(550, 1285, 180, 40, completionDate, 18);
 
-      const imageDataUrl = canvas.toDataURL('image/png');
+      const imageDataUrl = canvas.toDataURL('/png');
       const imageBlob = await (await fetch(imageDataUrl)).blob();
 
       const formData = new FormData();
