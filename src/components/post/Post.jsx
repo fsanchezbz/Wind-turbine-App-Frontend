@@ -31,8 +31,9 @@ const Post = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFiles, setUploadedFiles] = useState({});
   const [pdfs, setPdfs] = useState([]); // Add the missing state setter function
+  const [update, setUpdate] = useState(null);
 
-  useEffect(() => {
+   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true });
@@ -94,25 +95,15 @@ const Post = () => {
   const handleAddInfoFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append('addInfo', addInfo);
-      formData.append('status', true); // Set the status to true when the "Done" button is clicked
-      formData.append('pdfs', selectedFile); // Append the selected file to form data
-
-      const response = await axios.post(
-        `${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data', // Set the content type to 'multipart/form-data'
-          },
-        }
-      );
-      console.log('Work order updated:', response.data);
+      const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, {
+        addInfo: addInfo,
+        status: true, // Set the status to true when the "Done" button is clicked
+      });
+      console.log("Work order updated:", response.data);
       closeAddInfoModal();
       setWorkOrders((prevWorkOrders) =>
         prevWorkOrders.map((workOrder) => {
-          if (workOrder.orderId === selectedWorkOrderId) {
+          if (workOrder._id === selectedWorkOrderId) {
             return { ...workOrder, status: true };
           } else {
             return workOrder;
@@ -120,36 +111,51 @@ const Post = () => {
         })
       );
     } catch (error) {
-      console.error('Failed to update work order:', error);
+      console.error("Failed to update work order:", error);
     }
   };
 
-  const handleFileUpload = async (orderId) => {
+
+  
+  const handleSubmit = async (workOrderId , e) => {
+    e.preventDefault();
+
     try {
-      if (!selectedFile) {
-        console.error('No file selected');
-        return;
-      }
-
+      // Create a new FormData object
       const formData = new FormData();
-      formData.append('pdfs', selectedFile);
-      formData.append('orderId', orderId); // Use the orderId parameter
+      formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
+      formData.append('file', update); // Append the profile image file to the form data
 
-      const response = await axios.post(`${import.meta.env.VITE_PRODUCTION_API}/pdf/upload-pdf`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      // Make a request to upload the profile image to Cloudinary
+      const uploadResponse = await axios.post(
+        'https://api.cloudinary.com/v1_1/windturbineprofile/image/upload',
+        formData
+      );
 
-      console.log('File uploaded successfully:', response.data);
+      // Get the URL of the uploaded image from the response
+      const updateUrl = uploadResponse.data.secure_url;
 
-      setUploadedFiles((prevUploadedFiles) => ({
-        ...prevUploadedFiles,
-        [orderId]: response.data,
-      }));
+      // Make a request to sign up the user with the form data
+      const signupResponse = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${workOrderId}`,
+        {
+          
+          update: updateUrl // Pass the profile image URL in the request
+        }
+      );
+
+      // Reset the form fields
+     
+      setUpdate(null);
+      // Redirect to the wind turbines page or perform any other desired action
+     
     } catch (error) {
-      console.error('Error uploading file:', error);
+      console.error('Error signing up:', error);
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setUpdate(file);
   };
 
   const deleteWorkOrder = async (workOrderId) => {
@@ -160,7 +166,9 @@ const Post = () => {
       console.error('Failed to delete work order:', error);
     }
   };
+
   pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  
   return (
     <div className="post">
       <div className="postWrapper">
@@ -195,15 +203,29 @@ const Post = () => {
                     </div>
                     {/* Other card texts */}
                   </div>
-                  <FormControl>
-                      <FormLabel fontSize="lg" fontWeight="bold" marginBottom="0.5rem">
-                        {t('Post.fileLabel')}
-                      </FormLabel>
-                      <Input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} name="pdfs" />
-                    </FormControl>
-                    <Button onClick={() => handleFileUpload(workOrder.orderId)}>Upload File</Button>
-                  <Box marginBottom="1rem">
+               
+                  <form className="signup-form" onSubmit={(e) => handleSubmit(workOrder._id, e)}>
+                      {/* Rest of the form */}
+                    <div className="form-group">
+                      
+                      <input
+                        type="file"
+                        id="update"
+                        className="form-input"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                      />
+                      <button type="submit" className="signup-button">
+                        Submit
+                      </button>
+                    </div>
+                 
+                  </form>
+                 
                    
+
+                  <Box marginBottom="1rem">
+
                   </Box>
                   
                   {isAdmin && (
@@ -219,7 +241,7 @@ const Post = () => {
                       </Button>
                     </>
                   )}
-
+                  
                   {uploadedFiles[workOrder.orderId] && uploadedFiles[workOrder.orderId].filePath && (
                     <div>
                       <h6>Uploaded File:</h6>
@@ -246,8 +268,12 @@ const Post = () => {
                           
                         </a>
                       </div>
+                     
                     )}
+                     
                 </div>
+                {/* Display manual comments  */}
+                <p>Comments: { workOrder.addInfo}</p>
               </div>
             ))
           ) : (
