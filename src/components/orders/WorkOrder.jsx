@@ -37,23 +37,17 @@ const WorkOrder = () => {
 
   const generateWorkOrderImage = async () => {
     try {
-      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.jpg').then((res) =>
-        res.arrayBuffer()
-      );
-      const image = new Image();
-      await new Promise((resolve, reject) => {
-        image.onload = resolve;
-        image.onerror = reject;
-        image.src = URL.createObjectURL(new Blob([existingImageBytes]));
-      });
+      const existingImage = new Image();
+      existingImage.src = '/src/components/file/Work-Order-Request-Form.jpg';
+      await existingImage.decode();
 
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
 
-      canvas.width = image.width;
-      canvas.height = image.height;
+      canvas.width = existingImage.width;
+      canvas.height = existingImage.height;
 
-      context.drawImage(image, 0, 0);
+      context.drawImage(existingImage, 0, 0);
 
       function drawTextBox(x, y, width, height, text, fontSize) {
         const padding = 10;
