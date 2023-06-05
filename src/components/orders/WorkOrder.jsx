@@ -35,21 +35,17 @@ const WorkOrder = () => {
   const [completionDate, setCompletionDate] = useState('');
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
-  const loadImage = (data) => {
-    return new Promise((resolve, reject) => {
-      const image = new Image();
-      image.onload = () => resolve(image);
-      image.onerror = (error) => reject(error);
-      image.src = URL.createObjectURL(new Blob([data]));
-    });
-  };
-
   const generateWorkOrderImage = async () => {
     try {
       const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.jpg').then((res) =>
         res.arrayBuffer()
       );
-      const image = await loadImage(existingImageBytes);
+      const image = new Image();
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = reject;
+        image.src = URL.createObjectURL(new Blob([existingImageBytes]));
+      });
 
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
