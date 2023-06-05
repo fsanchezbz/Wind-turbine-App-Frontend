@@ -37,17 +37,23 @@ const WorkOrder = () => {
 
   const generateWorkOrderImage = async () => {
     try {
-      const existingImage = new Image();
-      existingImage.src = '/src/components/file/Work-Order-Request-Form.png';
-      await existingImage.decode();
+      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.png').then((res) =>
+        res.arrayBuffer()
+      );
+      const image = new Image();
+      await new Promise((resolve, reject) => {
+        image.onload = resolve;
+        image.onerror = reject;
+        image.src = URL.createObjectURL(new Blob([existingImageBytes]));
+      });
 
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
 
-      canvas.width = existingImage.width;
-      canvas.height = existingImage.height;
+      canvas.width = image.width;
+      canvas.height = image.height;
 
-      context.drawImage(existingImage, 0, 0);
+      context.drawImage(image, 0, 0);
 
       function drawTextBox(x, y, width, height, text, fontSize) {
         const padding = 10;
@@ -105,7 +111,7 @@ const WorkOrder = () => {
 
       const formData = new FormData();
       formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
-      formData.append('file', imageBlob);
+      formData.append('file', imageBlob, orderId);
 
       const uploadResponse = await axios.post(
         'https://api.cloudinary.com/v1_1/windturbineprofile/image/upload',
