@@ -40,13 +40,14 @@ const WorkOrder = () => {
       const image = new Image();
       image.onload = () => resolve(image);
       image.onerror = (error) => reject(error);
-      image.src = URL.createObjectURL(new Blob([data]));
+      image.src = data;
     });
   };
+  
 
   const generateWorkOrderImage = async () => {
     try {
-      const existingImageBytes = await fetch('/src/components/file/Work-Order-Request-Form.jpg').then((res) =>
+      const existingImageBytes = await fetch('/Work-Order-Request-Form.jpg').then((res) =>
         res.arrayBuffer()
       );
       const image = await loadImage(existingImageBytes);
@@ -111,7 +112,7 @@ const WorkOrder = () => {
       drawTextBox(550, 1285, 180, 40, completionDate, 18);
 
       const imageDataUrl = canvas.toDataURL('image/jpeg');
-      const imageBlob = (await fetch(imageDataUrl));
+      const imageBlob = await (await fetch(imageDataUrl)).blob();
 
       const formData = new FormData();
       formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
