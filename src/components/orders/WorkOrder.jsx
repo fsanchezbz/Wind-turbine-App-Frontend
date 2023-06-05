@@ -111,7 +111,7 @@ const WorkOrder = () => {
       drawTextBox(550, 1285, 180, 40, completionDate, 18);
 
       const imageDataUrl = canvas.toDataURL('image/jpeg');
-      const imageBlob = await (await fetch(imageDataUrl)).blob();
+      const imageBlob = (await fetch(imageDataUrl));
 
       const formData = new FormData();
       formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
