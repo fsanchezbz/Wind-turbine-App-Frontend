@@ -100,7 +100,7 @@ const WorkOrder = () => {
       drawTextBox(550, 1210, 180, 40, bestTimes, 18);
       drawTextBox(550, 1285, 180, 40, completionDate, 18);
 
-      const imageDataUrl = canvas.toDataURL('image/jpeg');
+      const imageDataUrl = canvas.toDataURL('image/png');
       const imageBlob = await (await fetch(imageDataUrl)).blob();
 
       const formData = new FormData();
