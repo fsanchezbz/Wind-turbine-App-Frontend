@@ -135,7 +135,7 @@ const Post = () => {
       // Get the URL of the uploaded image from the response
       const updateUrl = uploadResponse.data.secure_url;
 
-      // Make a request to sign up the user with the form data
+      // Make a request to upload the file for the Wordorder
       const signupResponse = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${workOrderId}`,
         {
           
@@ -149,7 +149,7 @@ const Post = () => {
       // Redirect to the wind turbines page or perform any other desired action
      
     } catch (error) {
-      console.error('Error signing up:', error);
+      console.error('Error uploading in Workorder:', error);
     }
   };
 
@@ -264,13 +264,27 @@ const Post = () => {
                           rel="noopener noreferrer"
                           style={{ textDecoration: 'underline', cursor: 'pointer' }}
                         >
-                          <h4>Doc Orders:</h4>
+                          <h4>Doc Order</h4>
                           
                         </a>
                       </div>
                      
                     )}
-                     
+                     {/* Display WorkOrder Image Name */}
+                     {workOrder.update && (
+                      <div>
+                        {/* <h6>WorkOrder Image:</h6> */}
+                        <a
+                          href={workOrder.update}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                        >
+                          <h4>Finished Order</h4>
+                          
+                        </a>
+                      </div>
+                       )}
                 </div>
                 {/* Display manual comments  */}
                 <p>Comments: { workOrder.addInfo}</p>
