@@ -19,10 +19,14 @@ const ContactForm = () => {
       message: message.value,
     };
   
-    axios.post(`https://wind-turbine-app-backend.onrender.com/send-notification`, formData)
+    axios
+      .post(`https://wind-turbine-app-backend.onrender.com/send-notification`, formData)
       .then((response) => {
         console.log('Notification sent successfully');
         setFormStatus(t('contactPage.formButton'));
+        name.value = '';
+        email.value = '';
+        message.value = '';
       })
       .catch((error) => {
         console.error('Error sending notification:', error);
