@@ -65,50 +65,49 @@ const WorkOrder = () => {
         const textY = y + padding;
         const availableWidth = width - 2 * padding;
         const availableHeight = height - 2 * padding;
-
+      
         context.fillStyle = 'transparent'; // Box background color
         context.fillRect(x, y, width, height);
-
+      
+        const lines = [];
+        let currentLine = '';
+      
         context.font = `${fontSize}px Helvetica`;
         context.fillStyle = '#000000'; // Text color
-
-        const words = text.split(' ');
-        let currentLine = '';
-        const lines = [];
-
-        for (let i = 0; i < words.length; i++) {
-          const word = words[i];
-          const lineWidth = context.measureText(currentLine + ' ' + word).width;
-
-          if (lineWidth < availableWidth) {
-            currentLine += ' ' + word;
-          } else {
-            lines.push(currentLine.trim());
-            currentLine = word;
+      
+        for (let i = 0; i < text.length; i++) {
+          currentLine += text[i];
+      
+          if (currentLine.length === 50 || i === text.length - 1) {
+            lines.push(currentLine);
+            currentLine = '';
           }
         }
-
-        lines.push(currentLine.trim());
-
+      
+        let lineY = textY;
+        let lineHeight = fontSize; // Adjust line height as needed
+      
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i];
-          const lineY = textY + i * fontSize;
-
           context.fillText(line, textX, lineY);
+          lineY += lineHeight;
         }
       }
+      
+      
+      
 
-      drawTextBox(111, 112, 180, 40, turbineModel, 12);
-      drawTextBox(312, 112, 180, 40, description, 12);
-      drawTextBox(119, 145, 280, 40, location, 12);
-      drawTextBox(119, 170, 180, 40, technician, 12);
-      drawTextBox(306, 219, 180, 40, date, 12);
-      drawTextBox(105, 220, 180, 40, name, 12);
-      drawTextBox(105, 253, 180, 40, email, 12);
-      drawTextBox(306, 250, 180, 40, phone, 12);
-      drawTextBox(55, 319, 840, 100, requestDetails, 12);
-      drawTextBox(206, 448, 180, 40, bestTimes, 12);
-      drawTextBox(206, 477, 180, 40, completionDate, 12);
+      drawTextBox(105, 112, 280, 60, turbineModel, 10);
+      drawTextBox(306, 112, 180, 60, description, 10);
+      drawTextBox(114, 145, 280, 60, location, 10);
+      drawTextBox(114, 170, 180, 60, technician, 10);
+      drawTextBox(301, 219, 180, 60, date, 10);
+      drawTextBox(100, 220, 180, 60, name, 10);
+      drawTextBox(100, 253, 180, 60, email, 10);
+      drawTextBox(301, 250, 180, 60, phone, 10);
+      drawTextBox(55, 319, 840, 100, requestDetails, 10);
+      drawTextBox(200, 448, 180, 60, bestTimes, 10);
+      drawTextBox(200, 477, 180, 60, completionDate, 10);
 
       const imageDataUrl = canvas.toDataURL('/png');
       const imageBlob = await (await fetch(imageDataUrl)).blob();
