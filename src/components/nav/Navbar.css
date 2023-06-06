@@ -92,9 +92,19 @@
       margin-bottom: 10px;
     }
   
+    .navbar-links {
+      display: flex;
+      flex-direction: column; /* Change to vertical layout on small screens */
+      align-items: center; /* Center align on small screens */
+      margin-top: 10px; /* Add margin to create space between navbar-brand and links */
+    }
+    
     .navbar-links a {
-      display: block;
-      margin-bottom: 5px;
+      margin-right: 0; /* Remove the margin on small screens */
+      margin-bottom: 5px; /* Add spacing between vertical links on small screens */
+      text-decoration: none;
+      color: #ffffff;
+      transition: color 0.3s;
     }
   }
   
