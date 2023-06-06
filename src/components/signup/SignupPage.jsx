@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './SignUpPage.css';
 import videoBg from '../../assets/rain.mp4';
 import axios from 'axios';
-// import Footer from './footer/Footer';
+
 
 const SignUpPage = () => {
   const [userName, setUserName] = useState('');
@@ -151,7 +151,7 @@ const SignUpPage = () => {
         </div>
       </div>
     </div>
-    {/* <Footer/> */}
+
     </>
   );
 };

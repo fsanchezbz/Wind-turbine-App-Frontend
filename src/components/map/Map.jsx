@@ -33,7 +33,9 @@ const Map = () => {
         scrollwheel: true,
         zoomControl: true,
         streetViewControl: true,
+        rotateControl: true,
         fullscreenControl: true,
+        mapTypeId: window.google.maps.MapTypeId.HYBRID, // Enable satellite view
       });
       const trafficLayer = new google.maps.TrafficLayer();
 
@@ -48,6 +50,9 @@ const Map = () => {
       inputText.placeholder = 'Enter a location';
       inputText.className = 'input-text';
       inputText.style.fontSize = '12px';
+
+      // Enable autocomplete for the inputText element
+      const autocomplete = new window.google.maps.places.Autocomplete(inputText);
 
       const submitButton = document.createElement('input');
       submitButton.type = 'button';
@@ -129,7 +134,7 @@ const Map = () => {
           .geocode(request)
           .then((result) => {
             const { results } = result;
-
+      
             if (results && results.length > 0) {
               const position = {
                 lat: results[0].geometry.location.lat(),
@@ -138,22 +143,23 @@ const Map = () => {
               marker.setPosition(position);
               marker.setMap(map);
               setResponse(JSON.stringify(result, null, 2));
-
-              const infoWindowContent = `<div>${results[0].formatted_address}</div>`;
+      
+              const infoWindowContent = `
+                <div><strong>${results[0].formatted_address}</strong></div>
+                <div><strong>Latitude:</strong> ${position.lat}</div>
+                <div><strong>Longitude:</strong> ${position.lng}</div>
+              `;
               setInfoWindowContent(infoWindowContent);
               setMapMarkers((prevMarkers) => [...prevMarkers, marker]);
-              // Check if directions response exists and update the info window content
-              if (directionsResponse) {
-                const route = directionsResponse.routes[0];
-                const leg = route.legs[0];
-                const directionsContent = `<div><strong>Duration:</strong> ${leg.duration.text}</div>
-                                           <div><strong>Distance:</strong> ${leg.distance.text}</div>`;
-                setInfoWindowContent(infoWindowContent + directionsContent);
-              }
-
+      
               setInfoWindowVisible(true);
               infoWindow.setContent(infoWindowContent);
               infoWindow.open(map, marker);
+      
+              // Open Google Maps for directions
+              const googleMapsLink = `<a href="https://www.google.com/maps/search/?api=1&query=${position.lat},${position.lng}" target="_blank" rel="noopener noreferrer">View on Google Maps</a>`;
+              setInfoWindowContent(infoWindowContent + googleMapsLink);
+              infoWindow.setContent(infoWindowContent + googleMapsLink);
             } else {
               alert('No results found.');
             }
@@ -162,7 +168,7 @@ const Map = () => {
             alert('Geocode was not successful for the following reason: ' + e);
           });
       }
-
+      
       function getUserLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import './About.css';
 import videoBg1 from '../../assets/rain.mp4';
 import '../../index.css';
-// import Footer from '../footer/Footer';
+
 
 const About = () => {
   const { t } = useTranslation();
@@ -44,7 +44,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      {/* <Footer/> */}
+  
     </>
   );
 };

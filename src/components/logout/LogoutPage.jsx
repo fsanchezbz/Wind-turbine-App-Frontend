@@ -30,7 +30,7 @@ function LogoutPage() {
   const refreshPage = () => {
     setTimeout(() => {
       window.location.reload(true);
-    }, 1000); // 2000 milliseconds delay (adjust the duration as needed)
+    }, 1000); // 1000 milliseconds delay (adjust the duration as needed)
   };
 
   const updateUserStatus = async (userId) => {
@@ -78,7 +78,7 @@ function LogoutPage() {
         
       </div>
     </div>
-    {/* <Footer/> */}
+
     </>
   );
 }

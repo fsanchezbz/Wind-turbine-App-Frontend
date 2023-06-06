@@ -58,7 +58,7 @@ const Post = () => {
 
     fetchWorkOrders();
    
-  }, [statusOrder,update]);
+  }, [statusOrder,update]); //Upgrade to Workorder card for SAVE and UPLOAD button
 
   const openAddInfoModal = async (orderId) => {
     try {
@@ -179,10 +179,7 @@ const Post = () => {
                     {t('Post.orderId')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.orderId}</span>
                   </h5>
                   <hr />
-                  <div
-                    
-                    
-                  >
+                  <div>
                     <div className="card-text">
                       <span style={{ fontWeight: 'bold', fontSize: '18px' }}>{t('Post.coordinates')}:&nbsp;</span>{' '}
                       {workOrder.location}
@@ -194,16 +191,14 @@ const Post = () => {
                   {/* Form to upload documents/images */}
                   {!workOrder.update && (
                   <form className="signup-form" onSubmit={(e) => handleSubmit(workOrder._id, e)}>
-                      {/* Rest of the form */}
-                    <div className="form-group">
-                      
-                      <input
+                     <div className="form-group">
+                       <input
                         type="file"
                         id="update"
                         className="form-input"
                         accept="image/*"
                         onChange={handleFileChange}
-                      />
+                        />
                       <button type="submit" className="signup-button">
                         Submit
                       </button>
@@ -246,8 +241,7 @@ const Post = () => {
                      {/* Display WorkOrder Image Name */}
                      {workOrder.image && (
                       <div>
-                        {/* <h6>WorkOrder Image:</h6> */}
-                        <a
+                       <a
                           href={workOrder.image}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -262,7 +256,7 @@ const Post = () => {
                      {/* Display WorkOrder Image Name */}
                      {workOrder.update && (
                       <div>
-                        {/* <h6>WorkOrder Image:</h6> */}
+                   
                         <a
                           href={workOrder.update}
                           target="_blank"
