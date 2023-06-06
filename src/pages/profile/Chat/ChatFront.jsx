@@ -17,10 +17,7 @@ const ChatFront = () => {
     
     
     setUsername(users.firstName);
-    
-    console.log('useState roomID',roomID)
-    console.log('useState username',username)
-
+ 
     if (roomID !== "" ){
    
     
