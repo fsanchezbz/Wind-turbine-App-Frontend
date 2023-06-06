@@ -98,17 +98,17 @@ const WorkOrder = () => {
         }
       }
 
-      drawTextBox(305, 335, 180, 40, turbineModel, 18);
-      drawTextBox(830, 335, 180, 40, description, 18);
-      drawTextBox(325, 415, 280, 40, location, 18);
-      drawTextBox(325, 490, 180, 40, technician, 18);
-      drawTextBox(815, 620, 180, 40, date, 18);
-      drawTextBox(285, 620, 180, 40, name, 18);
-      drawTextBox(285, 700, 180, 40, email, 18);
-      drawTextBox(815, 700, 180, 40, phone, 18);
-      drawTextBox(165, 860, 840, 100, requestDetails, 18);
-      drawTextBox(550, 1210, 180, 40, bestTimes, 18);
-      drawTextBox(550, 1285, 180, 40, completionDate, 18);
+      drawTextBox(111, 112, 180, 40, turbineModel, 12);
+      drawTextBox(312, 112, 180, 40, description, 12);
+      drawTextBox(119, 145, 280, 40, location, 12);
+      drawTextBox(119, 170, 180, 40, technician, 12);
+      drawTextBox(306, 219, 180, 40, date, 12);
+      drawTextBox(105, 220, 180, 40, name, 12);
+      drawTextBox(105, 253, 180, 40, email, 12);
+      drawTextBox(306, 250, 180, 40, phone, 12);
+      drawTextBox(55, 319, 840, 100, requestDetails, 12);
+      drawTextBox(206, 448, 180, 40, bestTimes, 12);
+      drawTextBox(206, 477, 180, 40, completionDate, 12);
 
       const imageDataUrl = canvas.toDataURL('/png');
       const imageBlob = await (await fetch(imageDataUrl)).blob();

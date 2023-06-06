@@ -57,15 +57,8 @@ const Post = () => {
     };
 
     fetchWorkOrders();
-  
-
-    // Fetch work orders every 1 minute (60000 milliseconds)
-  const interval = setInterval(fetchWorkOrders, 60000);
-
-  // Clean up the interval on component unmount
-  return () => clearInterval(interval);
-  
-  }, [statusOrder]);
+   
+  }, [statusOrder,update]);
 
   const openAddInfoModal = async (orderId) => {
     try {
@@ -197,7 +190,8 @@ const Post = () => {
                     </div>
                     {/* Other card texts */}
                   </div>
-               
+                  
+                  {/* Form to upload documents/images */}
                   {!workOrder.update && (
                   <form className="signup-form" onSubmit={(e) => handleSubmit(workOrder._id, e)}>
                       {/* Rest of the form */}
