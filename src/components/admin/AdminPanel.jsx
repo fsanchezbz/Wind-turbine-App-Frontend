@@ -21,6 +21,7 @@ import {
   Input,
   useToast,
 } from '@chakra-ui/react';
+import './AdminPanel.css';
 
 const AdminPanel = () => {
   const [users, setUsers] = useState([]);
@@ -101,8 +102,6 @@ const AdminPanel = () => {
     }
   };
 
-
-
   const toggleAdminStatus = async (userId, currentStatus) => {
     try {
       const newStatus = !currentStatus; // Toggle the value
@@ -147,9 +146,8 @@ const AdminPanel = () => {
   };
 
   return (
-    <Box>
-      <h2>Admin Panel</h2>
-      <Table variant="striped" colorScheme="gray" size={tableSize}>
+    <Box p={6} maxW="1500px" overflowX="auto">
+      <Table  size={tableSize}>
         <Thead>
           <Tr>
             <Th>FirstName</Th>
@@ -161,11 +159,13 @@ const AdminPanel = () => {
         </Thead>
         <Tbody>
           {users.map((user) => (
-            <Tr key={user._id}>
+            <Tr key={user._id} bg={user.isAdmin ? 'green.200' : 'blue.100' }>
               <Td>{user.firstName}</Td>
               <Td>{user.email}</Td>
               <Td>
                 <Button
+                  className='adminbutton'
+                  size="md"
                   colorScheme={user.isAdmin ? 'red' : 'green'}
                   onClick={() => toggleAdminStatus(user._id, user.isAdmin)}
                 >
@@ -173,12 +173,12 @@ const AdminPanel = () => {
                 </Button>
               </Td>
               <Td>
-                <Button colorScheme="blue" onClick={() => handleEditField(user._id, user.userName, user.email)}>
+                <Button className='editbutton' size="md" colorScheme="blue" onClick={() => handleEditField(user._id, user.userName, user.email)}>
                   Edit
                 </Button>
               </Td>
               <Td>
-                <Button colorScheme="blue" onClick={() => handleDeleteField(user._id, user.userName)}>
+                <Button className="deletebutton" size="md" colorScheme="red" onClick={() => handleDeleteField(user._id, user.userName)}>
                   Delete
                 </Button>
               </Td>

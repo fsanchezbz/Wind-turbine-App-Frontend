@@ -67,7 +67,7 @@ const LoginPage = () => {
   const refreshPage = () => {
     setTimeout(() => {
       window.location.reload(true);
-    }, 1000);
+    }, 1500);
   };
 
   const handleSubmit = (event) => {
