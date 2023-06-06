@@ -60,8 +60,8 @@
       "turbineModelPlaceholder": "Digite o modelo da turbina",
       "descriptionLabel": "Descrição",
       "descriptionPlaceholder": "Digite a descrição",
-      "locationLabel": "Localização",
-      "locationPlaceholder": "Digite a localização",
+      "locationLabel": "Coordenadas",
+      "locationPlaceholder": "Insira as Coordenadas",
       "technicianLabel": "Técnico",
       "technicianPlaceholder": "Digite o técnico",
       "dateLabel": "Data",
@@ -102,6 +102,7 @@
         "doneButton": "Concluído",
         "addInfoModalTitle": "Adicionar Informações",
         "informationLabel": "Informação",
+        "informationPlaceholder": "Digite um comentário",
         "closeButton": "Fechar",
         "saveButton": "Salvar"
     },
@@ -117,6 +118,44 @@
         "chatRoomTitle": "Sala de Chat da PJ TurbinePro GmbH",
         "chatRoomDescription": "Aqui neste chat você pode conversar com todos os usuários online",
         "closeButton": "Fechar"
+    },
+    "cookiePolicy": {
+      "title": "Política de Cookies",
+      "description1": "Na <span class=\"highlight\">PJ TurbinePro GmbH</span>, estamos empenhados em ter um impacto positivo no ambiente e enfrentar a crise climática. A nossa missão é contribuir para um futuro sustentável, garantindo o desempenho e longevidade ótimos das turbinas eólicas.",
+      "description2": "A PJ TurbinePro GmbH (doravante designada por COMPANHIA) pretende fornecer-lhe todas as informações necessárias sobre os cookies utilizados no nosso site, para que possa tomar uma decisão informada sobre a sua utilização e a proteção da sua privacidade. A presente política de cookies complementa a nossa Política de Privacidade.",
+      "whatAreCookies": "O que são cookies?",
+      "whatAreCookiesDescription": "Um cookie é um ficheiro de texto que é descarregado para o seu dispositivo (computador, smartphone ou tablet) quando acede a um site ou utiliza uma aplicação, permitindo ao proprietário do site armazenar ou recuperar informações sobre as suas preferências de navegação.",
+      "complementaryPolicy": "A PJ TurbinePro GmbH (doravante designada por COMPANHIA) pretende fornecer-lhe todas as informações necessárias sobre os cookies utilizados no nosso site, para que possa tomar uma decisão informada sobre a sua utilização e a proteção da sua privacidade. A presente política de cookies complementa a nossa Política de Privacidade.",
+      "cookieTypes": "Que tipos de cookies são utilizados neste site?",
+      "cookieTypesDescription": "Utilizamos cookies para permitir, personalizar e analisar preferências de navegação, melhorando assim a qualidade dos serviços oferecidos. Os cookies utilizados são classificados em diferentes categorias, embora alguns possam ser incluídos em mais do que uma categoria:",
+      "sessionCookies": "Cookies de sessão: são cookies temporários que não são armazenados no seu dispositivo e desaparecem quando fecha a sessão de navegação.",
+      "persistentCookies": "Cookies persistentes: permitem armazenar informações no seu disco rígido e serem utilizados após fechar o navegador.",
+      "ownCookies": "Cookies próprios: são cookies enviados para o seu disco rígido a partir do nosso próprio site, embora alguns sejam também fornecidos pela ferramenta Google Analytics.",
+      "thirdPartyCookies": "Cookies de terceiros: são cookies que são enviados para o seu dispositivo a partir de um domínio não gerido pela COMPANHIA, mas por uma terceira empresa que tratará as informações obtidas através desses cookies.",
+      "enableFunctionalities": "Para ativar determinadas funcionalidades, o nosso site utiliza cookies de: i) YouTube, Inc. para reprodução de vídeos (https://www.google.com/intl/es_es/policies/technologies/cookies/); ii) SlideShare Inc. para download de documentos (http://www.linkedin.com/legal/cookie-policy), e iii) cookies técnicos da Euroland.com AB para fornecer acesso a informações da bolsa.",
+      "technicalCookies": "Cookies técnicos: estes cookies permitem-lhe navegar no nosso site e utilizar as várias opções e serviços disponíveis, como rastrear o tráfego no site e fornecer dados, identificação de sessão, acesso a áreas restritas ou utilização de elementos de segurança durante a navegação.",
+      "personalisationCookies": "Cookies de personalização: estes são cookies que permitem aceder ao nosso site com especificações pré-definidas, com base em critérios como idioma, tipo de navegador ou configuração regional a partir da qual acede ao serviço.",
+      "analyticsCookies": "Cookies de análise: estes são cookies utilizados para rastrear e analisar o comportamento do utilizador. Este tipo de cookie permite-nos monitorizar a atividade no nosso site através de dados agregados ou estatísticos sobre hábitos de navegação. Utilizamos cookies analíticos, alguns dos quais são fornecidos pelo Google Analytics (https://www.google.com/intl/en-GB/policies/technologies/cookies/) e pela ferramenta Hotjar Ltd. para gerar mapas de calor (representação gráfica do comportamento do utilizador online num determinado site) (https://www.hotjar.com/legal/policies/cookie-information).",
+      "cookieResponsibility": "Quem é responsável pelos cookies?",
+      "cookieResponsibilityDescription": "As informações recolhidas através de cookies descarregados a partir do domínio gerido pela COMPANHIA são utilizadas pela COMPANHIA, bem como pela Google Inc. e pela Hotjar Ltd. como fornecedores de serviços de análise. Outros terceiros, como a YouTube, Inc., SlideShare e a Euroland.com AB, podem aceder às informações recolhidas através de cookies geridos a partir dos seus próprios domínios. Para obter mais informações, leia as informações contidas nos links mencionados acima, especialmente em relação às transferências internacionais que esses fornecedores podem realizar.",
+      "manageCookies": "Como pode gerir os cookies?",
+      "manageCookiesDescription": "Na sua visita ao nosso site, receberá informações sobre a utilização de cookies e esta Política de Cookies, e será solicitado a consentir a instalação de cookies, dependendo do seu tipo. Nas futuras visitas ao nosso site, o utilizador pode consultar esta política através do link fornecido. Se em algum momento desejar retirar o seu consentimento em relação aos cookies do nosso site ou alterar as suas definições relacionadas com este assunto, pode utilizar o nosso painel de configuração no canto inferior direito do site. Além disso, também pode apagar todos os cookies armazenados no seu dispositivo. No entanto, tenha em atenção que bloquear a instalação ou eliminar cookies pode afetar algumas funcionalidades, serviços ou conteúdos do nosso site.",
+      "dataRetention": "Durante quanto tempo são mantidas as minhas informações?",
+      "dataRetentionDescription": "No caso de serem processados dados pessoais através de cookies, esses dados serão mantidos pelo tempo necessário para o fim para o qual foram recolhidos. Uma vez atingido esse objetivo, os seus dados serão mantidos bloqueados no caso de alguma administração pública os solicitar durante os prazos legais aplicáveis em cada caso, por qualquer motivo relacionado com a atividade de processamento. Após esse período, os seus dados serão apagados.",
+      "policyModification": "Alteração e atualização desta política",
+      "policyModificationDescription": "A COMPANHIA poderá modificar total ou parcialmente a presente Política de Cookies, publicando as suas novas versões da mesma forma que a versão atual é publicada ou através de qualquer outro meio de comunicação dirigido aos utilizadores do site, dependendo das obrigações legais ou regulamentares, bem como dos objetivos de atualização da política. Por isso, recomendamos que consulte periodicamente a política atual.",
+      "lastUpdate": "Última atualização: 31 de outubro de 2020.",
+      "futureVisits": "Visitas futuras",
+      "eraseCookies": "Apagar cookies",
+      "blockEliminateCookies": "Bloquear/Eliminar cookies",
+      "browserSettings": "Definições do navegador",
+      "modificationTitle": "Alteração e atualização desta política",
+      "modificationDescription": "A COMPANHIA poderá modificar total ou parcialmente a presente Política de Cookies, publicando as suas novas versões da mesma forma que a versão atual é publicada ou através de qualquer outro meio de comunicação dirigido aos utilizadores do site, dependendo das obrigações legais ou regulamentares, bem como dos objetivos de atualização da política. Por isso, recomendamos que consulte periodicamente a política atual.",
+      "thirdPartiesAccess": "Acesso por terceiros"
+    },
+    "footer": {
+      "copyright": "2023 PJ TurbinePro GmbH. Todos os direitos reservados.",
+      "cookiePolicy": "Política de cookies"
     }
       
       

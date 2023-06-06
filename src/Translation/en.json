@@ -65,8 +65,8 @@
         "turbineModelPlaceholder": "Enter turbine model",
         "descriptionLabel": "Description",
         "descriptionPlaceholder": "Enter description",
-        "locationLabel": "Location",
-        "locationPlaceholder": "Enter location",
+        "locationLabel": "Coordinates",
+        "locationPlaceholder": "Enter Coordinates",
         "technicianLabel": "Technician",
         "technicianPlaceholder": "Enter technician",
         "dateLabel": "Date",
@@ -107,6 +107,7 @@
         "doneButton": "Done",
         "addInfoModalTitle": "Add Info",
         "informationLabel": "Information",
+        "informationPlaceholder":"Enter comment",
         "closeButton": "Close",
         "saveButton": "Save"
     },
@@ -122,7 +123,45 @@
         "chatRoomTitle": "PJ TurbinePro GmbH Chat Room",
         "chatRoomDescription": "Here in this chat you can talk to all online",
         "closeButton": "Close"
-    }
+    },
+    "cookiePolicy": {
+        "title": "Cookie Policy",
+        "description1": "At <span class=\"highlight\">PJ TurbinePro GmbH</span>, we are dedicated to making a positive impact on the environment and addressing the climate crisis. Our mission is to contribute to a sustainable future by ensuring the optimal performance and longevity of wind turbines.",
+        "description2": "PJ TurbinePro GmbH (hereinafter the COMPANY) wishes to provide you with all the necessary information on the cookies used on our so that you can make an informed decision on the use thereof and your privacy protection. The current cookies policy complements our Privacy Policy.",
+        "whatAreCookies": "What are cookies?",
+        "whatAreCookiesDescription": "A cookie is a text file which is downloaded onto your device (computer, smart phone or tablet) when you access a website or use an application and allows the website holder to store or recover information regarding your browsing preferences.",
+        "complementaryPolicy": "<span class=\"highlight\">PJ TurbinePro GmbH</span> (hereinafter the COMPANY) wishes to provide you with all the necessary information on the cookies used on our so that you can make an informed decision on the use thereof and your privacy protection. The current cookies policy complements our Privacy Policy.",
+        "cookieTypes": "What kind of cookies does this Website use?",
+        "cookieTypesDescription": "We use cookies to enable, customise and analyse browsing preferences, thus improving the quality of the services offered. The cookies used are classified into different categories, though some may be included in more than one category:",
+        "sessionCookies": "Session cookies: These are temporary cookies which are not stored on your device and disappear once you close your browsing session.",
+        "persistentCookies": "Persistent cookies: These allow information to be stored on your hard drive and be used after you close your browser.",
+        "ownCookies": "Own cookies: These are cookies sent to your hard drive from our own Website, although some are also provided by the Google Analytics tool.",
+        "thirdPartyCookies": "Third party cookies: These are cookies which are sent to your device from a domain not managed by the COMPANY, but by a third company which will treat the information obtained through such cookies.",
+        "enableFunctionalities": "To enable certain functionalities, our website uses cookies from: i) YouTube, Inc. for the playing of videos (https://www.google.com/intl/es_es/policies/technologies/cookies/); ii) SlideShare Inc. for downloading documents (http://www.linkedin.com/legal/cookie-policy), and iii) technical cookies from Euroland.com AB to provide access to stock exchange information.",
+        "technicalCookies": "Technical cookies: These cookies make it possible for you to browse our Website and make use of the various options and services available, such as those allowing the tracking of traffic on the site and the provision of data, session identification, access to restricted areas or the use of security elements while browsing.",
+        "personalisationCookies": "Personalisation cookies: These are cookies which allow you to access our Website with certain predefined specifications depending on criteria such as language, type of browser, or the regional configuration from which you access the service.",
+        "analyticsCookies": "Analytics cookies: These are cookies used for tracking and analysing user behaviour. This type of cookie allows us to monitor activity on our Website through aggregate or statistical data on browsing habits. We uses analytical cookies, some of which are provided by Google Analytics (https://www.google.com/intl/en-GB/policies/technologies/cookies/) and the Hotjar Ltd. tool for generating heatmaps (a graphic representation of online user behaviour on a particular website) (https://www.hotjar.com/legal/policies/cookie-information).",
+        "cookieResponsibility": "Who’s in charge of the cookies?",
+        "cookieResponsibilityDescription": "The information collected through cookies downloaded from the domain managed by the COMPANY is used by the COMPANY, as well as by Google Inc. and Hotjar Ltd. as analytics services providers. Other third parties such as YouTube, Inc., SlideShare and Euroland.com AB can access the information collected by cookies managed from their own domains. For further information, please read the information contained in the abovementioned links, specially regarding the international transfers that might be performed by those suppliers.",
+        "manageCookies": "How can you manage cookies?",
+        "manageCookiesDescription": "On your visit to our Website, you will receive information on the use of cookies and this Cookie Policy, and you’ll be asked to consent the installation of cookies depending oin their type. On future visits to our Website, the user may consult this policy via the link provided. If at any time you wish to withdraw your consent in relation to cookies from our Website, or you wish to change your settings regarding this matter, you can our configuration panel in the lower right corner of the Website. Additionally, you may also erase all those cookies stored on your device. However, you should be aware of the fact that blocking the installation of, or eliminating, cookies could affect some of the functionalities, services or content of our Website.",
+        "dataRetention": "For how long is my information kept?",
+        "dataRetentionDescription": "In case of by using cookies any personal data is processed, such data will be kept as long as it’s needed for the purpose it was collected. Once achieved such a purpose, your data will be kept blocked in case any public administration requires it during those legal terms applicable in each case for any kind of reason regarding the processing activity. After that, your data will be erased.",
+        "policyModification": "Modification and updating of this policy",
+        "policyModificationDescription": "The COMPANY may totally or partially modify the current Cookies Policy, publishing its new versions in the same way as the current one is published or by way of any other kind of communication aimed to the website’s users, depending on what the legal or regulatory obligations are, as well as depending on what the purpose of updating the Policy is. Considering so, we suggest you checking from time to time the current Policy.",
+        "lastUpdate": "Last update: June 6th, 2023.",
+        "futureVisits": "Future Visits",
+        "eraseCookies": "Erase Cookies",
+        "blockEliminateCookies": "Block/Eliminate Cookies",
+        "browserSettings": "Browser Settings",
+        "modificationTitle": "Modification and updating of this policy",
+        "modificationDescription": "The COMPANY may totally or partially modify the current Cookies Policy, publishing its new versions in the same way as the current one is published or by way of any other kind of communication aimed to the website’s users, depending on what the legal or regulatory obligations are, as well as depending on what the purpose of updating the Policy is. Considering so, we suggest you checking from time to time the current Policy.",
+        "thirdPartiesAccess": "Third Parties Access"
+    },
+    "footer": {
+        "copyright": "2023 PJ TurbinePro GmbH. All rights reserved.",
+        "cookiePolicy": "Cookie policy"
+      }
       
       
 }

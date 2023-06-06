@@ -93,8 +93,14 @@
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
 }
 
-.card-done {
-  background-color: green;
+.card-done h4:hover {
+  color: white;
+  
+}
+
+h4:hover {
+  color: #2ecc71;
+  
 }
 
 .card-status-done {
@@ -103,6 +109,11 @@
 
 .card-deck {
   gap: 10px;
+}
+
+.donebutton:hover {
+  color: #2ecc71;
+
 }
 
 /* Media Query for Mobile Devices */

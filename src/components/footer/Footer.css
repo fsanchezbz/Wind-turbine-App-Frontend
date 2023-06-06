@@ -54,6 +54,10 @@
   transition: background-color 0.3s ease;
 }
 
+.social-icons a:hover {
+  color: #2ecc71;
+  background-color: white;
+}
 
 .footer-bottom {
   display: flex;

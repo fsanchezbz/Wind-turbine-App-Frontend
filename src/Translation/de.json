@@ -64,8 +64,8 @@
         "turbineModelPlaceholder": "Turbine Modell eingeben",
         "descriptionLabel": "Beschreibung",
         "descriptionPlaceholder": "Beschreibung eingeben",
-        "locationLabel": "Standort",
-        "locationPlaceholder": "Standort eingeben",
+        "locationLabel": "Koordinaten",
+        "locationPlaceholder": "Koordinaten eingeben",
         "technicianLabel": "Techniker",
         "technicianPlaceholder": "Techniker eingeben",
         "dateLabel": "Datum",
@@ -106,6 +106,7 @@
         "doneButton": "Erledigt",
         "addInfoModalTitle": "Zusatzinformationen",
         "informationLabel": "Informationen",
+        "informationPlaceholder":"Kommentar eingeben ",
         "closeButton": "Schließen",
         "saveButton": "Speichern"
     },
@@ -121,7 +122,45 @@
         "chatRoomTitle": "PJ TurbinePro GmbH Chat-Raum",
         "chatRoomDescription": "Hier in diesem Chat kannst du mit allen Online-Benutzern sprechen",
         "closeButton": "Schließen"
-    }
+    },
+    "cookiePolicy": {
+        "title": "Cookie-Richtlinie",
+        "description1": "Bei <span class=\"highlight\">PJ TurbinePro GmbH</span> sind wir bestrebt, einen positiven Beitrag zur Umwelt und zur Bewältigung der Klimakrise zu leisten. Unsere Mission ist es, eine nachhaltige Zukunft zu ermöglichen, indem wir die optimale Leistung und Lebensdauer von Windkraftanlagen sicherstellen.",
+        "description2": "Die PJ TurbinePro GmbH (nachfolgend das UNTERNEHMEN) möchte Ihnen alle notwendigen Informationen über die auf unserer Website verwendeten Cookies zur Verfügung stellen, damit Sie eine informierte Entscheidung über deren Verwendung und den Schutz Ihrer Privatsphäre treffen können. Die vorliegende Cookie-Richtlinie ergänzt unsere Datenschutzrichtlinie.",
+        "whatAreCookies": "Was sind Cookies?",
+        "whatAreCookiesDescription": "Ein Cookie ist eine Textdatei, die beim Zugriff auf eine Website oder bei Verwendung einer Anwendung auf Ihr Gerät (Computer, Smartphone oder Tablet) heruntergeladen wird und es dem Website-Betreiber ermöglicht, Informationen zu Ihren Browsing-Präferenzen zu speichern oder abzurufen.",
+        "complementaryPolicy": "Die PJ TurbinePro GmbH (nachfolgend das UNTERNEHMEN) möchte Ihnen alle notwendigen Informationen über die auf unserer Website verwendeten Cookies zur Verfügung stellen, damit Sie eine informierte Entscheidung über deren Verwendung und den Schutz Ihrer Privatsphäre treffen können. Die vorliegende Cookie-Richtlinie ergänzt unsere Datenschutzrichtlinie.",
+        "cookieTypes": "Welche Arten von Cookies werden auf dieser Website verwendet?",
+        "cookieTypesDescription": "Wir verwenden Cookies, um das Aktivieren, Anpassen und Analysieren von Browsing-Präferenzen zu ermöglichen und so die Qualität der angebotenen Dienste zu verbessern. Die verwendeten Cookies sind in verschiedene Kategorien eingeteilt, wobei einige in mehr als einer Kategorie enthalten sein können:",
+        "sessionCookies": "Session-Cookies: Dies sind temporäre Cookies, die nicht auf Ihrem Gerät gespeichert werden und verschwinden, sobald Sie Ihre Browsing-Sitzung schließen.",
+        "persistentCookies": "Permanente Cookies: Diese ermöglichen die Speicherung von Informationen auf Ihrer Festplatte und deren Verwendung, nachdem Sie Ihren Browser geschlossen haben.",
+        "ownCookies": "Eigene Cookies: Diese Cookies werden von unserer eigenen Website auf Ihre Festplatte gesendet, einige werden jedoch auch vom Google Analytics-Tool bereitgestellt.",
+        "thirdPartyCookies": "Cookies von Drittanbietern: Dies sind Cookies, die von einer Domain, die nicht vom UNTERNEHMEN verwaltet wird, sondern von einem Drittanbieter, der die über solche Cookies gewonnenen Informationen verarbeitet, an Ihr Gerät gesendet werden.",
+        "enableFunctionalities": "Um bestimmte Funktionen zu aktivieren, verwendet unsere Website Cookies von: i) YouTube, Inc. für das Abspielen von Videos (https://www.google.com/intl/es_es/policies/technologies/cookies/); ii) SlideShare Inc. zum Herunterladen von Dokumenten (http://www.linkedin.com/legal/cookie-policy) und iii) technischen Cookies von Euroland.com AB, um den Zugriff auf Börseninformationen zu ermöglichen.",
+        "technicalCookies": "Technische Cookies: Diese Cookies ermöglichen es Ihnen, auf unserer Website zu navigieren und die verschiedenen verfügbaren Optionen und Dienste zu nutzen, z. B. die Verfolgung des Datenverkehrs auf der Website, die Bereitstellung von Daten, die Sitzungskennung, den Zugriff auf geschützte Bereiche oder die Verwendung von Sicherheitselementen während des Browsens.",
+        "personalisationCookies": "Personalisierungs-Cookies: Diese Cookies ermöglichen Ihnen den Zugriff auf unsere Website mit bestimmten vordefinierten Spezifikationen, abhängig von Kriterien wie Sprache, Browsertyp oder regionaler Konfiguration, von der aus Sie auf den Dienst zugreifen.",
+        "analyticsCookies": "Analyse-Cookies: Diese Cookies werden zur Verfolgung und Analyse des Nutzerverhaltens verwendet. Diese Art von Cookie ermöglicht es uns, die Aktivitäten auf unserer Website mithilfe von aggregierten oder statistischen Daten über das Browsing-Verhalten zu überwachen. Wir verwenden analytische Cookies, von denen einige von Google Analytics (https://www.google.com/intl/en-GB/policies/technologies/cookies/) und das Hotjar Ltd. Tool zur Erstellung von Heatmaps (eine grafische Darstellung des Online-Nutzerverhaltens auf einer bestimmten Website) bereitgestellt werden (https://www.hotjar.com/legal/policies/cookie-information).",
+        "cookieResponsibility": "Wer ist für die Cookies verantwortlich?",
+        "cookieResponsibilityDescription": "Die über Cookies von der vom UNTERNEHMEN verwalteten Domäne gesammelten Informationen werden vom UNTERNEHMEN sowie von Google Inc. und Hotjar Ltd. als Anbieter von Analysediensten verwendet. Andere Dritte wie YouTube, Inc., SlideShare und Euroland.com AB können auf die über von ihnen verwaltete Cookies gesammelten Informationen zugreifen. Weitere Informationen finden Sie in den oben genannten Links, insbesondere zu den möglichen internationalen Datenübermittlungen dieser Anbieter.",
+        "manageCookies": "Wie können Sie Cookies verwalten?",
+        "manageCookiesDescription": "Bei Ihrem Besuch auf unserer Website erhalten Sie Informationen zur Verwendung von Cookies und dieser Cookie-Richtlinie, und Sie werden je nach Art der Cookies um Ihre Zustimmung zur Installation gebeten. Bei zukünftigen Besuchen unserer Website kann der Benutzer diese Richtlinie über den bereitgestellten Link einsehen. Wenn Sie zu einem beliebigen Zeitpunkt Ihre Zustimmung in Bezug auf Cookies von unserer Website widerrufen oder Ihre Einstellungen ändern möchten, können Sie unser Konfigurationspanel in der unteren rechten Ecke der Website nutzen. Darüber hinaus können Sie auch alle auf Ihrem Gerät gespeicherten Cookies löschen. Sie sollten jedoch beachten, dass das Blockieren der Installation oder das Löschen von Cookies einige Funktionen, Dienste oder Inhalte unserer Website beeinträchtigen könnte.",
+        "dataRetention": "Wie lange werden meine Informationen aufbewahrt?",
+        "dataRetentionDescription": "Falls bei der Verwendung von Cookies personenbezogene Daten verarbeitet werden, werden diese Daten so lange aufbewahrt, wie es für den Zweck erforderlich ist, für den sie erhoben wurden. Nach Erreichung dieses Zwecks werden Ihre Daten blockiert, falls eine öffentliche Verwaltung dies während der für jede Art von Verarbeitungstätigkeit geltenden gesetzlichen Fristen aus irgendeinem Grund verlangt. Danach werden Ihre Daten gelöscht.",
+        "policyModification": "Änderung und Aktualisierung dieser Richtlinie",
+        "policyModificationDescription": "Das UNTERNEHMEN kann die vorliegende Cookie-Richtlinie ganz oder teilweise ändern, indem es neue Versionen auf die gleiche Weise wie die aktuelle veröffentlicht oder durch andere Kommunikationswege an die Benutzer der Website richtet, abhängig von den rechtlichen oder behördlichen Verpflichtungen sowie von den Zwecken der Aktualisierung der Richtlinie. Wir empfehlen Ihnen daher, die aktuelle Richtlinie von Zeit zu Zeit zu überprüfen.",
+        "lastUpdate": "Letztes Update: 31. Oktober 2020.",
+        "futureVisits": "Zukünftige Besuche",
+        "eraseCookies": "Cookies löschen",
+        "blockEliminateCookies": "Cookies blockieren/eliminieren",
+        "browserSettings": "Browser-Einstellungen",
+        "modificationTitle": "Änderung und Aktualisierung dieser Richtlinie",
+        "modificationDescription": "Das UNTERNEHMEN kann die vorliegende Cookie-Richtlinie ganz oder teilweise ändern, indem es neue Versionen auf die gleiche Weise wie die aktuelle veröffentlicht oder durch andere Kommunikationswege an die Benutzer der Website richtet, abhängig von den rechtlichen oder behördlichen Verpflichtungen sowie von den Zwecken der Aktualisierung der Richtlinie. Wir empfehlen Ihnen daher, die aktuelle Richtlinie von Zeit zu Zeit zu überprüfen.",
+        "thirdPartiesAccess": "Zugriff von Dritten"
+      },
+      "footer": {
+        "copyright": "2023 PJ TurbinePro GmbH. Alle Rechte vorbehalten.",
+        "cookiePolicy": "Cookie-Richtlinie"
+      }
 
       
     

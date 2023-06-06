@@ -12,9 +12,14 @@
     display: flex;
     align-items: center;
   }
+
+  .language-dropdown-button:hover {
+   
+    color: #2ecc71;
+  }
   
   .globe-icon {
-    color: #ffffff;
+    color: #2ecc71;
     font-size: 20px;
   }
   
@@ -44,7 +49,7 @@
   }
   
   .language-option-button:hover {
-    background-color: #eee;
+    background-color: #2ecc71;
   }
   
   .language-flag {

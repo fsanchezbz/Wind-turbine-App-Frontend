@@ -79,7 +79,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="language-switcher">
       <button className="language-dropdown-button" onClick={toggleDropdown}>
-        {getLanguageName(currentLanguage)} <FiGlobe className="globe-icon" />
+        {getLanguageName(currentLanguage)}&nbsp;<FiGlobe className="globe-icon" />
       </button>
       {dropdownOpen && (
         <div className="language-dropdown-menu">

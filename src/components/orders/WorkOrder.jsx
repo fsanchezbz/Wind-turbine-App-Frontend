@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import './WorkOrder.css';
 
 const WorkOrder = () => {
   const { t } = useTranslation();

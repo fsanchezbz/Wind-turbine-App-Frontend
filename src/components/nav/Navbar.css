@@ -28,18 +28,21 @@
   .navbar-links a {
     margin-right: 15px;
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     transition: color 0.3s;
   }
   
   .navbar-links a:hover {
-    color: #ccc;
+    color: #2ecc71;
   }
 
   .logo-container {
     display: flex;
     align-items: center;
-    
+  }
+
+  .logo-container:hover {
+    color: #2ecc71;
   }
   
   .logo {
@@ -53,6 +56,9 @@
     font-size: 14px; /* Adjust the font size as needed */
   }
   
+  .company-name:hover {
+    color: #2ecc71;
+  }
   
   .language-switcher {
     

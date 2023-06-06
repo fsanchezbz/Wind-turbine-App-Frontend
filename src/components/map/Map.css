@@ -65,7 +65,7 @@ input[type='button'] {
 }
 
 input[type='button']:hover {
-  background: rgb(235, 235, 235);
+  background: #2ecc71;
 }
 
 input[type='button'].button-primary {
@@ -80,7 +80,7 @@ input[type='button'].button-primary {
 }
 
 input[type='button'].button-primary:hover {
-  background-color: #fbfdff;
+  background-color: #2ecc71;
 }
 
 
@@ -140,7 +140,8 @@ input[type='button'].button-primary:hover {
 }
 
 #sVuEFc:hover {
-  background-color: #00ff0075;
+  background-color: #2ecc71;
+  
 }
 
 .hArJGc {
@@ -154,6 +155,11 @@ input[type='button'].button-primary:hover {
   text-transform: uppercase;
   width: 54px;
 }
+
+.hArJGc:hover {
+  background-color: #2ecc71
+}
+
 
 .hArJGc .eYqqWd {
   background-image: url('https://maps.gstatic.com/tactile/omnibox/directions-2x-20150909.png');

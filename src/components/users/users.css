@@ -72,6 +72,14 @@
   font-size: 18px;
 }
 
+.card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
 /* Media Query for Mobile Devices */
 @media (max-width: 767px) {
   .rightbarFollowingImg {

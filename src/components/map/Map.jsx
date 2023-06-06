@@ -27,6 +27,7 @@ const Map = () => {
         center: { lat: 52.5123936, lng: 13.4131204 },
         mapTypeControl: true,
         mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
           position: window.google.maps.ControlPosition.LEFT,
         },
         scrollwheel: true,

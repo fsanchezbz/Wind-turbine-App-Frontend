@@ -50,7 +50,7 @@
   "WorkOrder": {
     "formTitle": "工单表单",
     "workOrderIdLabel": "工单编号",
-      "workOrderIdPlaceholder": "请输入工单编号",
+    "workOrderIdPlaceholder": "请输入工单编号",
     "submitButton": "提交",
     "confirmationTitle": "确认",
     "confirmationMessage": "您确定要提交工单吗？",
@@ -60,8 +60,8 @@
     "turbineModelPlaceholder": "请输入涡轮机型",
     "descriptionLabel": "描述",
     "descriptionPlaceholder": "请输入描述",
-    "locationLabel": "地点",
-    "locationPlaceholder": "请输入地点",
+    "locationLabel": "坐标",
+    "locationPlaceholder": "输入坐标",
     "technicianLabel": "技术员",
     "technicianPlaceholder": "请输入技术员",
     "dateLabel": "日期",
@@ -102,6 +102,7 @@
     "doneButton": "完成",
     "addInfoModalTitle": "添加信息",
     "informationLabel": "信息",
+    "informationPlaceholder": "输入评论",
     "closeButton": "关闭",
     "saveButton": "保存"
   },
@@ -117,6 +118,44 @@
     "chatRoomTitle": "PJ TurbinePro GmbH 聊天室",
     "chatRoomDescription": "在这个聊天室里，您可以与所有在线用户交流",
     "closeButton": "关闭"
+  },
+  "cookiePolicy": {
+    "title": "Cookie政策",
+    "description1": "在 <span class=\"highlight\">PJ TurbinePro GmbH</span>，我们致力于对环境产生积极影响并应对气候危机。我们的使命是通过确保风力涡轮机的最佳性能和寿命来为可持续发展的未来做出贡献。",
+    "description2": "PJ TurbinePro GmbH（以下简称“公司”）希望为您提供有关我们使用的cookie的所有必要信息，以便您可以对其使用和隐私保护做出明智的决策。本Cookie政策是我们隐私政策的补充。",
+    "whatAreCookies": "什么是cookie？",
+    "whatAreCookiesDescription": "cookie是在您访问网站或使用应用程序时下载到您的设备（计算机、智能手机或平板电脑）上的文本文件，允许网站所有者存储或恢复有关您的浏览偏好的信息。",
+    "complementaryPolicy": "PJ TurbinePro GmbH（以下简称“公司”）希望为您提供有关我们使用的cookie的所有必要信息，以便您可以对其使用和隐私保护做出明智的决策。本Cookie政策是我们隐私政策的补充。",
+    "cookieTypes": "此网站使用哪些类型的cookie？",
+    "cookieTypesDescription": "我们使用cookie来启用、定制和分析浏览偏好，从而改善所提供服务的质量。使用的cookie被分类为不同的类别，尽管某些cookie可能属于多个类别：",
+    "sessionCookies": "会话cookie：这些是临时cookie，不会存储在您的设备上，并在您关闭浏览会话后消失。",
+    "persistentCookies": "持久性cookie：这些cookie允许在您关闭浏览器后将信息存储在硬盘上并在以后使用。",
+    "ownCookies": "自有cookie：这些cookie是从我们自己的网站发送到您的硬盘上的，但有些也由Google Analytics工具提供。",
+    "thirdPartyCookies": "第三方cookie：这些cookie是从非公司管理的域发送到您的设备上，而是由第三方公司处理通过这些cookie获得的信息。",
+    "enableFunctionalities": "为了启用某些功能，我们的网站使用以下来源的cookie：i）YouTube，Inc.用于播放视频（https://www.google.com/intl/es_es/policies/technologies/cookies/）；ii）SlideShare Inc.用于下载文档（http://www.linkedin.com/legal/cookie-policy），以及iii）Euroland.com AB的技术cookie，用于提供股票交易信息的访问。",
+    "technicalCookies": "技术cookie：这些cookie使您能够浏览我们的网站并使用各种可用选项和服务，例如跟踪网站上的流量和提供数据、会话标识、访问受限区域或在浏览过程中使用安全元素。",
+    "personalisationCookies": "个性化cookie：这些cookie允许您根据语言、浏览器类型或访问服务的区域配置等标准以特定预定义规格访问我们的网站。",
+    "analyticsCookies": "分析cookie：这些cookie用于跟踪和分析用户行为。这种类型的cookie允许我们通过关于浏览习惯的聚合或统计数据来监控我们网站上的活动。我们使用分析cookie，其中一些由Google Analytics（https://www.google.com/intl/en-GB/policies/technologies/cookies/）和Hotjar Ltd.的热图工具提供（热图是特定网站上的在线用户行为的图形表示）（https://www.hotjar.com/legal/policies/cookie-information）。）。",
+    "cookieResponsibility": "谁负责处理cookie？",
+    "cookieResponsibilityDescription": "通过从公司管理的域下载的cookie收集的信息由公司以及Google Inc.和Hotjar Ltd.作为分析服务提供商使用。其他第三方如YouTube，Inc.、SlideShare和Euroland.com AB可以访问通过其自己的域名管理的cookie收集的信息。有关更多信息，请阅读上述链接中的信息，特别是有关这些供应商可能进行的国际数据传输的信息。",
+    "manageCookies": "如何管理cookie？",
+    "manageCookiesDescription": "在访问我们的网站时，您将收到有关cookie使用和本Cookie政策的信息，并将根据其类型被要求同意安装cookie。在以后访问我们的网站时，用户可以通过提供的链接查阅此政策。如果您随时希望撤销对我们网站的cookie的同意或更改与此事项相关的设置，您可以使用我们网站右下角的配置面板。此外，您还可以删除设备上存储的所有cookie。但是，请注意，阻止安装或删除cookie可能会影响我们网站的某些功能、服务或内容。",
+    "dataRetention": "我的信息将保留多长时间？",
+    "dataRetentionDescription": "如果通过cookie处理个人数据，该数据将保留至满足收集目的所需的时间。在达到该目的后，您的数据将被保留封锁，以防止在每种情况下适用于处理活动的法定期限内，任何公共行政机关因任何原因要求进行访问。之后，您的数据将被删除。",
+    "policyModification": "本政策的修改和更新",
+    "policyModificationDescription": "公司可以全面或部分修改本Cookie政策，通过与当前政策相同的方式发布其新版本或通过任何其他向网站用户进行的沟通方式，具体取决于法律或监管义务以及更新政策的目的。因此，我们建议您定期检查当前政策。",
+    "lastUpdate": "最后更新日期：2020年10月31日。",
+    "futureVisits": "将来的访问",
+    "eraseCookies": "删除cookie",
+    "blockEliminateCookies": "阻止/删除cookie",
+    "browserSettings": "浏览器设置",
+    "modificationTitle": "本政策的修改和更新",
+    "modificationDescription": "公司可以全面或部分修改本Cookie政策，通过与当前政策相同的方式发布其新版本或通过任何其他向网站用户进行的沟通方式，具体取决于法律或监管义务以及更新政策的目的。因此，我们建议您定期检查当前政策。",
+    "thirdPartiesAccess": "第三方访问"
+  },
+  "footer": {
+    "copyright": "2023 PJ TurbinePro GmbH。版权所有。",
+    "cookiePolicy": "Cookie政策"
   }
   
 }

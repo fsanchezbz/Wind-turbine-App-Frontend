@@ -57,7 +57,15 @@ const Post = () => {
     };
 
     fetchWorkOrders();
-  }, []);
+  
+
+    // Fetch work orders every 1 minute (60000 milliseconds)
+  const interval = setInterval(fetchWorkOrders, 60000);
+
+  // Clean up the interval on component unmount
+  return () => clearInterval(interval);
+  
+  }, [statusOrder]);
 
   const openAddInfoModal = async (orderId) => {
     try {
@@ -83,7 +91,7 @@ const Post = () => {
     try {
       const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, {
         addInfo: addInfo,
-        status: statusOrder, // Set the status to true when the "Done" button is clicked
+        status: statusOrder, // Set the status to true when the "SAVE" button is clicked
       });
       console.log("Work order updated:", response.data);
       closeAddInfoModal();
@@ -164,7 +172,7 @@ const Post = () => {
               <div
                 key={workOrder._id}
                 className={`card ${workOrder.status ? 'card-done' : ''}`}
-                style={{ width: '18rem', backgroundColor: workOrder.status ? 'green' : '' }}
+                style={{ width: '18rem', backgroundColor: workOrder.status ? '#2ecc71' : '' }}
               >
                 <div className="card-body">
                   <div className="card-title">
@@ -216,14 +224,14 @@ const Post = () => {
                   </Box>
                   
                   {isAdmin && (
-                    <Button colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
+                    <Button  className='donebutton' colorScheme="red" onClick={() => deleteWorkOrder(workOrder._id)}>
                       {t('Post.deleteButton')}
                     </Button>
                   )}
                   &nbsp;
                   {!workOrder.status && (
                     <>
-                      <Button colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
+                      <Button className='donebutton' colorScheme="blue" onClick={() => openAddInfoModal(workOrder._id)}>
                         {t('Post.doneButton')}
                       </Button>
                     </>
@@ -249,7 +257,7 @@ const Post = () => {
                           href={workOrder.image}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                          style={{ textDecoration: 'underline', cursor: 'pointer'}}
                         >
                           <h4>Doc Order</h4>
                           
