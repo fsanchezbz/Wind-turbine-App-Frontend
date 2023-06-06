@@ -26,6 +26,7 @@
         "formNameLabel": "Nombre:",
         "formEmailLabel": "Email:",
         "formMessageLabel": "Mensaje:",
+        "submitting": "Enviado",
         "formButton": "Enviar"
     },
     "loginPage": {

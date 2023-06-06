@@ -26,6 +26,7 @@
     "formNameLabel": "姓名：",
     "formEmailLabel": "电子邮件：",
     "formMessageLabel": "留言：",
+    "submitting": "发送",
     "formButton": "发送"
   },
   "loginPage": {

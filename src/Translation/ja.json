@@ -22,6 +22,7 @@
       "formNameLabel": "お名前：",
       "formEmailLabel": "メールアドレス：",
       "formMessageLabel": "メッセージ：",
+      "submitting": "送る",
       "formButton": "送信"
     },
     "loginPage": {

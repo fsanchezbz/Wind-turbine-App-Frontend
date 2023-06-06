@@ -50,21 +50,21 @@ const ContactForm = () => {
               {t('contactPage.formNameLabel')}
             </label>
             &nbsp;
-            <input className="contact-input" type="text" id="name" required />
+            <input style={{color: 'black'}} className="contact-input" type="text" id="name" required />
           </div>
           <div className="contact-form-group">
             <label className="contact-label" htmlFor="email">
               {t('contactPage.formEmailLabel')}
             </label>
             &nbsp;
-            <input className="contact-input" type="email" id="email" required />
+            <input style={{color: 'black'}} className="contact-input" type="email" id="email" required />
           </div>
           <div className="contact-form-group">
-            <label className="contact-label" htmlFor="message">
+            <label  className="contact-label" htmlFor="message">
               {t('contactPage.formMessageLabel')}
             </label>
             &nbsp;
-            <textarea className="contact-textarea" id="message" required />
+            <textarea style={{color: 'black'}} className="contact-textarea" id="message" required />
           </div>
           <button className="contact-button" type="submit">
             {formStatus}

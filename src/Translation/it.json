@@ -25,7 +25,9 @@
       "formTitle": "Contattaci!",
       "formNameLabel": "Nome:",
       "formEmailLabel": "Email:",
+      "submitting": "inviato",
       "formMessageLabel": "Messaggio:",
+      
       "formButton": "Invia"
     },
     "loginPage": {

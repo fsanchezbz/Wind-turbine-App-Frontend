@@ -26,6 +26,7 @@
       "formNameLabel": "الاسم:",
       "formEmailLabel": "البريد الإلكتروني:",
       "formMessageLabel": "الرسالة:",
+      "submitting": "تقديم",
       "formButton": "إرسال"
     },
     "loginPage": {

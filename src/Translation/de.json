@@ -108,6 +108,7 @@
         "informationLabel": "Informationen",
         "informationPlaceholder":"Kommentar eingeben ",
         "closeButton": "Schließen",
+        "submitting": "Geschickt",
         "saveButton": "Speichern"
     },
     "Users": {
