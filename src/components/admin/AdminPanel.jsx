@@ -152,8 +152,7 @@ const AdminPanel = () => {
       <Table variant="striped" colorScheme="gray" size={tableSize}>
         <Thead>
           <Tr>
-            <Th>ID</Th>
-            <Th>Username</Th>
+            <Th>FirstName</Th>
             <Th>Email</Th>
             <Th>Admin</Th>
             <Th>Edit</Th>
@@ -163,8 +162,7 @@ const AdminPanel = () => {
         <Tbody>
           {users.map((user) => (
             <Tr key={user._id}>
-              <Td>{user._id}</Td>
-              <Td>{user.userName}</Td>
+              <Td>{user.firstName}</Td>
               <Td>{user.email}</Td>
               <Td>
                 <Button

@@ -27,10 +27,9 @@ const Post = () => {
   const [isOpenAddInfo, setIsOpenAddInfo] = useState(false);
   const [addInfo, setAddInfo] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [status, setStatus] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [statusOrder, setStatusOrder] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState({});
-  const [pdfs, setPdfs] = useState([]); // Add the missing state setter function
+ 
   const [update, setUpdate] = useState(null);
 
    useEffect(() => {
@@ -60,20 +59,6 @@ const Post = () => {
     fetchWorkOrders();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchPdf = async () => {
-  //     try {
-  //       const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/pdf/all`, { withCredentials: true });
-  //       setPdfs(response.data);  
-  //       console.log('UseEffect takes all pdfs:', response.data)           
-  //     } catch (error) {
-  //       console.error('Error fetching work orders:', error);
-  //     }
-  //   };
-
-  //   fetchPdf();
-  // }, []);
-
   const openAddInfoModal = async (orderId) => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/work/${orderId}`);
@@ -90,6 +75,7 @@ const Post = () => {
     setSelectedWorkOrderId(null);
     setIsOpenAddInfo(false);
     setAddInfo('');
+    setStatusOrder(false);
   };
 
   const handleAddInfoFormSubmit = async (event) => {
@@ -97,7 +83,7 @@ const Post = () => {
     try {
       const response = await axios.put(`${import.meta.env.VITE_PRODUCTION_API}/work/update/${selectedWorkOrderId}`, {
         addInfo: addInfo,
-        status: true, // Set the status to true when the "Done" button is clicked
+        status: statusOrder, // Set the status to true when the "Done" button is clicked
       });
       console.log("Work order updated:", response.data);
       closeAddInfoModal();
@@ -204,6 +190,7 @@ const Post = () => {
                     {/* Other card texts */}
                   </div>
                
+                  {!workOrder.update && (
                   <form className="signup-form" onSubmit={(e) => handleSubmit(workOrder._id, e)}>
                       {/* Rest of the form */}
                     <div className="form-group">
@@ -221,7 +208,7 @@ const Post = () => {
                     </div>
                  
                   </form>
-                 
+                  )}
                    
 
                   <Box marginBottom="1rem">
@@ -312,13 +299,10 @@ const Post = () => {
                   />
                 </FormControl>
                 <ModalFooter>
-                  <Button colorScheme="blue" mr={3} onClick={() => setStatus(true)}>
-                    {t('Post.doneButton')}
-                  </Button>
                   <Button colorScheme="blue" mr={3} onClick={closeAddInfoModal}>
                     {t('Post.closeButton')}
                   </Button>
-                  <Button type="submit" variant="ghost">
+                  <Button type="submit" colorScheme="green" mr={3} onClick={() => setStatusOrder(true)}>
                     {t('Post.saveButton')}
                   </Button>
                 </ModalFooter>
