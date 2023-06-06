@@ -20,7 +20,7 @@ const ContactForm = () => {
     };
   
     axios
-      .post(`https://wind-turbine-app-backend.onrender.com/send-notification`, formData)
+      .post(`${import.meta.env.VITE_PRODUCTION_API}/send-notification`, formData)
       .then((response) => {
         console.log('Notification sent successfully');
         setFormStatus(t('contactPage.formButton'));
