@@ -153,6 +153,10 @@
     "footer": {
       "copyright": "2023 PJ TurbinePro GmbH。全著作権所有。",
       "cookiePolicy": "Cookieポリシー"
+    },
+    "LogoutPage": {
+      "thankYouMessage": "ご来訪いただきありがとうございます。さあ、仕事に取り掛かりましょう",
+      "logoutButton": "ログアウト"
     }
       
       

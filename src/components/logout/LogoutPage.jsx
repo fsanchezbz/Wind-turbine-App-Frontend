@@ -5,8 +5,10 @@ import './LogoutPage.css';
 import videoBg from '../../assets/rain.mp4'
 import { FaRegSmile} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function LogoutPage() {
+  const { t } = useTranslation(); // Use the translation hook
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');
 
@@ -64,21 +66,18 @@ function LogoutPage() {
   };
 
   return (
-   <>
-    <div className="logout-page">
-      <div className="video-container">
-        <video src={videoBg} autoPlay loop muted />
-      </div>
-      <div className="logout-content text-overlay">
-        <h1>Thank you for coming, now get to work <FaRegSmile/></h1>
-        
+    <>
+      <div className="logout-page">
+        <div className="video-container">
+          <video src={videoBg} autoPlay loop muted />
+        </div>
+        <div className="logout-content text-overlay">
+          <h1>{t('LogoutPage.thankYouMessage')} <FaRegSmile/></h1>
           <button className="logout-button" onClick={handleLogout}>
-            Logout
+            {t('LogoutPage.logoutButton')}
           </button>
-        
+        </div>
       </div>
-    </div>
-
     </>
   );
 }

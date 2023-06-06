@@ -157,6 +157,10 @@
     "footer": {
       "copyright": "2023 PJ TurbinePro GmbH. Все права защищены.",
       "cookiePolicy": "Политика использования файлов cookie"
+    },
+    "LogoutPage": {
+      "thankYouMessage": "Спасибо за посещение, теперь приступайте к работе",
+      "logoutButton": "Выйти"
     }
       
       
