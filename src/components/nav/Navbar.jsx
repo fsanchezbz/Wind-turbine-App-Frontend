@@ -42,7 +42,6 @@ const Navbar = () => {
         </div>
         <div className="navbar-links">
           <Link to="/">{t('navbar.home')}</Link>
-          <Link to="/about">{t('navbar.about')}</Link>
           <Link to="/contact">{t('navbar.contact')}</Link>
           {isLoggedIn ? (
             <>

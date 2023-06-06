@@ -29,6 +29,8 @@ const Footer = () => {
         <div className="footer-vertical-line"></div>
         <div className="footer-cookiepolicy">
           <Link to="/cookiepolicy">{t('footer.cookiePolicy')}</Link>
+          <br />
+          <Link to="/about">{t('navbar.about')}</Link>
         </div>
         {/* <button
           type='button'
