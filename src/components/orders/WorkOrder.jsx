@@ -78,7 +78,7 @@ const WorkOrder = () => {
         for (let i = 0; i < text.length; i++) {
           currentLine += text[i];
       
-          if (currentLine.length === 80 || i === text.length - 1) {
+          if (currentLine.length === 50 || i === text.length - 1) {
             lines.push(currentLine);
             currentLine = '';
           }
