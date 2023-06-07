@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './LoginPage.css';
 import videoBg from '../../assets/rain.mp4';
-import axios from 'axios';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -15,17 +14,25 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_PRODUCTION_API}/users/login`,
-        {
+      const response = await fetch(`${import.meta.env.VITE_PRODUCTION_API}/users/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           userName,
           password,
-          email
-        },
-        { withCredentials: true }
-      );
-      await  setUserStatus();
-      navigate('/profile');
+          email,
+        }),
+        credentials: 'include', // Include cookies in the request
+      });
+
+      if (response.ok) {
+        await setUserStatus();
+        navigate('/profile');
+      } else {
+        throw new Error('Invalid credentials');
+      }
     } catch (error) {
       console.log(error);
       setError(t('loginPage.invalidCredentials'));
@@ -34,15 +41,13 @@ const LoginPage = () => {
 
   const setUserStatus = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, { withCredentials: true, });
-      const { _id, status, isAdmin, isLoggedIn } = response.data;
+      const response = await fetch(`${import.meta.env.VITE_PRODUCTION_API}/users/me`, {
+        method: 'GET',
+        credentials: 'include', // Include cookies in the request
+      });
+      const { _id } = await response.json();
 
-      console.log(_id);
-      console.log(status);
-      console.log(isAdmin);
-      console.log(isLoggedIn);
-
-      await  updateUserStatus(_id);
+      await updateUserStatus(_id); // Update the user's status to true
     } catch (error) {
       console.log(error);
     }
@@ -50,12 +55,15 @@ const LoginPage = () => {
 
   const updateUserStatus = async (userId) => {
     try {
-      const response = await axios.put(
-        `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
-        { status: true },
-        { withCredentials: true }
-      );
-      console.log('Inside updateUserStatus', response.data.status);
+      await fetch(`${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: true }),
+        credentials: 'include', // Include cookies in the request
+      });
+      console.log('User status updated successfully');
     } catch (error) {
       console.log(error);
     }
