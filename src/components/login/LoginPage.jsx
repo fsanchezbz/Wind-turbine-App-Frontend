@@ -24,8 +24,9 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
-      await  setUserStatus();
+      
       navigate('/profile');
+      await setUserStatus();
     } catch (error) {
       console.log(error);
       setError(t('loginPage.invalidCredentials'));
