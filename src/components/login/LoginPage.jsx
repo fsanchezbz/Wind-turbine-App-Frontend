@@ -12,7 +12,6 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -25,7 +24,7 @@ const LoginPage = () => {
         },
         { withCredentials: true }
       );
-      setUserStatus();
+      await  setUserStatus();
       navigate('/profile');
     } catch (error) {
       console.log(error);
@@ -43,7 +42,7 @@ const LoginPage = () => {
       console.log(isAdmin);
       console.log(isLoggedIn);
 
-      updateUserStatus(_id);
+      await  updateUserStatus(_id);
     } catch (error) {
       console.log(error);
     }
@@ -53,12 +52,10 @@ const LoginPage = () => {
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_PRODUCTION_API}/users/update/${userId}`,
-        { status: true, isLoggedIn: true },
+        { status: true },
         { withCredentials: true }
       );
-
-      console.log('Inside updateUserStatus', response.data.isLoggedIn);
-      console.log(setIsLoggedIn(response.data.isLoggedIn));
+      console.log('Inside updateUserStatus', response.data.status);
     } catch (error) {
       console.log(error);
     }
