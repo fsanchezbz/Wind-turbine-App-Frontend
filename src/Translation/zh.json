@@ -89,7 +89,7 @@
     "model": "型号",
     "description": "描述",
     "coordinates": "坐标",
-    "technician": "技术人员",
+    "technician": "分配给",
     "date": "日期",
     "requestDetails": "请求详情",
     "bestTimes": "最佳时间",

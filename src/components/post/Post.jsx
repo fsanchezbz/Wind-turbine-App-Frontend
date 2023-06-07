@@ -171,12 +171,14 @@ const Post = () => {
                   <div className="card-title">
                     {t('Post.orderStatus')}:{workOrder.status} &nbsp; {!workOrder.status ? t('Post.open') : t('Post.close')}
                   </div>
-                  <h5 className="card-title">
-                    {t('Post.model')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.turbineModel}</span>
-                  </h5>
+                  
                   <hr />
                   <h5 className="card-title">
                     {t('Post.orderId')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.orderId}</span>
+                  </h5>
+                  <hr />
+                  <h5 className="card-title">
+                    {t('Post.technician')}:&nbsp; <span style={{ fontWeight: 'normal' }}>{workOrder.technician}</span>
                   </h5>
                   <hr />
                   <div>
@@ -256,7 +258,7 @@ const Post = () => {
                      {/* Display WorkOrder Image Name */}
                      {workOrder.update && (
                       <div>
-                   
+                        {/* <h6>WorkOrder Image:</h6> */}
                         <a
                           href={workOrder.update}
                           target="_blank"

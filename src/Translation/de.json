@@ -92,7 +92,7 @@
         "model": "Modell",
         "description": "Beschreibung",
         "coordinates": "Koordinaten",
-        "technician": "Techniker",
+        "technician": "Zugewiesen an",
         "date": "Datum",
         "requestDetails": "Anfrage Details",
         "bestTimes": "Beste Zeiten",

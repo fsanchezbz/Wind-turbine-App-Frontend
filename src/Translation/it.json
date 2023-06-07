@@ -90,7 +90,7 @@
         "model": "Modello",
         "description": "Descrizione",
         "coordinates": "Coordinate",
-        "technician": "Tecnico",
+        "technician": "Assegnato a",
         "date": "Data",
         "requestDetails": "Dettagli della richiesta",
         "bestTimes": "Migliori orari",

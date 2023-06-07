@@ -85,7 +85,7 @@
         "model": "モデル",
         "description": "説明",
         "coordinates": "座標",
-        "technician": "技術者",
+        "technician": "担当者",
         "date": "日付",
         "requestDetails": "リクエストの詳細",
         "bestTimes": "最適な時間",

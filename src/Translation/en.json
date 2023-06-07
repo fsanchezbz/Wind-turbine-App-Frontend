@@ -94,7 +94,7 @@
         "model": "Model",
         "description": "Description",
         "coordinates": "Coordinates",
-        "technician": "Technician",
+        "technician": "Assigned to",
         "date": "Date",
         "requestDetails": "Request Details",
         "bestTimes": "Best Times",

@@ -89,7 +89,7 @@
         "model": "Modèle",
         "description": "Description",
         "coordinates": "Coordonnées",
-        "technician": "Technicien",
+        "technician": "Assigné à",
         "date": "Date",
         "requestDetails": "Détails de la demande",
         "bestTimes": "Meilleurs horaires",

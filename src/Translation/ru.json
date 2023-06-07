@@ -89,7 +89,7 @@
         "model": "Модель",
         "description": "Описание",
         "coordinates": "Координаты",
-        "technician": "Техник",
+        "technician": "Назначено",
         "date": "Дата",
         "requestDetails": "Детали запроса",
         "bestTimes": "Удобное время",
