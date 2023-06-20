@@ -32,12 +32,13 @@ const AdminPanel = () => {
   const toast = useToast();
 
   useEffect(() => {
-    fetchUsers();
+      fetchUsers();
   }, []);
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://wind-turbine-app-backend.onrender.com/users/all', {
+      
+      const response = await axios.get(`${import.meta.env.VITE_PRODUCTION_API}/users/all`, {
         withCredentials: true,
       });
       setUsers(response.data);
