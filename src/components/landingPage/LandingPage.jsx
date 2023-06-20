@@ -2,7 +2,7 @@
 import { useTranslation } from 'react-i18next';
 import './LandingPage.css';
 import videoBg from '../../assets/wind.mp4';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 const LandingPage = () => {
