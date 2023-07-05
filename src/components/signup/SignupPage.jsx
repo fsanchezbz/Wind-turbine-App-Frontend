@@ -18,13 +18,15 @@ const SignUpPage = () => {
 
     try {
       // Create a new FormData object
+      const code = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESETS;
+      const cloud_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME; 
       const formData = new FormData();
-      formData.append('upload_preset', 'v2ng3uyg'); // Cloudinary upload preset
+      formData.append('upload_preset', code); // Cloudinary upload preset
       formData.append('file', profileImage); // Append the profile image file to the form data
 
       // Make a request to upload the profile image to Cloudinary
       const uploadResponse = await axios.post(
-        'https://api.cloudinary.com/v1_1/windturbineprofile/image/upload',
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       );
 
